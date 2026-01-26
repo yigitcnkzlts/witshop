@@ -43,9 +43,11 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
+        <div className="flex flex-wrap gap-8">
           {products.map((img, index) => (
-            <BestsellerCard key={index} image={img} />
+            <div key={index} className="w-full sm:w-[calc(50%-16px)] md:w-[calc(25%-24px)]">
+              <BestsellerCard image={img} />
+            </div>
           ))}
         </div>
       </section>

@@ -34,11 +34,11 @@ export default function FeaturedPosts() {
       </div>
 
       {/* Kartlar */}
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="flex flex-wrap gap-8">
         {posts.map((post, index) => (
           <div
             key={index}
-            className="overflow-hidden rounded-xl border bg-white"
+            className="w-full overflow-hidden rounded-xl border bg-white md:w-[calc(33.333%-21.333px)]"
           >
             {/* Görsel */}
             <div className="relative">

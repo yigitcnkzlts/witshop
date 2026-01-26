@@ -16,8 +16,8 @@ export default function Footer() {
         </div>
 
         {/* Link kolonları */}
-        <div className="grid gap-10 py-14 sm:grid-cols-2 md:grid-cols-5">
-          <div className="flex flex-col gap-3">
+        <div className="flex flex-wrap gap-10 py-14">
+          <div className="flex w-full flex-col gap-3 sm:w-[calc(50%-20px)] md:w-[calc(20%-32px)]">
             <h4 className="font-bold text-[#252B42]">Company Info</h4>
             <span className="text-sm text-[#737373]">About Us</span>
             <span className="text-sm text-[#737373]">Carrier</span>
@@ -25,7 +25,7 @@ export default function Footer() {
             <span className="text-sm text-[#737373]">Blog</span>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3 sm:w-[calc(50%-20px)] md:w-[calc(20%-32px)]">
             <h4 className="font-bold text-[#252B42]">Legal</h4>
             <span className="text-sm text-[#737373]">About Us</span>
             <span className="text-sm text-[#737373]">Carrier</span>
@@ -33,7 +33,7 @@ export default function Footer() {
             <span className="text-sm text-[#737373]">Blog</span>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3 sm:w-[calc(50%-20px)] md:w-[calc(20%-32px)]">
             <h4 className="font-bold text-[#252B42]">Features</h4>
             <span className="text-sm text-[#737373]">Business Marketing</span>
             <span className="text-sm text-[#737373]">User Analytic</span>
@@ -41,7 +41,7 @@ export default function Footer() {
             <span className="text-sm text-[#737373]">Unlimited Support</span>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3 sm:w-[calc(50%-20px)] md:w-[calc(20%-32px)]">
             <h4 className="font-bold text-[#252B42]">Resources</h4>
             <span className="text-sm text-[#737373]">IOS & Android</span>
             <span className="text-sm text-[#737373]">Watch a Demo</span>
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Email */}
-          <div className="flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3 sm:w-[calc(50%-20px)] md:w-[calc(20%-32px)]">
             <h4 className="font-bold text-[#252B42]">Get In Touch</h4>
             <div className="flex overflow-hidden rounded border">
               <input
