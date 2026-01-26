@@ -3,6 +3,8 @@ import EditorsPick from "../components/EditorsPick";
 import HeroProductSlider from "../components/HeroProductSlider";
 import BestsellerCard from "../components/BestsellerCard";
 import NeuralBanner from "../components/NeuralBanner";
+import FeaturedPosts from "../components/FeaturedPosts";
+import Footer from "../layout/Footer";
 
 import product1 from "../assets/products/product-1.jpg";
 import product2 from "../assets/products/product-2.jpg";
@@ -27,13 +29,9 @@ const products = [
 export default function HomePage() {
   return (
     <div className="w-full">
-      {/* ÜST SLIDER */}
       <Slider />
-
-      {/* EDITORS PICK */}
       <EditorsPick />
 
-      {/* BESTSELLER PRODUCTS */}
       <section className="mx-auto w-full max-w-[1200px] px-4 py-16">
         <div className="mb-12 text-center">
           <p className="text-sm text-[#737373]">Featured Products</p>
@@ -52,11 +50,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HERO PRODUCT SLIDER */}
       <HeroProductSlider />
-
-      {/* NEURAL BANNER */}
       <NeuralBanner />
+      <FeaturedPosts />
+
+      <Footer />
     </div>
   );
 }
