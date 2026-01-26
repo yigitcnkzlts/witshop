@@ -1,58 +1,57 @@
+import menImg from "../assets/editors-men.png";
+import womenImg from "../assets/editors-women.png";
+import kidsImg from "../assets/editors-kids.png";
+import accessoriesImg from "../assets/editors-accessories.png";
+
+function Card({ img, label, position = "object-center" }) {
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-[#F1F1F1]">
+      <img
+        src={img}
+        alt={label}
+        className={`h-full w-full object-cover ${position}`}
+      />
+
+      <div className="absolute left-6 top-6 bg-white px-6 py-3 text-sm font-bold tracking-wide">
+        {label}
+      </div>
+    </div>
+  );
+}
+
 export default function EditorsPick() {
   return (
-    <section className="flex w-full bg-white">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-14">
-        {/* Title */}
-        <div className="flex w-full flex-col items-center gap-2 text-center">
-          <h2 className="text-2xl font-bold text-[#252B42]">EDITOR&apos;S PICK</h2>
-          <p className="text-sm font-medium text-[#737373]">
-            Problems trying to resolve the conflict between
-          </p>
-        </div>
+    <section className="w-full bg-white py-14">
+      {/* Title */}
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 text-center">
+        <h2 className="text-2xl font-bold text-[#252B42]">EDITOR&apos;S PICK</h2>
+        <p className="mt-2 text-sm text-[#737373]">
+          Problems trying to resolve the conflict between
+        </p>
+      </div>
 
-        {/* Grid */}
-        <div className="flex w-full flex-col gap-4 lg:flex-row">
-          {/* MEN (big left) */}
-          <div className="relative flex h-[460px] w-full overflow-hidden bg-[#F5F5F5] lg:h-[520px] lg:w-1/2">
-            {/* ŞİMDİLİK PLACEHOLDER: sonra buraya kendi görselini koyacaksın */}
-            <div className="h-full w-full bg-[linear-gradient(135deg,#e5e7eb,#f3f4f6)]" />
-
-            <span className="absolute bottom-6 left-6 bg-white px-8 py-3 text-sm font-bold text-[#252B42]">
-              MEN
-            </span>
+      {/* Grid */}
+      <div className="mx-auto mt-10 w-full max-w-6xl px-4">
+        
+        <div className="grid gap-6 lg:grid-cols-4 lg:grid-rows-2 lg:h-[560px]">
+          {/* MEN - sol büyük */}
+          <div className="h-[420px] lg:h-full lg:col-span-2 lg:row-span-2">
+            <Card img={menImg} label="MEN" position="object-top" />
           </div>
 
-          {/* Right side */}
-          <div className="flex w-full flex-col gap-4 lg:w-1/2">
-            {/* WOMEN (big top right) */}
-            <div className="relative flex h-[460px] w-full overflow-hidden bg-[#F5F5F5] lg:h-[520px]">
-              <div className="h-full w-full bg-[linear-gradient(135deg,#e5e7eb,#f3f4f6)]" />
+          {/* WOMEN - orta büyük (tam boy) */}
+          <div className="h-[260px] lg:h-full lg:col-span-1 lg:row-span-2">
+            <Card img={womenImg} label="WOMEN" position="object-center" />
+          </div>
 
-              <span className="absolute bottom-6 left-6 bg-white px-8 py-3 text-sm font-bold text-[#252B42]">
-                WOMEN
-              </span>
-            </div>
+          {/* ACCESSORIES - sağ üst */}
+          <div className="h-[240px] lg:h-full lg:col-span-1 lg:row-span-1">
+            <Card img={accessoriesImg} label="ACCESSORIES" position="object-top" />
+          </div>
 
-            {/* Bottom two */}
-            <div className="flex w-full flex-col gap-4 md:flex-row">
-              {/* ACCESSORIES */}
-              <div className="relative flex h-[220px] w-full overflow-hidden bg-[#F5F5F5] md:w-1/2">
-                <div className="h-full w-full bg-[linear-gradient(135deg,#e5e7eb,#f3f4f6)]" />
-
-                <span className="absolute bottom-6 left-6 bg-white px-6 py-3 text-sm font-bold text-[#252B42]">
-                  ACCESSORIES
-                </span>
-              </div>
-
-              {/* KIDS */}
-              <div className="relative flex h-[220px] w-full overflow-hidden bg-[#F5F5F5] md:w-1/2">
-                <div className="h-full w-full bg-[linear-gradient(135deg,#e5e7eb,#f3f4f6)]" />
-
-                <span className="absolute bottom-6 left-6 bg-white px-8 py-3 text-sm font-bold text-[#252B42]">
-                  KIDS
-                </span>
-              </div>
-            </div>
+          {/* KIDS - sağ alt */}
+          <div className="h-[240px] lg:h-full lg:col-span-1 lg:row-span-1">
+            <Card img={kidsImg} label="KIDS" position="object-top" />
           </div>
         </div>
       </div>

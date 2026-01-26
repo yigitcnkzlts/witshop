@@ -16,10 +16,8 @@ import {
 export default function Header() {
   return (
     <header className="flex w-full flex-col">
-      {/* TOP BAR (Desktop only) */}
       <div className="hidden w-full bg-[#252B42] text-white md:flex">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 text-xs font-semibold">
-          {/* Left */}
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Phone size={14} />
@@ -32,12 +30,10 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Middle */}
           <div className="flex items-center gap-2">
             <span>Follow Us and get a chance to win 80% off</span>
           </div>
 
-          {/* Right */}
           <div className="flex items-center gap-3">
             <span>Follow Us :</span>
             <Instagram size={16} />
@@ -48,21 +44,22 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MAIN NAV */}
       <div className="flex w-full bg-white">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
-          {/* Logo */}
           <Link to="/" className="flex items-center">
             <span className="text-2xl font-bold text-[#252B42]">Bandage</span>
           </Link>
 
-          {/* Menu (Desktop) */}
           <nav className="hidden items-center gap-5 text-sm font-semibold text-[#737373] md:flex">
             <Link to="/" className="text-[#252B42]">
               Home
             </Link>
 
-            <button className="flex items-center gap-1">
+            <button
+              type="button"
+              className="flex items-center gap-1"
+              aria-label="Shop menu"
+            >
               Shop <ChevronDown size={16} />
             </button>
 
@@ -70,14 +67,16 @@ export default function Header() {
             <Link to="/">Blog</Link>
             <Link to="/">Contact</Link>
 
-            <button className="flex items-center gap-1">
+            <button
+              type="button"
+              className="flex items-center gap-1"
+              aria-label="Pages menu"
+            >
               Pages <ChevronDown size={16} />
             </button>
           </nav>
 
-          {/* Right actions */}
           <div className="flex items-center gap-4 text-[#23A6F0]">
-            {/* Desktop Login */}
             <Link
               to="/"
               className="hidden items-center gap-2 text-sm font-semibold md:flex"
@@ -86,17 +85,16 @@ export default function Header() {
               Login / Register
             </Link>
 
-            {/* Icons */}
-            <button className="flex items-center justify-center">
+            <button type="button" className="flex items-center justify-center" aria-label="Search">
               <Search size={18} />
             </button>
 
-            <button className="flex items-center gap-2">
+            <button type="button" className="flex items-center gap-2" aria-label="Cart">
               <ShoppingCart size={18} />
               <span className="text-xs font-semibold">1</span>
             </button>
 
-            <button className="flex items-center gap-2">
+            <button type="button" className="flex items-center gap-2" aria-label="Favorites">
               <Heart size={18} />
               <span className="text-xs font-semibold">1</span>
             </button>
@@ -104,7 +102,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MOBILE MENU (Only show basic links) */}
       <div className="flex w-full border-t md:hidden">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 text-sm font-semibold text-[#737373]">
           <Link to="/" className="text-[#252B42]">

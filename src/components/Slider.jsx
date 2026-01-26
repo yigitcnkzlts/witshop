@@ -7,7 +7,7 @@ export default function Slider() {
     <div className="flex w-screen">
       <Swiper spaceBetween={0} slidesPerView={1}>
         <SwiperSlide>
-          {/* FULL SCREEN HERO */}
+          
           <section className="relative flex h-screen w-screen overflow-hidden">
             <img
               src={heroWoman}
@@ -17,7 +17,7 @@ export default function Slider() {
 
             <div className="absolute inset-0 bg-[#23A6F0]/25" />
 
-            {/* Content (header fixed olduğu için üstten padding verdik) */}
+            
             <div className="absolute inset-0 flex w-full">
               <div className="flex w-full flex-col justify-center gap-4 px-6 pt-28 md:px-16 md:pt-32">
                 <span className="flex text-sm font-bold tracking-[0.2em] text-white md:text-base">
