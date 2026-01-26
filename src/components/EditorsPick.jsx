@@ -3,16 +3,17 @@ import womenImg from "../assets/editors-women.png";
 import kidsImg from "../assets/editors-kids.png";
 import accessoriesImg from "../assets/editors-accessories.png";
 
-function Card({ img, label, position = "object-center" }) {
+function Card({ img, label, position = "object-center", objectPosition }) {
   return (
-    <div className="relative h-full w-full overflow-hidden bg-[#F1F1F1]">
+    <div className="relative h-full w-full min-h-0 overflow-hidden bg-[#F1F1F1]">
       <img
         src={img}
         alt={label}
         className={`h-full w-full object-cover ${position}`}
+        style={objectPosition ? { objectPosition } : undefined}
       />
 
-      <div className="absolute left-6 top-6 bg-white px-6 py-3 text-sm font-bold tracking-wide">
+      <div className="absolute left-6 bottom-6 bg-white px-8 py-3 text-sm font-bold tracking-wide text-[#252B42]">
         {label}
       </div>
     </div>
@@ -21,7 +22,7 @@ function Card({ img, label, position = "object-center" }) {
 
 export default function EditorsPick() {
   return (
-    <section className="w-full bg-white py-14">
+    <section className="w-full bg-[#FAFAFA] py-20">
       {/* Title */}
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 text-center">
         <h2 className="text-2xl font-bold text-[#252B42]">EDITOR&apos;S PICK</h2>
@@ -30,28 +31,33 @@ export default function EditorsPick() {
         </p>
       </div>
 
-      {/* Grid */}
-      <div className="mx-auto mt-10 w-full max-w-6xl px-4">
-        
-        <div className="grid gap-6 lg:grid-cols-4 lg:grid-rows-2 lg:h-[560px]">
-          {/* MEN - sol büyük */}
-          <div className="h-[420px] lg:h-full lg:col-span-2 lg:row-span-2">
-            <Card img={menImg} label="MEN" position="object-top" />
+      {/* FLEX LAYOUT */}
+      <div className="mx-auto mt-12 w-full max-w-6xl px-4">
+        <div className="flex flex-col gap-6 md:flex-row md:h-[560px] md:items-stretch">
+          {/* MEN */}
+          <div className="md:flex-[2] md:h-full min-h-0">
+            <Card img={menImg} label="MEN" position="object-[50%_15%]" />
           </div>
 
-          {/* WOMEN - orta büyük (tam boy) */}
-          <div className="h-[260px] lg:h-full lg:col-span-1 lg:row-span-2">
-            <Card img={womenImg} label="WOMEN" position="object-center" />
+          {/* WOMEN */}
+          <div className="md:flex-1 md:h-full min-h-0">
+            <Card img={womenImg} label="WOMEN" position="object-[50%_20%]" />
           </div>
 
-          {/* ACCESSORIES - sağ üst */}
-          <div className="h-[240px] lg:h-full lg:col-span-1 lg:row-span-1">
-            <Card img={accessoriesImg} label="ACCESSORIES" position="object-top" />
-          </div>
+          {/* RIGHT COLUMN */}
+          <div className="flex flex-col gap-6 md:flex-1 md:h-full min-h-0">
+            <div className="md:flex-1 min-h-0">
+              <Card
+                img={accessoriesImg}
+                label="ACCESSORIES"
+                position="object-cover"
+                objectPosition="50% 0%"
+              />
+            </div>
 
-          {/* KIDS - sağ alt */}
-          <div className="h-[240px] lg:h-full lg:col-span-1 lg:row-span-1">
-            <Card img={kidsImg} label="KIDS" position="object-top" />
+            <div className="md:flex-1 min-h-0">
+              <Card img={kidsImg} label="KIDS" position="object-[50%_15%]" />
+            </div>
           </div>
         </div>
       </div>
