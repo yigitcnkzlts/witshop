@@ -61,7 +61,7 @@ export default function HeroProductSlider() {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
   return (
