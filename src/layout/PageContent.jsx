@@ -5,6 +5,7 @@ import ShopPage from "../pages/ShopPage";
 import ProductDetailPage from "../pages/ProductDetailPage";
 import ContactPage from "../pages/ContactPage";
 import TeamPage from "../pages/TeamPage";
+import AboutPage from "../pages/AboutPage";
 import NotFound from "../pages/NotFound";
 
 export default function PageContent() {
@@ -25,6 +26,9 @@ export default function PageContent() {
 
         {/* T06 – Team Page */}
         <Route exact path="/team" component={TeamPage} />
+
+        {/* T07 – About Page */}
+        <Route exact path="/about" component={AboutPage} />
 
         {/* 404 */}
         <Route component={NotFound} />

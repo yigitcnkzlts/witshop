@@ -123,7 +123,7 @@ export default function Header() {
 
             {/* ABOUT / BLOG */}
             <Link
-              to="/"
+              to="/about"
               className="group relative transition-colors hover:text-[#23A6F0]"
             >
               About
@@ -193,14 +193,26 @@ export default function Header() {
       {/* MOBILE NAV */}
       <div className="flex w-full border-t border-gray-50 bg-white md:hidden">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 text-[11px] font-black uppercase tracking-tighter text-[#737373]">
-          <Link to="/" className="hover:text-[#23A6F0]">Home</Link>
-          <Link to="/shop" className="hover:text-[#23A6F0]">Shop</Link>
-          <Link to="/" className="hover:text-[#23A6F0]">About</Link>
-          <Link to="/" className="hover:text-[#23A6F0]">Blog</Link>
+          <Link to="/" className="hover:text-[#23A6F0]">
+            Home
+          </Link>
+          <Link to="/shop" className="hover:text-[#23A6F0]">
+            Shop
+          </Link>
+          <Link to="/about" className="hover:text-[#23A6F0]">
+            About
+          </Link>
+          <Link to="/" className="hover:text-[#23A6F0]">
+            Blog
+          </Link>
           {/* 🔴 T6 – TEAM */}
-          <Link to="/team" className="hover:text-[#23A6F0]">Team</Link>
+          <Link to="/team" className="hover:text-[#23A6F0]">
+            Team
+          </Link>
           {/* 🔴 T5 – CONTACT */}
-          <Link to="/contact" className="hover:text-[#23A6F0]">Contact</Link>
+          <Link to="/contact" className="hover:text-[#23A6F0]">
+            Contact
+          </Link>
         </div>
       </div>
     </header>
