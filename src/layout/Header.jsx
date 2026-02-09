@@ -121,7 +121,7 @@ export default function Header() {
               </div>
             </div>
 
-            {/* ABOUT / BLOG / CONTACT */}
+            {/* ABOUT / BLOG */}
             <Link
               to="/"
               className="group relative transition-colors hover:text-[#23A6F0]"
@@ -135,6 +135,15 @@ export default function Header() {
               className="group relative transition-colors hover:text-[#23A6F0]"
             >
               Blog
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#23A6F0] transition-all group-hover:w-full" />
+            </Link>
+
+            {/* 🔴 T6 – TEAM */}
+            <Link
+              to="/team"
+              className="group relative transition-colors hover:text-[#23A6F0]"
+            >
+              Team
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#23A6F0] transition-all group-hover:w-full" />
             </Link>
 
@@ -188,6 +197,8 @@ export default function Header() {
           <Link to="/shop" className="hover:text-[#23A6F0]">Shop</Link>
           <Link to="/" className="hover:text-[#23A6F0]">About</Link>
           <Link to="/" className="hover:text-[#23A6F0]">Blog</Link>
+          {/* 🔴 T6 – TEAM */}
+          <Link to="/team" className="hover:text-[#23A6F0]">Team</Link>
           {/* 🔴 T5 – CONTACT */}
           <Link to="/contact" className="hover:text-[#23A6F0]">Contact</Link>
         </div>
