@@ -1,102 +1,117 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import { motion } from "framer-motion";
 import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
 
 import heroWoman from "../assets/hero-woman.jpg";
 import heroWoman2 from "../assets/hero-woman-2.png";
 
+// Animasyon ayarları
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
 export default function Slider() {
   return (
-    <div className="flex w-screen">
+    <div className="flex w-full overflow-hidden">
       <Swiper
+        effect={"fade"} // Geçişi çok daha lüks yapar
         spaceBetween={0}
         slidesPerView={1}
-        modules={[Autoplay]}
+        modules={[Autoplay, EffectFade, Navigation]}
+        navigation={{
+          nextEl: ".swiper-button-next-custom",
+          prevEl: ".swiper-button-prev-custom",
+        }}
         autoplay={{
-          delay: 3500,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         loop={true}
+        className="h-screen w-full"
       >
-        {/* SLIDE 1 */}
-        <SwiperSlide>
-          <section className="relative flex h-screen w-screen overflow-hidden">
-            <img
-              src={heroWoman}
-              alt="Hero Woman"
-              className="h-full w-full object-cover object-[62%_50%] md:object-[78%_50%] lg:object-[85%_50%]"
-            />
+        {[
+          { img: heroWoman, season: "SUMMER 2026" },
+          { img: heroWoman2, season: "WINTER 2026" }
+        ].map((slide, index) => (
+          <SwiperSlide key={index}>
+            <section className="relative h-screen w-full overflow-hidden">
+              {/* Görsel Katmanı */}
+              <motion.img
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 6 }} // Görsel yavaşça küçülerek derinlik hissi verir
+                src={slide.img}
+                alt="Hero"
+                className="h-full w-full object-cover object-[75%_50%]"
+              />
 
-            <div className="absolute inset-0 bg-[#23A6F0]/25" />
+              {/* Modern Overlay: Daha şeffaf ve şık */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
 
-            <div className="absolute inset-0 flex w-full">
-              <div className="flex w-full flex-col justify-center gap-4 px-6 pt-28 md:px-16 md:pt-32">
-                <span className="flex text-sm font-bold tracking-[0.2em] text-white md:text-base">
-                  SUMMER 2020
-                </span>
+              {/* İçerik Alanı */}
+              <div className="absolute inset-0 flex items-center">
+                <motion.div 
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="container mx-auto flex flex-col gap-6 px-6 md:px-16"
+                >
+                  <motion.span 
+                    variants={fadeInUp}
+                    className="text-xs font-black tracking-[0.5em] text-blue-400 drop-shadow-md md:text-sm"
+                  >
+                    {slide.season}
+                  </motion.span>
 
-                <h1 className="flex max-w-[520px] text-4xl font-bold text-white md:text-6xl">
-                  NEW COLLECTION
-                </h1>
+                  <motion.h1 
+                    variants={fadeInUp}
+                    className="max-w-[650px] text-5xl font-black leading-[1.1] text-white md:text-8xl"
+                  >
+                    NEW <br /> COLLECTION
+                  </motion.h1>
 
-                <p className="flex max-w-[420px] text-sm font-medium text-white/90 md:text-base">
-                  We know how large objects will act, but things on a small scale.
-                </p>
+                  <motion.p 
+                    variants={fadeInUp}
+                    className="max-w-[450px] text-sm font-medium leading-relaxed text-white/80 md:text-lg"
+                  >
+                    We know how large objects will act, but things on a small scale 
+                    behave quite differently.
+                  </motion.p>
 
-                <button className="flex w-fit items-center justify-center rounded-md bg-[#2DC071] px-6 py-3 text-sm font-bold text-white md:text-base">
-                  SHOP NOW
-                </button>
+                  <motion.div variants={fadeInUp}>
+                    <button className="group relative flex w-fit items-center justify-center overflow-hidden rounded-full bg-[#2DC071] px-10 py-4 text-sm font-black tracking-widest text-white shadow-xl transition-all hover:shadow-2xl active:scale-95">
+                      <span className="relative z-10">SHOP NOW</span>
+                      <div className="absolute inset-0 -translate-x-full bg-black transition-transform duration-300 group-hover:translate-x-0" />
+                    </button>
+                  </motion.div>
+                </motion.div>
               </div>
-            </div>
 
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-4xl font-light text-white/70 md:left-8">
-              ‹
-            </div>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-4xl font-light text-white/70 md:right-8">
-              ›
-            </div>
-          </section>
-        </SwiperSlide>
-
-        {/* SLIDE 2 */}
-        <SwiperSlide>
-          <section className="relative flex h-screen w-screen overflow-hidden">
-            <img
-              src={heroWoman2}
-              alt="Hero Woman 2"
-              className="h-full w-full object-cover object-[62%_50%] md:object-[78%_50%] lg:object-[85%_50%]"
-            />
-
-            <div className="absolute inset-0 bg-[#23A6F0]/25" />
-
-            <div className="absolute inset-0 flex w-full">
-              <div className="flex w-full flex-col justify-center gap-4 px-6 pt-28 md:px-16 md:pt-32">
-                <span className="flex text-sm font-bold tracking-[0.2em] text-white md:text-base">
-                  SUMMER 2020
-                </span>
-
-                <h1 className="flex max-w-[520px] text-4xl font-bold text-white md:text-6xl">
-                  NEW COLLECTION
-                </h1>
-
-                <p className="flex max-w-[420px] text-sm font-medium text-white/90 md:text-base">
-                  We know how large objects will act, but things on a small scale.
-                </p>
-
-                <button className="flex w-fit items-center justify-center rounded-md bg-[#2DC071] px-6 py-3 text-sm font-bold text-white md:text-base">
-                  SHOP NOW
-                </button>
-              </div>
-            </div>
-
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-4xl font-light text-white/70 md:left-8">
-              ‹
-            </div>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-4xl font-light text-white/70 md:right-8">
-              ›
-            </div>
-          </section>
-        </SwiperSlide>
+              {/* Özel Navigasyon Butonları */}
+              <button className="swiper-button-prev-custom absolute left-8 top-1/2 z-10 hidden -translate-y-1/2 text-5xl font-extralight text-white/30 transition-all hover:text-white md:block">
+                ‹
+              </button>
+              <button className="swiper-button-next-custom absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 text-5xl font-extralight text-white/30 transition-all hover:text-white md:block">
+                ›
+              </button>
+            </section>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
