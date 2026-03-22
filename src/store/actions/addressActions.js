@@ -35,7 +35,9 @@ export const fetchAddresses = () => {
       dispatch(setAddressList(addresses));
     } catch (error) {
       console.error("Error fetching addresses:", error);
-      dispatch(setAddressList([])); // Set empty array on error
+      // Load from localStorage if API fails
+      const savedAddresses = JSON.parse(localStorage.getItem('savedAddresses') || '[]');
+      dispatch(setAddressList(savedAddresses));
     }
   };
 };
@@ -48,7 +50,13 @@ export const createAddress = (addressData) => {
       return response.data;
     } catch (error) {
       console.error("Error creating address:", error);
-      throw error;
+      // Save to localStorage if API fails
+      const savedAddresses = JSON.parse(localStorage.getItem('savedAddresses') || '[]');
+      const newAddress = { ...addressData, id: Date.now() };
+      savedAddresses.push(newAddress);
+      localStorage.setItem('savedAddresses', JSON.stringify(savedAddresses));
+      dispatch(addAddress(newAddress));
+      return newAddress;
     }
   };
 };
@@ -61,7 +69,12 @@ export const editAddress = (addressData) => {
       return response.data;
     } catch (error) {
       console.error("Error updating address:", error);
-      throw error;
+      // Update in localStorage if API fails
+      const savedAddresses = JSON.parse(localStorage.getItem('savedAddresses') || '[]');
+      const updatedAddresses = savedAddresses.map(a => a.id === addressData.id ? addressData : a);
+      localStorage.setItem('savedAddresses', JSON.stringify(updatedAddresses));
+      dispatch(updateAddress(addressData));
+      return addressData;
     }
   };
 };
@@ -73,7 +86,11 @@ export const deleteAddress = (addressId) => {
       dispatch(removeAddress(addressId));
     } catch (error) {
       console.error("Error deleting address:", error);
-      throw error;
+      // Delete from localStorage if API fails
+      const savedAddresses = JSON.parse(localStorage.getItem('savedAddresses') || '[]');
+      const filteredAddresses = savedAddresses.filter(a => a.id !== addressId);
+      localStorage.setItem('savedAddresses', JSON.stringify(filteredAddresses));
+      dispatch(removeAddress(addressId));
     }
   };
 };

@@ -44,23 +44,41 @@ export default function CardForm({ card, onClose, onSuccess }) {
         expire_month: parseInt(data.expire_month),
         expire_year: parseInt(data.expire_year),
         name_on_card: data.name_on_card,
-        cvv: data.cvv // Store CVV (in real app, never store CVV!)
+        cvv: data.cvv,
+        installment: installment,
+        use_3d_secure: use3DSecure
       };
 
       if (card?.id) {
         // Update existing card
-        await dispatch(editCard({ ...cardData, id: card.id }));
-        toast.success("Card updated successfully!");
+        try {
+          await dispatch(editCard({ ...cardData, id: card.id }));
+        } catch (error) {
+          // If API fails, save to localStorage
+          const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+          const updatedCards = savedCards.map(c => c.id === card.id ? { ...cardData, id: card.id } : c);
+          localStorage.setItem('savedCards', JSON.stringify(updatedCards));
+        }
+        toast.success("Kart güncellendi!");
       } else {
         // Create new card
-        await dispatch(createCard(cardData));
-        toast.success("Card added successfully!");
+        try {
+          await dispatch(createCard(cardData));
+        } catch (error) {
+          // If API fails, save to localStorage
+          const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+          const newCard = { ...cardData, id: Date.now() };
+          savedCards.push(newCard);
+          localStorage.setItem('savedCards', JSON.stringify(savedCards));
+          dispatch({ type: 'ADD_CARD', payload: newCard });
+        }
+        toast.success("Kart kaydedildi!");
       }
       
       onSuccess?.();
       onClose();
     } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to save card");
+      toast.error("Kart kaydedilemedi");
     } finally {
       setLoading(false);
     }

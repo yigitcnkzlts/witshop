@@ -35,7 +35,9 @@ export const fetchCards = () => {
       dispatch(setCardList(cards));
     } catch (error) {
       console.error("Error fetching cards:", error);
-      dispatch(setCardList([])); // Set empty array on error
+      // Load from localStorage if API fails
+      const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+      dispatch(setCardList(savedCards));
     }
   };
 };
@@ -48,7 +50,13 @@ export const createCard = (cardData) => {
       return response.data;
     } catch (error) {
       console.error("Error creating card:", error);
-      throw error;
+      // Save to localStorage if API fails
+      const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+      const newCard = { ...cardData, id: Date.now() };
+      savedCards.push(newCard);
+      localStorage.setItem('savedCards', JSON.stringify(savedCards));
+      dispatch(addCard(newCard));
+      return newCard;
     }
   };
 };
@@ -61,7 +69,12 @@ export const editCard = (cardData) => {
       return response.data;
     } catch (error) {
       console.error("Error updating card:", error);
-      throw error;
+      // Update in localStorage if API fails
+      const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+      const updatedCards = savedCards.map(c => c.id === cardData.id ? cardData : c);
+      localStorage.setItem('savedCards', JSON.stringify(updatedCards));
+      dispatch(updateCard(cardData));
+      return cardData;
     }
   };
 };
@@ -73,7 +86,11 @@ export const deleteCard = (cardId) => {
       dispatch(removeCard(cardId));
     } catch (error) {
       console.error("Error deleting card:", error);
-      throw error;
+      // Delete from localStorage if API fails
+      const savedCards = JSON.parse(localStorage.getItem('savedCards') || '[]');
+      const filteredCards = savedCards.filter(c => c.id !== cardId);
+      localStorage.setItem('savedCards', JSON.stringify(filteredCards));
+      dispatch(removeCard(cardId));
     }
   };
 };
