@@ -8,6 +8,7 @@ import TeamPage from "../pages/TeamPage";
 import AboutPage from "../pages/AboutPage";
 import SignUpPage from "../pages/SignUpPage";
 import LoginPage from "../pages/LoginPage";
+import CartPage from "../pages/CartPage";
 import NotFound from "../pages/NotFound";
 
 export default function PageContent() {
@@ -19,9 +20,15 @@ export default function PageContent() {
 
         {/* T03 – Shop Page */}
         <Route exact path="/shop" component={ShopPage} />
+        
+        {/* T14 – Shop with category */}
+        <Route exact path="/shop/:gender/:categoryName/:categoryId" component={ShopPage} />
 
         {/* T04 – Product Detail */}
         <Route path="/shop/:productId" component={ProductDetailPage} />
+        
+        {/* T16 – Product Detail with full path */}
+        <Route path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" component={ProductDetailPage} />
 
         {/* T05 – Contact Page */}
         <Route exact path="/contact" component={ContactPage} />
@@ -37,6 +44,9 @@ export default function PageContent() {
 
         {/* T10 – Login Page */}
         <Route exact path="/login" component={LoginPage} />
+
+        {/* T18 – Cart Page */}
+        <Route exact path="/cart" component={CartPage} />
 
         {/* 404 */}
         <Route component={NotFound} />

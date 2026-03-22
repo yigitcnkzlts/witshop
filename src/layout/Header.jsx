@@ -20,6 +20,7 @@ import Gravatar from "../components/Gravatar";
 export default function Header() {
   const { user } = useSelector(state => state.client);
   const { categories } = useSelector(state => state.product);
+  const { cart } = useSelector(state => state.shoppingCart);
   const dispatch = useDispatch();
   
   const handleLogout = () => {
@@ -27,6 +28,9 @@ export default function Header() {
   };
 
   const isLoggedIn = user && user.email;
+  
+  // Calculate total items in cart
+  const cartItemCount = cart.reduce((total, item) => total + item.count, 0);
 
   // Kategorileri cinsiyet bazında grupla
   const womenCategories = categories.filter(cat => 
@@ -270,13 +274,65 @@ export default function Header() {
               <Search size={18} />
             </button>
 
-            <button className="group flex items-center gap-1 rounded-full p-2 transition-colors hover:bg-blue-50">
-              <ShoppingCart
-                size={18}
-                className="transition-transform group-hover:rotate-12"
-              />
-              <span className="text-[10px] font-black">1</span>
-            </button>
+            <div className="group relative">
+              <Link
+                to="/cart"
+                className="flex items-center gap-1 rounded-full p-2 transition-colors hover:bg-blue-50"
+              >
+                <ShoppingCart
+                  size={18}
+                  className="transition-transform group-hover:rotate-12"
+                />
+                <span className="text-[10px] font-black">{cartItemCount}</span>
+              </Link>
+              
+              {/* Cart Dropdown */}
+              {cart.length > 0 && (
+                <div className="invisible absolute right-0 top-full z-50 mt-2 w-80 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="rounded-lg bg-white p-4 shadow-lg ring-1 ring-black/5">
+                    <h3 className="mb-3 font-semibold text-gray-900">Shopping Cart ({cartItemCount})</h3>
+                    <div className="max-h-60 space-y-3 overflow-y-auto">
+                      {cart.slice(0, 3).map((item) => (
+                        <div key={item.product.id} className="flex items-center gap-3">
+                          <div className="h-12 w-12 rounded bg-gray-100">
+                            {item.product.images?.[0] ? (
+                              <img
+                                src={item.product.images[0].url}
+                                alt={item.product.name}
+                                className="h-full w-full rounded object-cover"
+                              />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center text-xs text-gray-400">
+                                IMG
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="truncate text-sm font-medium text-gray-900">
+                              {item.product.name || item.product.title}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              {item.count} x ${(item.product.price || 0).toFixed(2)}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    {cart.length > 3 && (
+                      <p className="mt-2 text-xs text-gray-500">
+                        +{cart.length - 3} more items
+                      </p>
+                    )}
+                    <Link
+                      to="/cart"
+                      className="mt-3 block w-full rounded bg-[#23A6F0] py-2 text-center text-sm font-medium text-white hover:bg-blue-600"
+                    >
+                      View Cart
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
 
             <button className="group flex items-center gap-1 rounded-full p-2 transition-colors hover:bg-blue-50">
               <Heart

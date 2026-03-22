@@ -1,26 +1,47 @@
 import { Link, useParams } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Heart, ShoppingCart, Eye } from "lucide-react";
+import { toast } from "react-toastify";
 
 import { shopProducts } from "../data/shopProducts";
 import ShopGridCard from "../components/ShopGridCard";
+import { fetchProductDetail, addToCart } from "../store/actions";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
+  const dispatch = useDispatch();
+  const { productDetail, fetchState } = useSelector(state => state.product);
   const id = Number(productId);
 
-  const product = useMemo(
+  const [tab, setTab] = useState("description");
+
+  useEffect(() => {
+    // Fetch product detail from API
+    dispatch(fetchProductDetail(id));
+  }, [dispatch, id]);
+
+  // Fallback to local data if API product not found
+  const localProduct = useMemo(
     () => shopProducts.find((p) => p.id === id),
     [id]
   );
 
-  const [tab, setTab] = useState("description");
+  const product = productDetail || localProduct;
 
   // Basit "related" örneği (4 adet)
   const related = useMemo(() => {
     const others = shopProducts.filter((p) => p.id !== id);
     return others.slice(0, 4);
   }, [id]);
+
+  if (fetchState === "FETCHING") {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-[#23A6F0]"></div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -33,8 +54,18 @@ export default function ProductDetailPage() {
     );
   }
 
-  // Görsel yolu: senin klasörde "products-shop/product-1.jpg" formatında
-  const imageSrc = `/src/assets/products-shop/${product.image}`;
+  // Görsel yolu: API'den gelen ürün için images array, local için assets
+  const getImageSrc = () => {
+    if (product.images && product.images[0]) {
+      return product.images[0].url;
+    }
+    return `/src/assets/products-shop/${product.image}`;
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    toast.success(`${product.name || product.title} added to cart!`);
+  };
 
   return (
     <div className="w-full bg-white">
@@ -60,73 +91,92 @@ export default function ProductDetailPage() {
         <div className="mx-auto w-full max-w-6xl px-4 py-10">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             {/* Left: Image */}
-            <div className="flex flex-col gap-4">
+            <div className="rounded-[2rem] p-8 transition-colors hover:bg-gray-50/50">
               <div className="overflow-hidden rounded bg-white">
                 <img
-                  src={imageSrc}
-                  alt={product.title}
+                  src={getImageSrc()}
+                  alt={product.title || product.name}
                   className="h-[420px] w-full object-cover md:h-[520px]"
                 />
               </div>
 
-              {/* Thumbnails (dummy) */}
-              <div className="flex gap-4">
-                <button className="h-20 w-20 overflow-hidden rounded bg-white ring-2 ring-[#23A6F0]">
-                  <img
-                    src={imageSrc}
-                    alt="thumb"
-                    className="h-full w-full object-cover"
-                  />
-                </button>
-                <button className="h-20 w-20 overflow-hidden rounded bg-white">
-                  <img
-                    src={imageSrc}
-                    alt="thumb"
-                    className="h-full w-full object-cover opacity-80"
-                  />
-                </button>
+              {/* Thumbnails */}
+              <div className="flex gap-4 mt-4">
+                {product.images ? (
+                  product.images.slice(0, 2).map((img, index) => (
+                    <button key={index} className={`h-20 w-20 overflow-hidden rounded bg-white ${index === 0 ? 'ring-2 ring-[#23A6F0]' : ''}`}>
+                      <img
+                        src={img.url}
+                        alt="thumb"
+                        className="h-full w-full object-cover"
+                      />
+                    </button>
+                  ))
+                ) : (
+                  <>
+                    <button className="h-20 w-20 overflow-hidden rounded bg-white ring-2 ring-[#23A6F0]">
+                      <img
+                        src={getImageSrc()}
+                        alt="thumb"
+                        className="h-full w-full object-cover"
+                      />
+                    </button>
+                    <button className="h-20 w-20 overflow-hidden rounded bg-white">
+                      <img
+                        src={getImageSrc()}
+                        alt="thumb"
+                        className="h-full w-full object-cover opacity-80"
+                      />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
 
             {/* Right: Info */}
             <div className="flex flex-col gap-4">
               <h1 className="text-2xl font-bold text-[#252B42] md:text-3xl">
-                {product.title}
+                {product.title || product.name}
               </h1>
 
               <p className="text-sm font-semibold text-[#737373]">
                 {product.category}
               </p>
 
-              {/* Rating (simple) */}
+              {/* Rating */}
               <div className="flex items-center gap-3">
                 <div className="flex text-[#F3CD03]">
-                  <span>★</span><span>★</span><span>★</span><span>★</span>
-                  <span className="text-[#BDBDBD]">★</span>
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className={i < Math.floor(product.rating || 4) ? "text-[#F3CD03]" : "text-[#BDBDBD]"}>
+                      ★
+                    </span>
+                  ))}
                 </div>
                 <span className="text-sm font-semibold text-[#737373]">
-                  10 Reviews
+                  {product.sell_count || 10} Reviews
                 </span>
               </div>
 
               {/* Price */}
               <div className="flex items-center gap-3 text-lg font-semibold">
-                <span className="text-[#BDBDBD] line-through">
-                  ${product.oldPrice.toFixed(2)}
-                </span>
-                <span className="text-[#23856D]">${product.price.toFixed(2)}</span>
+                {product.oldPrice && (
+                  <span className="text-[#BDBDBD] line-through">
+                    ${product.oldPrice.toFixed(2)}
+                  </span>
+                )}
+                <span className="text-[#23856D]">${(product.price || 0).toFixed(2)}</span>
               </div>
 
               {/* Availability */}
               <div className="flex items-center gap-2 text-sm font-semibold">
                 <span className="text-[#737373]">Availability :</span>
-                <span className="text-[#23A6F0]">In Stock</span>
+                <span className="text-[#23A6F0]">
+                  {product.stock > 0 ? `In Stock (${product.stock})` : 'In Stock'}
+                </span>
               </div>
 
               <p className="text-sm leading-6 text-[#737373]">
-                Met minim Mollie non desert Alamo est sit cliquey dolor do met
-                sent. RELIT official consequent door ENIM RELIT Mollie. Excitation
-                venial consequent sent nostrum met.
+                {product.description || "Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met."}
               </p>
 
               <div className="h-px w-full bg-[#E6E6E6]" />
@@ -147,10 +197,10 @@ export default function ProductDetailPage() {
               {/* Actions */}
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <button
-                  type="button"
-                  className="h-11 rounded bg-[#23A6F0] px-8 text-sm font-semibold text-white"
+                  onClick={handleAddToCart}
+                  className="h-11 rounded bg-[#23A6F0] px-8 text-sm font-semibold text-white hover:bg-blue-600 transition-colors"
                 >
-                  Select Options
+                  Add to Cart
                 </button>
 
                 <button

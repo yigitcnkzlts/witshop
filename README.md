@@ -4,7 +4,7 @@ Modern ve kullanıcı dostu bir e-ticaret platformu. React, Redux ve Tailwind CS
 
 ## 🚀 Özellikler
 
-### ✅ Tamamlanan Görevler (T1-T13)
+### ✅ Tamamlanan Görevler (T1-T19)
 
 #### 🏗️ Proje Kurulumu (T1-T2)
 - React + Vite ile modern proje yapısı
@@ -31,10 +31,14 @@ Modern ve kullanıcı dostu bir e-ticaret platformu. React, Redux ve Tailwind CS
 - **Gravatar** - Profil resmi entegrasyonu
 - **Çıkış Yap** - Güvenli oturum sonlandırma
 
-#### 🛍️ E-Ticaret Özellikleri (T12-T13)
+#### 🛍️ E-Ticaret Özellikleri (T12-T19)
 - **Kategori Yönetimi** - API'den dinamik kategori listesi
 - **Ürün Yönetimi** - Filtreleme, sıralama, sayfalama
-- **Alışveriş Sepeti** - Redux ile sepet yönetimi
+- **Ürün Detay** - API'den gerçek ürün bilgileri (T16)
+- **Query Parameters** - Kategori, filtre, sıralama URL parametreleri (T14)
+- **Pagination** - Sayfa bazlı ürün yükleme (T15)
+- **Alışveriş Sepeti** - Ürün ekleme, çıkarma, miktar güncelleme (T17)
+- **Sepet Sayfası** - Sepet yönetimi, sipariş özeti (T18-T19)
 - **Loading States** - Yükleme animasyonları
 - **Error Handling** - Hata yönetimi ve kullanıcı bildirimleri
 

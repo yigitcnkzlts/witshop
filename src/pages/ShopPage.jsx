@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 // Görsel Importları (Dosya yollarının doğruluğundan emin ol)
@@ -10,6 +10,7 @@ import category4 from "../assets/shop/category-4.jpg";
 import category5 from "../assets/shop/category-5.jpg";
 
 import ShopGridCard from "../components/ShopGridCard";
+import Pagination from "../components/Pagination";
 import { fetchCategories, fetchProducts } from "../store/actions";
 
 const defaultCategories = [
@@ -58,17 +59,59 @@ function LoadingSpinner() {
 
 export default function ShopPage() {
   const dispatch = useDispatch();
+  const params = useParams();
+  const history = useHistory();
   const { categories, productList, total, fetchState } = useSelector(state => state.product);
   
+  // Local state for filters
+  const [sortValue, setSortValue] = useState("");
+  const [filterText, setFilterText] = useState("");
+  
+  // Get category ID from URL params
+  const categoryId = params.categoryId ? parseInt(params.categoryId) : null;
+  
   useEffect(() => {
-    // Fetch categories and products when component mounts
+    // Fetch categories when component mounts
     dispatch(fetchCategories());
-    dispatch(fetchProducts());
   }, [dispatch]);
 
+  useEffect(() => {
+    // Fetch products when component mounts or params change
+    const queryParams = {};
+    
+    if (categoryId) {
+      queryParams.category = categoryId;
+    }
+    
+    if (sortValue) {
+      queryParams.sort = sortValue;
+    }
+    
+    if (filterText) {
+      queryParams.filter = filterText;
+    }
+    
+    dispatch(fetchProducts(queryParams));
+  }, [dispatch, categoryId, sortValue, filterText]);
+
   const handleCategoryClick = (category) => {
-    // Filter products by category
-    dispatch(fetchProducts({ category: category.id }));
+    // Navigate to category URL
+    const gender = category.gender === 'k' ? 'kadin' : 'erkek';
+    const categoryName = category.title?.toLowerCase().replace(/\s+/g, '-') || 'kategori';
+    history.push(`/shop/${gender}/${categoryName}/${category.id}`);
+  };
+
+  const handleSortChange = (e) => {
+    setSortValue(e.target.value);
+  };
+
+  const handleFilterChange = (e) => {
+    setFilterText(e.target.value);
+  };
+
+  const handleFilterSubmit = () => {
+    // Filter will be applied automatically via useEffect
+    // This is just for UI feedback
   };
 
   // Use API categories if available, otherwise use default ones
@@ -124,20 +167,29 @@ export default function ShopPage() {
           </div>
 
           <div className="flex w-full items-center gap-3 sm:w-auto">
+            <input
+              type="text"
+              placeholder="Filter products..."
+              value={filterText}
+              onChange={handleFilterChange}
+              className="h-12 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 sm:w-[200px]"
+            />
             <select 
               className="h-12 w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-6 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-blue-500/10 sm:w-[180px]"
-              onChange={(e) => dispatch(fetchProducts({ sort: e.target.value }))}
+              value={sortValue}
+              onChange={handleSortChange}
             >
-              <option value="">Popularity</option>
+              <option value="">Sort by</option>
               <option value="price:asc">Price: Low-High</option>
               <option value="price:desc">Price: High-Low</option>
+              <option value="rating:asc">Rating: Low-High</option>
               <option value="rating:desc">Rating: High-Low</option>
             </select>
             <button 
               className="h-12 flex-1 rounded-xl bg-[#23A6F0] px-10 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 transition-all hover:brightness-110 active:scale-95 sm:flex-none"
-              onClick={() => dispatch(fetchProducts())}
+              onClick={handleFilterSubmit}
             >
-              Refresh
+              Filter
             </button>
           </div>
         </div>
@@ -170,15 +222,7 @@ export default function ShopPage() {
 
       {/* PAGINATION */}
       <section className="pb-24">
-        <div className="flex justify-center px-6">
-          <div className="inline-flex items-center overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-md">
-            <button className="px-6 py-4 text-sm font-black text-[#23A6F0] transition-colors hover:bg-gray-50">FIRST</button>
-            <button className="border-l border-gray-100 px-5 py-4 text-sm font-bold text-[#23A6F0] hover:bg-gray-50">1</button>
-            <button className="border-l border-gray-100 bg-[#23A6F0] px-5 py-4 text-sm font-bold text-white shadow-inner">2</button>
-            <button className="border-l border-gray-100 px-5 py-4 text-sm font-bold text-[#23A6F0] hover:bg-gray-50">3</button>
-            <button className="border-l border-gray-100 px-6 py-4 text-sm font-black text-[#23A6F0] transition-colors hover:bg-gray-50">NEXT</button>
-          </div>
-        </div>
+        <Pagination />
       </section>
 
       {/* BRANDS STRIP */}
