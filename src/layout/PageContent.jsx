@@ -6,6 +6,8 @@ import ProductDetailPage from "../pages/ProductDetailPage";
 import ContactPage from "../pages/ContactPage";
 import TeamPage from "../pages/TeamPage";
 import AboutPage from "../pages/AboutPage";
+import SignUpPage from "../pages/SignUpPage";
+import LoginPage from "../pages/LoginPage";
 import NotFound from "../pages/NotFound";
 
 export default function PageContent() {
@@ -29,6 +31,12 @@ export default function PageContent() {
 
         {/* T07 – About Page */}
         <Route exact path="/about" component={AboutPage} />
+
+        {/* T08 – Sign Up Page */}
+        <Route exact path="/signup" component={SignUpPage} />
+
+        {/* T10 – Login Page */}
+        <Route exact path="/login" component={LoginPage} />
 
         {/* 404 */}
         <Route component={NotFound} />

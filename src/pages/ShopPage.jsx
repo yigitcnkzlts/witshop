@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 // Görsel Importları (Dosya yollarının doğruluğundan emin ol)
 import category1 from "../assets/shop/category-1.jpg";
@@ -8,9 +10,9 @@ import category4 from "../assets/shop/category-4.jpg";
 import category5 from "../assets/shop/category-5.jpg";
 
 import ShopGridCard from "../components/ShopGridCard";
-import { shopProducts } from "../data/shopProducts";
+import { fetchCategories, fetchProducts } from "../store/actions";
 
-const categories = [
+const defaultCategories = [
   { id: 1, title: "CLOTHS", items: 5, image: category1 },
   { id: 2, title: "CLOTHS", items: 5, image: category2 },
   { id: 3, title: "CLOTHS", items: 5, image: category3 },
@@ -18,11 +20,11 @@ const categories = [
   { id: 5, title: "CLOTHS", items: 5, image: category5 },
 ];
 
-function CategoryCard({ title, items, image }) {
+function CategoryCard({ title, items, image, onClick }) {
   return (
-    <Link 
-      to="/shop" 
-      className="group relative block h-[280px] w-full overflow-hidden rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl md:h-[223px]"
+    <div 
+      onClick={onClick}
+      className="group relative block h-[280px] w-full cursor-pointer overflow-hidden rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl md:h-[223px]"
     >
       <img
         src={image}
@@ -42,11 +44,41 @@ function CategoryCard({ title, items, image }) {
         {/* Hoverda uzayan şık çizgi */}
         <div className="mt-2 h-[2px] w-0 bg-white transition-all duration-500 group-hover:w-12" />
       </div>
-    </Link>
+    </div>
+  );
+}
+
+function LoadingSpinner() {
+  return (
+    <div className="flex items-center justify-center py-20">
+      <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-[#23A6F0]"></div>
+    </div>
   );
 }
 
 export default function ShopPage() {
+  const dispatch = useDispatch();
+  const { categories, productList, total, fetchState } = useSelector(state => state.product);
+  
+  useEffect(() => {
+    // Fetch categories and products when component mounts
+    dispatch(fetchCategories());
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  const handleCategoryClick = (category) => {
+    // Filter products by category
+    dispatch(fetchProducts({ category: category.id }));
+  };
+
+  // Use API categories if available, otherwise use default ones
+  const displayCategories = categories.length > 0 
+    ? categories.slice(0, 5).map((cat, index) => ({
+        ...cat,
+        image: defaultCategories[index]?.image || category1
+      }))
+    : defaultCategories;
+
   return (
     <div className="w-full bg-white antialiased">
       {/* TITLE + BREADCRUMB */}
@@ -63,8 +95,14 @@ export default function ShopPage() {
         {/* CATEGORY GRID */}
         <div className="mx-auto max-w-6xl px-6 pb-16">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {categories.map((c) => (
-              <CategoryCard key={c.id} {...c} />
+            {displayCategories.map((c, index) => (
+              <CategoryCard 
+                key={c.id || index} 
+                title={c.title || c.name}
+                items={c.items || c.rating || 5}
+                image={c.image}
+                onClick={() => handleCategoryClick(c)}
+              />
             ))}
           </div>
         </div>
@@ -74,7 +112,7 @@ export default function ShopPage() {
       <section className="sticky top-0 z-20 border-y border-gray-100 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-5 md:flex-row md:justify-between">
           <p className="text-sm font-bold text-gray-500">
-            Showing <span className="text-black">all 12</span> results
+            Showing <span className="text-black">{productList.length}</span> of <span className="text-black">{total}</span> results
           </p>
 
           <div className="flex items-center gap-4">
@@ -86,12 +124,20 @@ export default function ShopPage() {
           </div>
 
           <div className="flex w-full items-center gap-3 sm:w-auto">
-            <select className="h-12 w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-6 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-blue-500/10 sm:w-[180px]">
-              <option>Popularity</option>
-              <option>Price: Low-High</option>
+            <select 
+              className="h-12 w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-6 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-blue-500/10 sm:w-[180px]"
+              onChange={(e) => dispatch(fetchProducts({ sort: e.target.value }))}
+            >
+              <option value="">Popularity</option>
+              <option value="price:asc">Price: Low-High</option>
+              <option value="price:desc">Price: High-Low</option>
+              <option value="rating:desc">Rating: High-Low</option>
             </select>
-            <button className="h-12 flex-1 rounded-xl bg-[#23A6F0] px-10 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 transition-all hover:brightness-110 active:scale-95 sm:flex-none">
-              Filter
+            <button 
+              className="h-12 flex-1 rounded-xl bg-[#23A6F0] px-10 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 transition-all hover:brightness-110 active:scale-95 sm:flex-none"
+              onClick={() => dispatch(fetchProducts())}
+            >
+              Refresh
             </button>
           </div>
         </div>
@@ -100,11 +146,25 @@ export default function ShopPage() {
       {/* PRODUCTS GRID */}
       <section className="py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {shopProducts.map((p) => (
-              <ShopGridCard key={p.id} product={p} />
-            ))}
-          </div>
+          {fetchState === "FETCHING" ? (
+            <LoadingSpinner />
+          ) : fetchState === "FAILED" ? (
+            <div className="text-center py-20">
+              <p className="text-red-600">Failed to load products. Please try again.</p>
+              <button 
+                onClick={() => dispatch(fetchProducts())}
+                className="mt-4 rounded-xl bg-[#23A6F0] px-6 py-2 text-white hover:bg-blue-600"
+              >
+                Retry
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {productList.map((p) => (
+                <ShopGridCard key={p.id} product={p} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

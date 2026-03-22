@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Phone,
   Mail,
@@ -12,9 +12,30 @@ import {
   Heart,
   User,
   ChevronDown,
+  LogOut,
 } from "lucide-react";
+import { logoutUser } from "../store/actions";
+import Gravatar from "../components/Gravatar";
 
 export default function Header() {
+  const { user } = useSelector(state => state.client);
+  const { categories } = useSelector(state => state.product);
+  const dispatch = useDispatch();
+  
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
+  const isLoggedIn = user && user.email;
+
+  // Kategorileri cinsiyet bazında grupla
+  const womenCategories = categories.filter(cat => 
+    cat.gender === 'k' || cat.title?.toLowerCase().includes('kadın')
+  ).slice(0, 6);
+  
+  const menCategories = categories.filter(cat => 
+    cat.gender === 'e' || cat.title?.toLowerCase().includes('erkek')
+  ).slice(0, 6);
   return (
     <header className="flex w-full flex-col shadow-sm">
       {/* TOP BAR */}
@@ -95,26 +116,72 @@ export default function Header() {
 
                 <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] ring-1 ring-black/[0.03]">
                   <div className="grid grid-cols-2 px-6 py-6">
+                    {/* KADIN KATEGORİSİ */}
                     <div className="rounded-[1.5rem] p-8 transition-colors hover:bg-gray-50/50">
                       <h4 className="mb-6 text-sm font-black tracking-widest text-[#252B42]">
                         KADIN
                       </h4>
+                      <div className="space-y-2">
+                        {womenCategories.length > 0 ? (
+                          womenCategories.map(cat => (
+                            <Link 
+                              key={cat.id} 
+                              to={`/shop/kadin/${cat.title?.toLowerCase().replace(/\s+/g, '-')}/${cat.id}`}
+                              className="block text-sm text-gray-700 hover:text-[#23A6F0]"
+                            >
+                              {cat.title}
+                            </Link>
+                          ))
+                        ) : (
+                          <>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Elbise</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Bluz & Gömlek</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Pantolon</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Etek</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Çanta</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Ayakkabı</Link>
+                          </>
+                        )}
+                      </div>
                     </div>
 
+                    {/* ERKEK KATEGORİSİ */}
                     <div className="border-l border-gray-100 bg-gray-50/30 p-8">
                       <h4 className="mb-6 text-sm font-black tracking-widest text-[#252B42]">
                         ERKEK
                       </h4>
+                      <div className="space-y-2">
+                        {menCategories.length > 0 ? (
+                          menCategories.map(cat => (
+                            <Link 
+                              key={cat.id} 
+                              to={`/shop/erkek/${cat.title?.toLowerCase().replace(/\s+/g, '-')}/${cat.id}`}
+                              className="block text-sm text-gray-700 hover:text-[#23A6F0]"
+                            >
+                              {cat.title}
+                            </Link>
+                          ))
+                        ) : (
+                          <>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">T-Shirt</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Gömlek</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Pantolon</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Ceket</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Saat</Link>
+                            <Link to="/shop" className="block text-sm text-gray-700 hover:text-[#23A6F0]">Ayakkabı</Link>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between bg-[#252B42] px-10 py-3 text-[10px] font-bold text-white/70">
-                    <span>TRENDING: OVERSIZE TEE • CARGO PANTS</span>
+                    <span>TRENDING: OVERSIZE TEE • CARGO PANTS • BLAZER</span>
                     <Link
                       to="/shop"
                       className="text-white transition-colors hover:text-[#23A6F0]"
                     >
-                      YENİLERİ GÖR →
+                      TÜM ÜRÜNLERİ GÖR →
                     </Link>
                   </div>
                 </div>
@@ -159,13 +226,45 @@ export default function Header() {
 
           {/* RIGHT ICONS */}
           <div className="flex items-center gap-3 text-[#23A6F0]">
-            <Link
-              to="/"
-              className="hidden items-center gap-2 text-xs font-black uppercase transition-opacity hover:opacity-70 md:flex"
-            >
-              <User size={16} />
-              Login / Register
-            </Link>
+            {isLoggedIn ? (
+              <div className="group relative">
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <Gravatar email={user.email} size={32} />
+                  <div className="hidden md:block">
+                    <p className="text-xs font-black uppercase text-[#252B42]">
+                      {user.name}
+                    </p>
+                    <p className="text-[10px] text-gray-500">{user.role_id === 1 ? 'Admin' : user.role_id === 2 ? 'Store' : 'Customer'}</p>
+                  </div>
+                  <ChevronDown size={14} className="text-gray-400" />
+                </div>
+                
+                {/* User Dropdown */}
+                <div className="invisible absolute right-0 top-full z-50 mt-2 w-48 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="rounded-lg bg-white p-2 shadow-lg ring-1 ring-black/5">
+                    <div className="px-3 py-2 border-b">
+                      <p className="text-sm font-medium text-gray-900">{user.name}</p>
+                      <p className="text-xs text-gray-500">{user.email}</p>
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="flex w-full items-center gap-2 rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    >
+                      <LogOut size={16} />
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="hidden items-center gap-2 text-xs font-black uppercase transition-opacity hover:opacity-70 md:flex"
+              >
+                <User size={16} />
+                Login / Register
+              </Link>
+            )}
 
             <button className="rounded-full p-2 transition-colors hover:bg-blue-50">
               <Search size={18} />

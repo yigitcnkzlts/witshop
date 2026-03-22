@@ -1,16 +1,161 @@
-# React + Vite
+# WITShop - E-Ticaret Projesi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern ve kullanıcı dostu bir e-ticaret platformu. React, Redux ve Tailwind CSS kullanılarak geliştirilmiştir.
 
-Currently, two official plugins are available:
+## 🚀 Özellikler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ✅ Tamamlanan Görevler (T1-T13)
 
-## React Compiler
+#### 🏗️ Proje Kurulumu (T1-T2)
+- React + Vite ile modern proje yapısı
+- Responsive tasarım (Mobile-first yaklaşım)
+- Tailwind CSS ile stil yönetimi
+- React Router v5 ile sayfa yönlendirme
+- Redux + Redux Thunk ile state yönetimi
+- Axios ile API entegrasyonu
+- React Toastify ile bildirimler
+- Lucide React ile ikonlar
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+#### 📄 Sayfalar ve Routing (T3-T7)
+- **Ana Sayfa** (`/`) - Hero slider, ürün vitrinleri, blog yazıları
+- **Mağaza** (`/shop`) - Ürün listesi, kategori filtreleme, sayfalama
+- **Ürün Detay** (`/shop/:productId`) - Ürün bilgileri, resimler, yorumlar
+- **İletişim** (`/contact`) - İletişim formu, harita, SSS
+- **Ekip** (`/team`) - Takım üyeleri, roller, LinkedIn bağlantıları
+- **Hakkımızda** (`/about`) - Şirket bilgileri, misyon, vizyon
 
-## Expanding the ESLint configuration
+#### 🔐 Kullanıcı Yönetimi (T8, T10-T11)
+- **Kayıt Ol** (`/signup`) - React Hook Form ile doğrulama
+- **Giriş Yap** (`/login`) - Email/şifre ile giriş
+- **Otomatik Giriş** - Token ile oturum yönetimi
+- **Gravatar** - Profil resmi entegrasyonu
+- **Çıkış Yap** - Güvenli oturum sonlandırma
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#### 🛍️ E-Ticaret Özellikleri (T12-T13)
+- **Kategori Yönetimi** - API'den dinamik kategori listesi
+- **Ürün Yönetimi** - Filtreleme, sıralama, sayfalama
+- **Alışveriş Sepeti** - Redux ile sepet yönetimi
+- **Loading States** - Yükleme animasyonları
+- **Error Handling** - Hata yönetimi ve kullanıcı bildirimleri
+
+#### 🎨 Layout ve Bileşenler (T1-T2)
+- **Header** - Navigasyon, kullanıcı menüsü, kategori dropdown
+- **Footer** - Bağlantılar, sosyal medya, newsletter
+- **PageContent** - Route yönetimi ve sayfa içeriği
+
+#### 🔄 Redux Store Yapısı (T9)
+- **Client Reducer** - Kullanıcı, roller, tema, dil
+- **Product Reducer** - Kategoriler, ürünler, filtreleme
+- **Shopping Cart Reducer** - Sepet, ödeme, adres bilgileri
+
+## 🛠️ Teknoloji Stack
+
+- **Frontend:** React 18, Vite
+- **State Management:** Redux, Redux Thunk, Redux Logger
+- **Routing:** React Router v5
+- **Styling:** Tailwind CSS
+- **HTTP Client:** Axios
+- **Form Management:** React Hook Form
+- **Icons:** Lucide React
+- **Animations:** Framer Motion
+- **Notifications:** React Toastify
+- **Image Slider:** Swiper.js
+
+## 📦 Kurulum
+
+```bash
+# Projeyi klonla
+git clone [repository-url]
+cd witshop
+
+# Bağımlılıkları yükle
+npm install
+
+# Geliştirme sunucusunu başlat
+npm run dev
+
+# Production build
+npm run build
+```
+
+## 🌐 API Entegrasyonu
+
+Proje `https://workintech-fe-ecommerce.onrender.com` API'sini kullanmaktadır.
+
+### Test Kullanıcıları
+- **Müşteri:** customer@commerce.com (Şifre: 123456)
+- **Mağaza:** store@commerce.com (Şifre: 123456)
+- **Admin:** admin@commerce.com (Şifre: 123456)
+
+## 📱 Responsive Tasarım
+
+- **Mobile First:** Önce mobil, sonra desktop
+- **Breakpoints:** Tailwind CSS standart breakpoint'leri
+- **Flexible Layout:** Flexbox ve Grid kullanımı
+- **Touch Friendly:** Mobil dokunmatik deneyim
+
+## 🎯 Öne Çıkan Özellikler
+
+### 🔒 Güvenlik
+- JWT token ile oturum yönetimi
+- LocalStorage ile "Beni Hatırla" özelliği
+- Otomatik token doğrulama
+- Güvenli API çağrıları
+
+### 🎨 Kullanıcı Deneyimi
+- Smooth animasyonlar
+- Loading states
+- Error handling
+- Toast bildirimleri
+- Responsive tasarım
+
+### 🛒 E-Ticaret
+- Dinamik kategori listesi
+- Ürün filtreleme ve sıralama
+- Sepet yönetimi
+- Ürün detay sayfaları
+
+## 📁 Proje Yapısı
+
+```
+src/
+├── api/                 # API konfigürasyonu
+├── assets/             # Görseller ve statik dosyalar
+├── components/         # Yeniden kullanılabilir bileşenler
+├── data/              # Statik veri dosyaları
+├── layout/            # Layout bileşenleri
+│   ├── Header.jsx
+│   ├── Footer.jsx
+│   └── PageContent.jsx
+├── pages/             # Sayfa bileşenleri
+├── store/             # Redux store
+│   ├── actions/       # Action creators
+│   ├── reducer.js     # Root reducer
+│   └── store.js       # Store konfigürasyonu
+└── main.jsx           # Uygulama giriş noktası
+```
+
+## 🚀 Deployment
+
+Proje Vercel, Netlify veya Render platformlarında deploy edilebilir.
+
+```bash
+# Build oluştur
+npm run build
+
+# Build'i test et
+npm run preview
+```
+
+## 👥 Geliştirici Ekibi
+
+- **Gökhan Özdemir** - Project Manager
+- **Yiğit Can Kızıltaş** - Full Stack Developer
+
+## 📄 Lisans
+
+Bu proje eğitim amaçlı geliştirilmiştir.
+
+---
+
+**WITShop** - Modern e-ticaret deneyimi 🛍️

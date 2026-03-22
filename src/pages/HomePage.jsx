@@ -4,7 +4,6 @@ import HeroProductSlider from "../components/HeroProductSlider";
 import BestsellerCard from "../components/BestsellerCard";
 import NeuralBanner from "../components/NeuralBanner";
 import FeaturedPosts from "../components/FeaturedPosts";
-import Footer from "../layout/Footer";
 
 // Ürün görselleri
 import product1 from "../assets/products/product-1.jpg";
@@ -80,11 +79,6 @@ export default function HomePage() {
           <FeaturedPosts />
         </div>
       </section>
-
-      {/* 7. FOOTER: Şık bir bitiş */}
-      <footer className="border-t border-gray-100 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
-        <Footer />
-      </footer>
     </div>
   );
 }
