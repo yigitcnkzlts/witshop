@@ -68,10 +68,29 @@ const shoppingCartInitialState = {
   address: {}
 };
 
+// Address Reducer
+const addressInitialState = {
+  addressList: [],
+  selectedAddress: null
+};
+
+// Card Reducer
+const cardInitialState = {
+  cardList: [],
+  selectedCard: null
+};
+
+// Order Reducer
+const orderInitialState = {
+  orderList: []
+};
+
 function shoppingCartReducer(state = shoppingCartInitialState, action) {
   switch (action.type) {
     case "SET_CART":
       return { ...state, cart: action.payload };
+    case "CLEAR_CART":
+      return { ...state, cart: [] };
     case "ADD_TO_CART": {
       const existingItem = state.cart.find(item => item.product.id === action.payload.id);
       if (existingItem) {
@@ -122,11 +141,74 @@ function shoppingCartReducer(state = shoppingCartInitialState, action) {
   }
 }
 
+function addressReducer(state = addressInitialState, action) {
+  switch (action.type) {
+    case "SET_ADDRESS_LIST":
+      return { ...state, addressList: action.payload };
+    case "ADD_ADDRESS":
+      return { ...state, addressList: [...state.addressList, action.payload] };
+    case "UPDATE_ADDRESS":
+      return {
+        ...state,
+        addressList: state.addressList.map(addr =>
+          addr.id === action.payload.id ? action.payload : addr
+        )
+      };
+    case "REMOVE_ADDRESS":
+      return {
+        ...state,
+        addressList: state.addressList.filter(addr => addr.id !== action.payload)
+      };
+    case "SET_SELECTED_ADDRESS":
+      return { ...state, selectedAddress: action.payload };
+    default:
+      return state;
+  }
+}
+
+function cardReducer(state = cardInitialState, action) {
+  switch (action.type) {
+    case "SET_CARD_LIST":
+      return { ...state, cardList: action.payload };
+    case "ADD_CARD":
+      return { ...state, cardList: [...state.cardList, action.payload] };
+    case "UPDATE_CARD":
+      return {
+        ...state,
+        cardList: state.cardList.map(card =>
+          card.id === action.payload.id ? action.payload : card
+        )
+      };
+    case "REMOVE_CARD":
+      return {
+        ...state,
+        cardList: state.cardList.filter(card => card.id !== action.payload)
+      };
+    case "SET_SELECTED_CARD":
+      return { ...state, selectedCard: action.payload };
+    default:
+      return state;
+  }
+}
+
+function orderReducer(state = orderInitialState, action) {
+  switch (action.type) {
+    case "SET_ORDER_LIST":
+      return { ...state, orderList: action.payload };
+    case "ADD_ORDER":
+      return { ...state, orderList: [action.payload, ...state.orderList] };
+    default:
+      return state;
+  }
+}
+
 // Combine all reducers
 const rootReducer = combineReducers({
   client: clientReducer,
   product: productReducer,
-  shoppingCart: shoppingCartReducer
+  shoppingCart: shoppingCartReducer,
+  address: addressReducer,
+  card: cardReducer,
+  order: orderReducer
 });
-
 export default rootReducer;

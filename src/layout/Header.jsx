@@ -13,6 +13,7 @@ import {
   User,
   ChevronDown,
   LogOut,
+  Package,
 } from "lucide-react";
 import { logoutUser } from "../store/actions";
 import Gravatar from "../components/Gravatar";
@@ -250,6 +251,13 @@ export default function Header() {
                       <p className="text-sm font-medium text-gray-900">{user.name}</p>
                       <p className="text-xs text-gray-500">{user.email}</p>
                     </div>
+                    <Link
+                      to="/orders"
+                      className="flex w-full items-center gap-2 rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    >
+                      <Package size={16} />
+                      My Orders
+                    </Link>
                     <button
                       onClick={handleLogout}
                       className="flex w-full items-center gap-2 rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"

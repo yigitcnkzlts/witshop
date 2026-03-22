@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { removeFromCart, updateCartItemCount, toggleCartItemCheck } from "../store/actions";
 
 export default function CartPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { cart } = useSelector(state => state.shoppingCart);
 
   const handleRemoveItem = (productId) => {
@@ -168,6 +169,7 @@ export default function CartPage() {
               
               <button
                 disabled={checkedItems.length === 0}
+                onClick={() => history.push('/create-order')}
                 className="mt-6 w-full rounded-lg bg-[#23A6F0] py-3 text-white font-medium hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed"
               >
                 Create Order ({checkedItems.length} items)

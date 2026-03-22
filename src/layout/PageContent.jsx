@@ -9,7 +9,10 @@ import AboutPage from "../pages/AboutPage";
 import SignUpPage from "../pages/SignUpPage";
 import LoginPage from "../pages/LoginPage";
 import CartPage from "../pages/CartPage";
+import CreateOrderPage from "../pages/CreateOrderPage";
+import OrdersPage from "../pages/OrdersPage";
 import NotFound from "../pages/NotFound";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 export default function PageContent() {
   return (
@@ -25,10 +28,10 @@ export default function PageContent() {
         <Route exact path="/shop/:gender/:categoryName/:categoryId" component={ShopPage} />
 
         {/* T04 – Product Detail */}
-        <Route path="/shop/:productId" component={ProductDetailPage} />
+        <Route exact path="/shop/:productId" component={ProductDetailPage} />
         
         {/* T16 – Product Detail with full path */}
-        <Route path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" component={ProductDetailPage} />
+        <Route exact path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" component={ProductDetailPage} />
 
         {/* T05 – Contact Page */}
         <Route exact path="/contact" component={ContactPage} />
@@ -47,6 +50,12 @@ export default function PageContent() {
 
         {/* T18 – Cart Page */}
         <Route exact path="/cart" component={CartPage} />
+
+        {/* T20-T22 – Create Order Page (Protected) */}
+        <ProtectedRoute exact path="/create-order" component={CreateOrderPage} />
+
+        {/* T23 – Orders Page (Protected) */}
+        <ProtectedRoute exact path="/orders" component={OrdersPage} />
 
         {/* 404 */}
         <Route component={NotFound} />

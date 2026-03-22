@@ -2,3 +2,6 @@
 export * from "./clientActions";
 export * from "./productActions";
 export * from "./shoppingCartActions";
+export * from "./addressActions";
+export * from "./cardActions";
+export * from "./orderActions";
