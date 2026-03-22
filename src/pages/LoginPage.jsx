@@ -9,12 +9,14 @@ import { loginUser } from "../store/actions";
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [autoLoginLoading, setAutoLoginLoading] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm();
 
@@ -34,6 +36,30 @@ export default function LoginPage() {
       toast.error(error.message || "Login failed");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleQuickLogin = async () => {
+    setAutoLoginLoading(true);
+    
+    try {
+      // Use test account
+      await dispatch(loginUser({
+        email: "customer@commerce.com",
+        password: "123456",
+        rememberMe: true
+      }));
+      
+      toast.success("Quick login successful!");
+      
+      // Redirect to home
+      history.push("/");
+      
+    } catch (error) {
+      console.error("Quick login error:", error);
+      toast.error("Quick login failed. Please try manual login.");
+    } finally {
+      setAutoLoginLoading(false);
     }
   };
 
@@ -123,6 +149,38 @@ export default function LoginPage() {
               )}
             </button>
           </form>
+
+          {/* Quick Login Button */}
+          <div className="mt-6">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="bg-white px-2 text-gray-500">Or</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleQuickLogin}
+              disabled={autoLoginLoading}
+              className="mt-4 w-full rounded-md border-2 border-[#23A6F0] bg-white px-4 py-2 text-[#23A6F0] transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {autoLoginLoading ? (
+                <div className="flex items-center justify-center">
+                  <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-[#23A6F0] border-t-transparent"></div>
+                  Logging in...
+                </div>
+              ) : (
+                "🚀 Quick Login (Demo Account)"
+              )}
+            </button>
+            
+            <p className="mt-2 text-center text-xs text-gray-500">
+              Click to login with demo account instantly
+            </p>
+          </div>
 
           {/* Sign Up Link */}
           <div className="mt-4 text-center text-sm text-gray-600">
