@@ -42,7 +42,14 @@ export const loginUser = (loginData) => {
         password: loginData.password
       });
 
-      const { user, token } = response.data;
+      const { token, ...userData } = response.data;
+      
+      // Create user object from response
+      const user = {
+        name: userData.name,
+        email: userData.email,
+        role_id: userData.role_id
+      };
       
       // Set user in Redux store
       dispatch(setUser(user));
