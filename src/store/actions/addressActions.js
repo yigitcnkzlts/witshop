@@ -31,9 +31,11 @@ export const fetchAddresses = () => {
   return async (dispatch) => {
     try {
       const response = await api.get("/user/address");
-      dispatch(setAddressList(response.data));
+      const addresses = Array.isArray(response.data) ? response.data : [];
+      dispatch(setAddressList(addresses));
     } catch (error) {
       console.error("Error fetching addresses:", error);
+      dispatch(setAddressList([])); // Set empty array on error
     }
   };
 };

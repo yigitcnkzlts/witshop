@@ -34,9 +34,11 @@ export const fetchOrders = () => {
   return async (dispatch) => {
     try {
       const response = await api.get("/order");
-      dispatch(setOrderList(response.data));
+      const orders = Array.isArray(response.data) ? response.data : [];
+      dispatch(setOrderList(orders));
     } catch (error) {
       console.error("Error fetching orders:", error);
+      dispatch(setOrderList([])); // Set empty array on error
     }
   };
 };

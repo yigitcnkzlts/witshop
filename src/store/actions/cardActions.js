@@ -31,9 +31,11 @@ export const fetchCards = () => {
   return async (dispatch) => {
     try {
       const response = await api.get("/user/card");
-      dispatch(setCardList(response.data));
+      const cards = Array.isArray(response.data) ? response.data : [];
+      dispatch(setCardList(cards));
     } catch (error) {
       console.error("Error fetching cards:", error);
+      dispatch(setCardList([])); // Set empty array on error
     }
   };
 };
