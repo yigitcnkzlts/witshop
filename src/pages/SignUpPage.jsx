@@ -94,6 +94,7 @@ export default function SignUpPage() {
                   }
                 })}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#23A6F0] focus:outline-none focus:ring-1 focus:ring-[#23A6F0]"
+                placeholder="Enter your name"
               />
               {errors.name && (
                 <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
@@ -115,6 +116,7 @@ export default function SignUpPage() {
                   }
                 })}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#23A6F0] focus:outline-none focus:ring-1 focus:ring-[#23A6F0]"
+                placeholder="Enter your email"
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -130,12 +132,13 @@ export default function SignUpPage() {
                 type="password"
                 {...register("password", {
                   required: "Password is required",
-                  pattern: {
-                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message: "Password must be at least 8 characters with uppercase, lowercase, number and special character"
+                  minLength: {
+                    value: 4,
+                    message: "Password must be at least 4 characters"
                   }
                 })}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#23A6F0] focus:outline-none focus:ring-1 focus:ring-[#23A6F0]"
+                placeholder="Enter your password"
               />
               {errors.password && (
                 <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
@@ -154,6 +157,7 @@ export default function SignUpPage() {
                   validate: value => value === password || "Passwords do not match"
                 })}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#23A6F0] focus:outline-none focus:ring-1 focus:ring-[#23A6F0]"
+                placeholder="Confirm your password"
               />
               {errors.password_confirmation && (
                 <p className="mt-1 text-sm text-red-600">{errors.password_confirmation.message}</p>

@@ -131,28 +131,6 @@ export default function LoginPage() {
               Sign Up
             </Link>
           </div>
-
-          {/* Test Users Info */}
-          <div className="mt-6 rounded-md bg-blue-50 border border-blue-200 p-4">
-            <h3 className="text-sm font-semibold text-blue-900 mb-2">🔑 Test Accounts:</h3>
-            <div className="space-y-2 text-xs">
-              <div className="rounded bg-white p-2">
-                <p className="font-medium text-gray-700">Customer Account</p>
-                <p className="text-gray-600">Email: customer@commerce.com</p>
-                <p className="text-gray-600">Password: 123456</p>
-              </div>
-              <div className="rounded bg-white p-2">
-                <p className="font-medium text-gray-700">Store Account</p>
-                <p className="text-gray-600">Email: store@commerce.com</p>
-                <p className="text-gray-600">Password: 123456</p>
-              </div>
-              <div className="rounded bg-white p-2">
-                <p className="font-medium text-gray-700">Admin Account</p>
-                <p className="text-gray-600">Email: admin@commerce.com</p>
-                <p className="text-gray-600">Password: 123456</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
