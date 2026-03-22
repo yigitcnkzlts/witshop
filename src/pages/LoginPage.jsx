@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { Eye, EyeOff } from "lucide-react";
@@ -124,13 +124,33 @@ export default function LoginPage() {
             </button>
           </form>
 
+          {/* Sign Up Link */}
+          <div className="mt-4 text-center text-sm text-gray-600">
+            Don't have an account?{" "}
+            <Link to="/signup" className="font-semibold text-[#23A6F0] hover:underline">
+              Sign Up
+            </Link>
+          </div>
+
           {/* Test Users Info */}
-          <div className="mt-6 rounded-md bg-gray-50 p-4">
-            <h3 className="text-sm font-medium text-gray-700">Test Users:</h3>
-            <div className="mt-2 space-y-1 text-xs text-gray-600">
-              <p>• customer@commerce.com (Password: 123456)</p>
-              <p>• store@commerce.com (Password: 123456)</p>
-              <p>• admin@commerce.com (Password: 123456)</p>
+          <div className="mt-6 rounded-md bg-blue-50 border border-blue-200 p-4">
+            <h3 className="text-sm font-semibold text-blue-900 mb-2">🔑 Test Accounts:</h3>
+            <div className="space-y-2 text-xs">
+              <div className="rounded bg-white p-2">
+                <p className="font-medium text-gray-700">Customer Account</p>
+                <p className="text-gray-600">Email: customer@commerce.com</p>
+                <p className="text-gray-600">Password: 123456</p>
+              </div>
+              <div className="rounded bg-white p-2">
+                <p className="font-medium text-gray-700">Store Account</p>
+                <p className="text-gray-600">Email: store@commerce.com</p>
+                <p className="text-gray-600">Password: 123456</p>
+              </div>
+              <div className="rounded bg-white p-2">
+                <p className="font-medium text-gray-700">Admin Account</p>
+                <p className="text-gray-600">Email: admin@commerce.com</p>
+                <p className="text-gray-600">Password: 123456</p>
+              </div>
             </div>
           </div>
         </div>

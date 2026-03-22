@@ -95,9 +95,8 @@ export default function CreateOrderPage() {
     setShowCardForm(true);
   };
 
-  const handleCardFormClose = () => {
-    setShowCardForm(false);
-    setEditingCard(null);
+  const handleCardFormSuccess = () => {
+    dispatch(fetchCards());
   };
 
   const handleNextStep = () => {

@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { ShoppingCart } from "lucide-react";
+import { toast } from "react-toastify";
+import { addToCart } from "../store/actions";
 
 const images = import.meta.glob("../assets/products-shop/*", {
   eager: true,
@@ -6,11 +10,19 @@ const images = import.meta.glob("../assets/products-shop/*", {
 });
 
 export default function ShopGridCard({ product }) {
+  const dispatch = useDispatch();
   const imgKey = `../assets/products-shop/${product.image}`;
   const imgSrc = images[imgKey];
   
   // İndirim oranını hesapla (Opsiyonel görsel şölen için)
   const discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+
+  const handleAddToCart = (e) => {
+    e.preventDefault(); // Prevent navigation
+    e.stopPropagation();
+    dispatch(addToCart(product));
+    toast.success(`${product.name || product.title} added to cart!`);
+  };
 
   // Create product URL slug
   const createProductUrl = () => {
@@ -60,6 +72,15 @@ export default function ShopGridCard({ product }) {
 
         {/* Hover effect overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        
+        {/* Add to Cart Button - Appears on hover */}
+        <button
+          onClick={handleAddToCart}
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-lg bg-[#23A6F0] px-4 py-2 text-sm font-semibold text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 hover:bg-blue-600"
+        >
+          <ShoppingCart size={16} />
+          Add to Cart
+        </button>
       </div>
 
       {/* İçerik Alanı */}
