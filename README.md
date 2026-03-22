@@ -95,10 +95,12 @@ npm run build
 
 Proje `https://workintech-fe-ecommerce.onrender.com` API'sini kullanmaktadır.
 
-### Test Kullanıcıları
-- **Müşteri:** customer@commerce.com (Şifre: 123456)
-- **Mağaza:** store@commerce.com (Şifre: 123456)
-- **Admin:** admin@commerce.com (Şifre: 123456)
+### Demo Hesap
+Hızlı test için hazır hesap:
+- **Email:** customer@commerce.com
+- **Şifre:** 123456
+
+Login sayfasında "Quick Login" butonu ile tek tıkla giriş yapabilirsiniz.
 
 ## 📱 Responsive Tasarım
 

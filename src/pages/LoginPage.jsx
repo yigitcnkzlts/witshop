@@ -189,6 +189,27 @@ export default function LoginPage() {
               Sign Up
             </Link>
           </div>
+
+          {/* Demo Account Info */}
+          <div className="mt-6 rounded-lg border-2 border-blue-200 bg-blue-50 p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">🔑</span>
+              <h3 className="text-sm font-bold text-blue-900">Demo Account</h3>
+            </div>
+            <div className="space-y-1 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="font-medium text-blue-800">Email:</span>
+                <code className="rounded bg-white px-2 py-1 text-blue-900">customer@commerce.com</code>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-medium text-blue-800">Password:</span>
+                <code className="rounded bg-white px-2 py-1 text-blue-900">123456</code>
+              </div>
+            </div>
+            <p className="mt-3 text-xs text-blue-700">
+              💡 Use Quick Login button above or copy these credentials
+            </p>
+          </div>
         </div>
       </div>
     </div>
