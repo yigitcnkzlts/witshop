@@ -48,14 +48,18 @@ Modern ve kullanıcı dostu bir e-ticaret platformu. React, Redux ve Tailwind CS
 - **Error Handling** - Hata yönetimi ve kullanıcı bildirimleri
 
 #### 🎨 Layout ve Bileşenler (T1-T2)
-- **Header** - Navigasyon, kullanıcı menüsü, kategori dropdown
+- **Header** - Navigasyon, kullanıcı menüsü, kategori dropdown, sepet dropdown
 - **Footer** - Bağlantılar, sosyal medya, newsletter
 - **PageContent** - Route yönetimi ve sayfa içeriği
+- **ProtectedRoute** - Giriş gerektiren sayfalar için koruma
 
-#### 🔄 Redux Store Yapısı (T9)
+#### 🔄 Redux Store Yapısı (T9, T20-T23)
 - **Client Reducer** - Kullanıcı, roller, tema, dil
-- **Product Reducer** - Kategoriler, ürünler, filtreleme
+- **Product Reducer** - Kategoriler, ürünler, ürün detay, filtreleme
 - **Shopping Cart Reducer** - Sepet, ödeme, adres bilgileri
+- **Address Reducer** - Adres listesi ve seçili adres (T20)
+- **Card Reducer** - Kart listesi ve seçili kart (T21)
+- **Order Reducer** - Sipariş listesi (T22-T23)
 
 ## 🛠️ Teknoloji Stack
 
@@ -109,6 +113,7 @@ Proje `https://workintech-fe-ecommerce.onrender.com` API'sini kullanmaktadır.
 - JWT token ile oturum yönetimi
 - LocalStorage ile "Beni Hatırla" özelliği
 - Otomatik token doğrulama
+- Protected routes (giriş gerektiren sayfalar)
 - Güvenli API çağrıları
 
 ### 🎨 Kullanıcı Deneyimi
@@ -117,12 +122,28 @@ Proje `https://workintech-fe-ecommerce.onrender.com` API'sini kullanmaktadır.
 - Error handling
 - Toast bildirimleri
 - Responsive tasarım
+- Modal formlar
 
 ### 🛒 E-Ticaret
 - Dinamik kategori listesi
 - Ürün filtreleme ve sıralama
 - Sepet yönetimi
 - Ürün detay sayfaları
+- Adres ve kart yönetimi
+- İki adımlı sipariş süreci
+- Sipariş geçmişi
+
+### 💳 Ödeme Sistemi
+- Kayıtlı kartları yönetme
+- Güvenli kart bilgisi saklama
+- Kart numarası maskeleme
+- Form validasyonları
+
+### 📦 Sipariş Yönetimi
+- Sipariş oluşturma
+- Sipariş geçmişi
+- Sipariş detayları
+- Sipariş durumu takibi
 
 ## 📁 Proje Yapısı
 
