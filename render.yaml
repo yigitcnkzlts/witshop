@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: witshop-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 24.14.0
+      - key: JWT_SECRET
+        generateValue: true

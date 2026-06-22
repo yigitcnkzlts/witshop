@@ -18,6 +18,7 @@ export function getDb() {
     db.exec("PRAGMA foreign_keys = ON");
     initSchema(db);
     seedIfEmpty(db);
+    syncCategoriesFromSeed(db);
   }
   return db;
 }
@@ -182,6 +183,28 @@ function seedIfEmpty(database) {
         JSON.stringify(p.images ?? [])
       );
     }
+  }
+}
+
+function syncCategoriesFromSeed(database) {
+  if (!existsSync(SEED_PATH)) return;
+
+  const seed = JSON.parse(readFileSync(SEED_PATH, "utf-8"));
+  const update = database.prepare(`
+    UPDATE categories
+    SET code = ?, title = ?, img = ?, rating = ?, gender = ?
+    WHERE id = ?
+  `);
+
+  for (const cat of seed.categories || []) {
+    update.run(
+      cat.code ?? null,
+      cat.title,
+      cat.img ?? null,
+      cat.rating ?? 0,
+      cat.gender ?? null,
+      cat.id
+    );
   }
 }
 

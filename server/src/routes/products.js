@@ -6,7 +6,20 @@ const router = Router();
 router.get("/categories", (_req, res) => {
   const db = getDb();
   const categories = db
-    .prepare("SELECT id, code, title, img, rating, gender FROM categories ORDER BY id")
+    .prepare(`
+      SELECT
+        c.id,
+        c.code,
+        c.title,
+        c.img,
+        c.rating,
+        c.gender,
+        COUNT(p.id) AS items
+      FROM categories c
+      LEFT JOIN products p ON p.category_id = c.id
+      GROUP BY c.id
+      ORDER BY c.id
+    `)
     .all();
   res.json(categories);
 });
