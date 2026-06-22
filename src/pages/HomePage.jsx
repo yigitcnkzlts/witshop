@@ -74,7 +74,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. BLOG & POSTS: Topluluk ve İçerik */}
-      <section className="bg-white py-24 md:py-40 border-t border-gray-50">
+      <section className="border-t border-gray-50 bg-white pt-12 pb-6 md:pt-16 md:pb-8">
         <div className="mx-auto max-w-[1250px] px-6">
           <FeaturedPosts />
         </div>

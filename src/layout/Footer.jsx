@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="w-full bg-white">
       <div className="mx-auto w-full max-w-[1200px] px-4">
         {/* Üst satır */}
-        <div className="flex flex-col items-start justify-between gap-6 border-b py-10 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-6 border-b py-6 md:flex-row md:items-center md:py-8">
           <h3 className="text-2xl font-bold text-[#252B42]">Bandage</h3>
 
           <div className="flex items-center gap-4 text-xl text-[#23A6F0]">
@@ -16,7 +16,7 @@ export default function Footer() {
         </div>
 
         {/* Link kolonları */}
-        <div className="flex flex-wrap gap-10 py-14">
+        <div className="flex flex-wrap gap-8 py-8 md:gap-10 md:py-10">
           <div className="flex w-full flex-col gap-3 sm:w-[calc(50%-20px)] md:w-[calc(20%-32px)]">
             <h4 className="font-bold text-[#252B42]">Company Info</h4>
             <span className="text-sm text-[#737373]">About Us</span>
@@ -68,7 +68,7 @@ export default function Footer() {
       </div>
 
       {/* En alt bar */}
-      <div className="bg-[#FAFAFA] py-6">
+      <div className="bg-[#FAFAFA] py-4">
   <p className="text-center text-sm font-semibold text-[#737373]">
     © {new Date().getFullYear()} WITShop. Made with ❤️ by Yiğit Can. All rights reserved.
   </p>

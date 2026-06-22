@@ -96,7 +96,7 @@ function Badge({ children }) {
 export default function TeamPage() {
   return (
     <main className="w-full">
-      <section className="mx-auto w-full max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto w-full max-w-6xl px-4 pt-12 pb-8 md:px-6 md:pt-16 md:pb-10">
         {/* Hero: Sayfayı dolduran premium başlık alanı */}
         <div className="relative overflow-hidden rounded-2xl border bg-white p-6 shadow-sm md:p-10">
           <div className="pointer-events-none absolute -left-20 -top-24 h-72 w-72 rounded-full bg-blue-200/30 blur-3xl" />

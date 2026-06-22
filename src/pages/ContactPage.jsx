@@ -82,7 +82,7 @@ export default function ContactPage() {
 
   return (
     <main className="w-full">
-      <section className="mx-auto w-full max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto w-full max-w-6xl px-4 pt-12 pb-8 md:px-6 md:pt-16 md:pb-10">
         {/* Hero: premium başlık + hafif glow arka plan */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}

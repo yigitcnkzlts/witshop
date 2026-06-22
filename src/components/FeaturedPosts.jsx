@@ -23,9 +23,9 @@ export default function FeaturedPosts() {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-6 py-24">
-      {/* Üst Başlık - Stratejik Boşluklar */}
-      <div className="mb-20 text-center">
+    <section className="mx-auto w-full max-w-[1200px] px-6">
+      {/* Üst Başlık */}
+      <div className="mb-12 text-center md:mb-14">
         <motion.p 
           initial={{ opacity: 0, tracking: "0.1em" }}
           whileInView={{ opacity: 1, tracking: "0.4em" }}
