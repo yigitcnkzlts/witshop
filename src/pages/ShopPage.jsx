@@ -6,6 +6,7 @@ import ShopGridCard from "../components/ShopGridCard";
 import Pagination from "../components/Pagination";
 import { fetchCategories, fetchProducts } from "../store/actions";
 import { categoryShopPath } from "../utils/categorySlug";
+import { getCategoryImage } from "../utils/categoryImages";
 
 function CategoryCard({ title, items, image, onClick }) {
   return (
@@ -48,7 +49,7 @@ function CategorySection({ title, categories, onCategoryClick }) {
             key={c.id}
             title={c.title}
             items={c.items ?? 0}
-            image={c.img || "/categories/kadin-elbise.jpg"}
+            image={getCategoryImage(c)}
             onClick={() => onCategoryClick(c)}
           />
         ))}
@@ -121,6 +122,24 @@ export default function ShopPage() {
         </div>
 
         <div className="mx-auto max-w-6xl px-6 pb-16">
+          {activeCategory && (
+            <div className="relative mb-10 h-52 overflow-hidden rounded-2xl shadow-lg md:h-72">
+              <img
+                src={getCategoryImage(activeCategory)}
+                alt={activeCategory.title}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/45">
+                <span className="text-xs font-black uppercase tracking-[0.35em] text-blue-300">
+                  {activeCategory.gender === "k" ? "Kadın" : "Erkek"}
+                </span>
+                <h2 className="mt-2 text-3xl font-black text-white md:text-4xl">
+                  {activeCategory.title}
+                </h2>
+              </div>
+            </div>
+          )}
+
           {categories.length === 0 ? (
             <LoadingSpinner />
           ) : (

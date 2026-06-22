@@ -15,7 +15,10 @@ export default function ShopGridCard({ product }) {
   const imgSrc = images[imgKey];
   
   // İndirim oranını hesapla (Opsiyonel görsel şölen için)
-  const discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+  const discount =
+    product.oldPrice && product.oldPrice > product.price
+      ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+      : 0;
 
   const handleAddToCart = (e) => {
     e.preventDefault(); // Prevent navigation

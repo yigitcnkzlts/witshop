@@ -18,6 +18,7 @@ import {
 import { logoutUser } from "../store/actions";
 import Gravatar from "../components/Gravatar";
 import { categoryShopPath } from "../utils/categorySlug";
+import { getCategoryImage } from "../utils/categoryImages";
 
 export default function Header() {
   const { user } = useSelector(state => state.client);
@@ -123,15 +124,25 @@ export default function Header() {
                       <h4 className="mb-6 text-sm font-black tracking-widest text-[#252B42]">
                         KADIN
                       </h4>
-                      <div className="space-y-2">
+                      <div className="grid grid-cols-2 gap-3">
                         {womenCategories.length > 0 ? (
-                          womenCategories.map(cat => (
-                            <Link 
-                              key={cat.id} 
+                          womenCategories.map((cat) => (
+                            <Link
+                              key={cat.id}
                               to={categoryShopPath(cat)}
-                              className="block text-sm text-gray-700 hover:text-[#23A6F0]"
+                              className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all hover:border-[#23A6F0]/30 hover:shadow-md"
                             >
-                              {cat.title}
+                              <div className="relative h-24 overflow-hidden">
+                                <img
+                                  src={getCategoryImage(cat)}
+                                  alt={cat.title}
+                                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                <span className="absolute bottom-2 left-2 text-xs font-bold text-white">
+                                  {cat.title}
+                                </span>
+                              </div>
                             </Link>
                           ))
                         ) : (
@@ -152,15 +163,25 @@ export default function Header() {
                       <h4 className="mb-6 text-sm font-black tracking-widest text-[#252B42]">
                         ERKEK
                       </h4>
-                      <div className="space-y-2">
+                      <div className="grid grid-cols-2 gap-3">
                         {menCategories.length > 0 ? (
-                          menCategories.map(cat => (
-                            <Link 
-                              key={cat.id} 
+                          menCategories.map((cat) => (
+                            <Link
+                              key={cat.id}
                               to={categoryShopPath(cat)}
-                              className="block text-sm text-gray-700 hover:text-[#23A6F0]"
+                              className="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all hover:border-[#23A6F0]/30 hover:shadow-md"
                             >
-                              {cat.title}
+                              <div className="relative h-24 overflow-hidden">
+                                <img
+                                  src={getCategoryImage(cat)}
+                                  alt={cat.title}
+                                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                <span className="absolute bottom-2 left-2 text-xs font-bold text-white">
+                                  {cat.title}
+                                </span>
+                              </div>
                             </Link>
                           ))
                         ) : (

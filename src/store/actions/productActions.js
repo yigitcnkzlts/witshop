@@ -4,6 +4,7 @@ import api, {
   loadStaticCategories,
   WITSHOP_TO_WORKINTECH_CATEGORY,
 } from "../../api/api";
+import { enrichCategories } from "../../utils/categoryImages";
 
 // Action Creators
 export const setCategories = (categories) => ({
@@ -70,13 +71,13 @@ export const fetchCategories = () => {
     try {
       dispatch(setFetchState("FETCHING"));
       const response = await api.get("/categories");
-      dispatch(setCategories(response.data));
+      dispatch(setCategories(enrichCategories(response.data)));
       dispatch(setFetchState("FETCHED"));
     } catch (error) {
       console.warn("Categories API failed, using static fallback:", error);
       try {
         const categories = await loadStaticCategories();
-        dispatch(setCategories(categories));
+        dispatch(setCategories(enrichCategories(categories)));
         dispatch(setFetchState("FETCHED"));
       } catch (staticError) {
         console.error("Error fetching categories:", staticError);
