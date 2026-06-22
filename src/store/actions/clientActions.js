@@ -1,31 +1,35 @@
-import api from "../../api/api";
+import api, {
+  getWithFallback,
+  postWithFallback,
+  syncAuthToken,
+} from "../../api/api";
 
 // Action Creators
 export const setUser = (user) => ({
   type: "SET_USER",
-  payload: user
+  payload: user,
 });
 
 export const setRoles = (roles) => ({
   type: "SET_ROLES",
-  payload: roles
+  payload: roles,
 });
 
 export const setTheme = (theme) => ({
   type: "SET_THEME",
-  payload: theme
+  payload: theme,
 });
 
 export const setLanguage = (language) => ({
   type: "SET_LANGUAGE",
-  payload: language
+  payload: language,
 });
 
 // Thunk Action Creator for fetching roles
 export const fetchRoles = () => {
   return async (dispatch) => {
     try {
-      const response = await api.get("/roles");
+      const response = await getWithFallback("/roles");
       dispatch(setRoles(response.data));
     } catch (error) {
       console.error("Error fetching roles:", error);
@@ -37,31 +41,26 @@ export const fetchRoles = () => {
 export const loginUser = (loginData) => {
   return async (dispatch) => {
     try {
-      const response = await api.post("/login", {
+      const response = await postWithFallback("/login", {
         email: loginData.email,
-        password: loginData.password
+        password: loginData.password,
       });
 
       const { token, ...userData } = response.data;
-      
-      // Create user object from response
+
       const user = {
         name: userData.name,
         email: userData.email,
-        role_id: userData.role_id
+        role_id: userData.role_id,
       };
-      
-      // Set user in Redux store
+
       dispatch(setUser(user));
-      
-      // Set token in axios headers
-      api.defaults.headers.common['Authorization'] = token;
-      
-      // Save token to localStorage if remember me is checked
+      syncAuthToken(token);
+
       if (loginData.rememberMe) {
-        localStorage.setItem('token', token);
+        localStorage.setItem("token", token);
       }
-      
+
       return user;
     } catch (error) {
       const errorMessage = error.response?.data?.message || "Login failed";
@@ -73,32 +72,26 @@ export const loginUser = (loginData) => {
 // Thunk Action Creator for auto login (T11)
 export const verifyToken = () => {
   return async (dispatch) => {
-    const token = localStorage.getItem('token');
-    
+    const token = localStorage.getItem("token");
+
     if (!token) {
       return false;
     }
-    
+
     try {
-      // Set token in axios headers
-      api.defaults.headers.common['Authorization'] = token;
-      
-      // Verify token with backend
-      const response = await api.get("/verify");
+      syncAuthToken(token);
+
+      const response = await getWithFallback("/verify");
       const user = response.data;
-      
-      // Set user in Redux store
+
       dispatch(setUser(user));
-      
-      // Renew token in localStorage
-      localStorage.setItem('token', token);
-      
+      localStorage.setItem("token", token);
+
       return true;
     } catch (error) {
-      // Token is invalid, remove it
       console.error("Token verification failed:", error);
-      localStorage.removeItem('token');
-      delete api.defaults.headers.common['Authorization'];
+      localStorage.removeItem("token");
+      syncAuthToken(null);
       return false;
     }
   };
@@ -107,13 +100,8 @@ export const verifyToken = () => {
 // Action Creator for logout
 export const logoutUser = () => {
   return (dispatch) => {
-    // Clear user from Redux store
     dispatch(setUser({}));
-    
-    // Remove token from localStorage
-    localStorage.removeItem('token');
-    
-    // Remove token from axios headers
-    delete api.defaults.headers.common['Authorization'];
+    localStorage.removeItem("token");
+    syncAuthToken(null);
   };
 };

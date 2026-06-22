@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import api from "../api/api";
+import api, { getWithFallback, postWithFallback } from "../api/api";
 
 export default function SignUpPage() {
   const [roles, setRoles] = useState([]);
@@ -23,7 +23,7 @@ export default function SignUpPage() {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const response = await api.get("/roles");
+        const response = await getWithFallback("/roles");
         setRoles(response.data);
       } catch (error) {
         console.error("Error fetching roles:", error);
@@ -57,7 +57,7 @@ export default function SignUpPage() {
         };
       }
 
-      await api.post("/signup", submitData);
+      await postWithFallback("/signup", submitData);
       
       toast.success("You need to click link in email to activate your account!");
       history.goBack();

@@ -1,5 +1,5 @@
 import api, {
-  fallbackApi,
+  activateFallback,
   getWithFallback,
   loadStaticCategories,
   WITSHOP_TO_WORKINTECH_CATEGORY,
@@ -48,20 +48,25 @@ export const setProductDetail = (product) => ({
 });
 
 async function fetchProductsFromApi(queryString, categoryId) {
+  if (categoryId && !WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]) {
+    try {
+      return await api.get(`/products?${queryString}`);
+    } catch {
+      return { data: { total: 0, products: [] } };
+    }
+  }
+
   try {
     return await api.get(`/products?${queryString}`);
   } catch (primaryError) {
-    if (categoryId && !WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]) {
-      return { data: { total: 0, products: [] } };
-    }
-
     const params = new URLSearchParams(queryString);
     if (categoryId) {
       params.set("category", WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]);
     }
 
     console.warn("Primary API unavailable, loading products from Workintech");
-    return await fallbackApi.get(`/products?${params.toString()}`);
+    activateFallback();
+    return await api.get(`/products?${params.toString()}`);
   }
 }
 
