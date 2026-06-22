@@ -196,12 +196,16 @@ export default function ShopPage() {
             <LoadingSpinner />
           ) : fetchState === "FAILED" ? (
             <div className="py-20 text-center">
-              <p className="text-red-600">Failed to load products. Please try again.</p>
+              <p className="text-red-600">Ürünler yüklenemedi. API sunucusuna bağlanılamıyor.</p>
+              <p className="mt-2 text-sm text-gray-500">
+                Vercel&apos;de görüntülüyorsanız backend henüz deploy edilmemiş olabilir.
+                Yerelde <code className="rounded bg-gray-100 px-1">npm run dev:full</code> ile çalıştırın.
+              </p>
               <button
                 onClick={() => dispatch(fetchProducts())}
                 className="mt-4 rounded-xl bg-[#23A6F0] px-6 py-2 text-white hover:bg-blue-600"
               >
-                Retry
+                Tekrar Dene
               </button>
             </div>
           ) : (

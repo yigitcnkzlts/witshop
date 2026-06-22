@@ -1,45 +1,68 @@
-import api from "../../api/api";
+import api, {
+  fallbackApi,
+  getWithFallback,
+  loadStaticCategories,
+  WITSHOP_TO_WORKINTECH_CATEGORY,
+} from "../../api/api";
 
 // Action Creators
 export const setCategories = (categories) => ({
   type: "SET_CATEGORIES",
-  payload: categories
+  payload: categories,
 });
 
 export const setProductList = (productList) => ({
   type: "SET_PRODUCT_LIST",
-  payload: productList
+  payload: productList,
 });
 
 export const setTotal = (total) => ({
   type: "SET_TOTAL",
-  payload: total
+  payload: total,
 });
 
 export const setFetchState = (fetchState) => ({
   type: "SET_FETCH_STATE",
-  payload: fetchState
+  payload: fetchState,
 });
 
 export const setLimit = (limit) => ({
   type: "SET_LIMIT",
-  payload: limit
+  payload: limit,
 });
 
 export const setOffset = (offset) => ({
   type: "SET_OFFSET",
-  payload: offset
+  payload: offset,
 });
 
 export const setFilter = (filter) => ({
   type: "SET_FILTER",
-  payload: filter
+  payload: filter,
 });
 
 export const setProductDetail = (product) => ({
   type: "SET_PRODUCT_DETAIL",
-  payload: product
+  payload: product,
 });
+
+async function fetchProductsFromApi(queryString, categoryId) {
+  try {
+    return await api.get(`/products?${queryString}`);
+  } catch (primaryError) {
+    if (categoryId && !WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]) {
+      return { data: { total: 0, products: [] } };
+    }
+
+    const params = new URLSearchParams(queryString);
+    if (categoryId) {
+      params.set("category", WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]);
+    }
+
+    console.warn("Primary API unavailable, loading products from Workintech");
+    return await fallbackApi.get(`/products?${params.toString()}`);
+  }
+}
 
 // Thunk Action Creator for fetching categories
 export const fetchCategories = () => {
@@ -50,8 +73,15 @@ export const fetchCategories = () => {
       dispatch(setCategories(response.data));
       dispatch(setFetchState("FETCHED"));
     } catch (error) {
-      console.error("Error fetching categories:", error);
-      dispatch(setFetchState("FAILED"));
+      console.warn("Categories API failed, using static fallback:", error);
+      try {
+        const categories = await loadStaticCategories();
+        dispatch(setCategories(categories));
+        dispatch(setFetchState("FETCHED"));
+      } catch (staticError) {
+        console.error("Error fetching categories:", staticError);
+        dispatch(setFetchState("FAILED"));
+      }
     }
   };
 };
@@ -61,46 +91,42 @@ export const fetchProducts = (params = {}) => {
   return async (dispatch, getState) => {
     try {
       dispatch(setFetchState("FETCHING"));
-      
-      // Get current state for pagination
+
       const { product } = getState();
-      
-      // Build query parameters
+
       const queryParams = new URLSearchParams();
-      
-      // Use provided params or current state
+
       const limit = params.limit || product.limit;
       const offset = params.offset || product.offset;
-      
-      queryParams.append('limit', limit);
-      queryParams.append('offset', offset);
-      
-      if (params.filter) queryParams.append('filter', params.filter);
-      if (params.category) queryParams.append('category', params.category);
-      if (params.sort) queryParams.append('sort', params.sort);
-      
-      // Update state with new params
+
+      queryParams.append("limit", limit);
+      queryParams.append("offset", offset);
+
+      if (params.filter) queryParams.append("filter", params.filter);
+      if (params.category) queryParams.append("category", params.category);
+      if (params.sort) queryParams.append("sort", params.sort);
+
       if (params.limit !== undefined) dispatch(setLimit(params.limit));
       if (params.offset !== undefined) dispatch(setOffset(params.offset));
       if (params.filter !== undefined) dispatch(setFilter(params.filter));
-      
-      const response = await api.get(`/products?${queryParams.toString()}`);
-      
-      // Response format: { total: 185, products: [...] }
+
+      const response = await fetchProductsFromApi(
+        queryParams.toString(),
+        params.category
+      );
+
       const { total, products } = response.data;
-      
+
       dispatch(setTotal(total));
-      
-      // For pagination, append products if offset > 0, otherwise replace
+
       if (params.offset > 0) {
         const currentProducts = getState().product.productList;
         dispatch(setProductList([...currentProducts, ...products]));
       } else {
         dispatch(setProductList(products));
       }
-      
+
       dispatch(setFetchState("FETCHED"));
-      
     } catch (error) {
       console.error("Error fetching products:", error);
       dispatch(setFetchState("FAILED"));
@@ -113,7 +139,7 @@ export const fetchProductDetail = (productId) => {
   return async (dispatch) => {
     try {
       dispatch(setFetchState("FETCHING"));
-      const response = await api.get(`/products/${productId}`);
+      const response = await getWithFallback(`/products/${productId}`);
       dispatch(setProductDetail(response.data));
       dispatch(setFetchState("FETCHED"));
     } catch (error) {

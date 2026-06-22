@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "code": "k:elbise",
+    "title": "Elbise",
+    "img": "/categories/kadin-elbise.jpg",
+    "rating": 4.5,
+    "gender": "k"
+  },
+  {
+    "id": 2,
+    "code": "k:bluz-gomlek",
+    "title": "Bluz & Gömlek",
+    "img": "/categories/kadin-bluz-gomlek.jpg",
+    "rating": 4.3,
+    "gender": "k"
+  },
+  {
+    "id": 3,
+    "code": "k:pantalon",
+    "title": "Pantolon",
+    "img": "/categories/kadin-pantalon.jpg",
+    "rating": 4.0,
+    "gender": "k"
+  },
+  {
+    "id": 4,
+    "code": "k:etek",
+    "title": "Etek",
+    "img": "/categories/kadin-etek.jpg",
+    "rating": 4.1,
+    "gender": "k"
+  },
+  {
+    "id": 5,
+    "code": "k:canta",
+    "title": "Çanta",
+    "img": "/categories/kadin-canta.jpg",
+    "rating": 4.7,
+    "gender": "k"
+  },
+  {
+    "id": 6,
+    "code": "k:ayakkabi",
+    "title": "Ayakkabı",
+    "img": "/categories/kadin-ayakkabi.jpg",
+    "rating": 4.8,
+    "gender": "k"
+  },
+  {
+    "id": 7,
+    "code": "e:tshirt",
+    "title": "T-Shirt",
+    "img": "/categories/erkek-tshirt.jpg",
+    "rating": 4.4,
+    "gender": "e"
+  },
+  {
+    "id": 8,
+    "code": "e:gomlek",
+    "title": "Gömlek",
+    "img": "/categories/erkek-gomlek.jpg",
+    "rating": 4.2,
+    "gender": "e"
+  },
+  {
+    "id": 9,
+    "code": "e:pantalon",
+    "title": "Pantolon",
+    "img": "/categories/erkek-pantalon.jpg",
+    "rating": 4.0,
+    "gender": "e"
+  },
+  {
+    "id": 10,
+    "code": "e:ceket",
+    "title": "Ceket",
+    "img": "/categories/erkek-ceket.jpg",
+    "rating": 4.3,
+    "gender": "e"
+  },
+  {
+    "id": 11,
+    "code": "e:saat",
+    "title": "Saat",
+    "img": "/categories/erkek-saat.jpg",
+    "rating": 4.6,
+    "gender": "e"
+  },
+  {
+    "id": 12,
+    "code": "e:ayakkabi",
+    "title": "Ayakkabı",
+    "img": "/categories/erkek-ayakkabi.jpg",
+    "rating": 4.7,
+    "gender": "e"
+  }
+]
