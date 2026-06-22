@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { logoutUser } from "../store/actions";
 import Gravatar from "../components/Gravatar";
+import { categoryShopPath } from "../utils/categorySlug";
 
 export default function Header() {
   const { user } = useSelector(state => state.client);
@@ -34,13 +35,9 @@ export default function Header() {
   const cartItemCount = cart.reduce((total, item) => total + item.count, 0);
 
   // Kategorileri cinsiyet bazında grupla
-  const womenCategories = categories.filter(cat => 
-    cat.gender === 'k' || cat.title?.toLowerCase().includes('kadın')
-  ).slice(0, 6);
-  
-  const menCategories = categories.filter(cat => 
-    cat.gender === 'e' || cat.title?.toLowerCase().includes('erkek')
-  ).slice(0, 6);
+  const womenCategories = categories.filter((cat) => cat.gender === "k");
+
+  const menCategories = categories.filter((cat) => cat.gender === "e");
   return (
     <header className="flex w-full flex-col shadow-sm">
       {/* TOP BAR */}
@@ -131,7 +128,7 @@ export default function Header() {
                           womenCategories.map(cat => (
                             <Link 
                               key={cat.id} 
-                              to={`/shop/kadin/${cat.title?.toLowerCase().replace(/\s+/g, '-')}/${cat.id}`}
+                              to={categoryShopPath(cat)}
                               className="block text-sm text-gray-700 hover:text-[#23A6F0]"
                             >
                               {cat.title}
@@ -160,7 +157,7 @@ export default function Header() {
                           menCategories.map(cat => (
                             <Link 
                               key={cat.id} 
-                              to={`/shop/erkek/${cat.title?.toLowerCase().replace(/\s+/g, '-')}/${cat.id}`}
+                              to={categoryShopPath(cat)}
                               className="block text-sm text-gray-700 hover:text-[#23A6F0]"
                             >
                               {cat.title}

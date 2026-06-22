@@ -190,22 +190,53 @@ function syncCategoriesFromSeed(database) {
   if (!existsSync(SEED_PATH)) return;
 
   const seed = JSON.parse(readFileSync(SEED_PATH, "utf-8"));
-  const update = database.prepare(`
-    UPDATE categories
-    SET code = ?, title = ?, img = ?, rating = ?, gender = ?
-    WHERE id = ?
+
+  database.exec("PRAGMA foreign_keys = OFF");
+  database.exec("DELETE FROM categories");
+
+  const insert = database.prepare(`
+    INSERT INTO categories (id, code, title, img, rating, gender)
+    VALUES (?, ?, ?, ?, ?, ?)
   `);
 
   for (const cat of seed.categories || []) {
-    update.run(
+    insert.run(
+      cat.id,
       cat.code ?? null,
       cat.title,
       cat.img ?? null,
       cat.rating ?? 0,
-      cat.gender ?? null,
-      cat.id
+      cat.gender ?? null
     );
   }
+
+  const updateProduct = database.prepare(
+    "UPDATE products SET category_id = ? WHERE id = ?"
+  );
+  const insertProduct = database.prepare(`
+    INSERT OR REPLACE INTO products (id, name, description, price, stock, store_id, category_id, rating, sell_count, images_json)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+
+  for (const p of seed.products || []) {
+    if (p.category_id != null) {
+      updateProduct.run(p.category_id, p.id);
+    }
+    insertProduct.run(
+      p.id,
+      p.name,
+      p.description ?? "",
+      p.price,
+      p.stock ?? 0,
+      p.store_id ?? null,
+      p.category_id ?? null,
+      p.rating ?? 0,
+      p.sell_count ?? 0,
+      JSON.stringify(p.images ?? [])
+    );
+  }
+
+  database.exec("PRAGMA foreign_keys = ON");
 }
 
 export function rowToProduct(row) {

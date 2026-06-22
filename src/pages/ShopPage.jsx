@@ -5,11 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ShopGridCard from "../components/ShopGridCard";
 import Pagination from "../components/Pagination";
 import { fetchCategories, fetchProducts } from "../store/actions";
-
-function categoryLabel(category) {
-  const prefix = category.gender === "k" ? "Kadın" : "Erkek";
-  return `${prefix} ${category.title}`;
-}
+import { categoryShopPath } from "../utils/categorySlug";
 
 function CategoryCard({ title, items, image, onClick }) {
   return (
@@ -33,6 +29,29 @@ function CategoryCard({ title, items, image, onClick }) {
           {title}
         </h3>
         <div className="mt-2 h-[2px] w-0 bg-white transition-all duration-500 group-hover:w-12" />
+      </div>
+    </div>
+  );
+}
+
+function CategorySection({ title, categories, onCategoryClick }) {
+  if (categories.length === 0) return null;
+
+  return (
+    <div className="mb-12 last:mb-0">
+      <h2 className="mb-6 text-sm font-black uppercase tracking-[0.3em] text-[#252B42]">
+        {title}
+      </h2>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {categories.map((c) => (
+          <CategoryCard
+            key={c.id}
+            title={c.title}
+            items={c.items ?? 0}
+            image={c.img || "/categories/kadin-elbise.jpg"}
+            onClick={() => onCategoryClick(c)}
+          />
+        ))}
       </div>
     </div>
   );
@@ -80,27 +99,11 @@ export default function ShopPage() {
   }, [dispatch, categoryId, sortValue, filterText]);
 
   const handleCategoryClick = (category) => {
-    const gender = category.gender === "k" ? "kadin" : "erkek";
-    const categoryName =
-      category.title?.toLowerCase().replace(/\s+/g, "-") || "kategori";
-    history.push(`/shop/${gender}/${categoryName}/${category.id}`);
+    history.push(categoryShopPath(category));
   };
 
-  const handleSortChange = (e) => {
-    setSortValue(e.target.value);
-  };
-
-  const handleFilterChange = (e) => {
-    setFilterText(e.target.value);
-  };
-
-  const displayCategories = categories.map((cat) => ({
-    ...cat,
-    image: cat.img || "/categories/kadin-tisort.jpg",
-    label: categoryLabel(cat),
-    items: cat.items ?? 0,
-  }));
-
+  const womenCategories = categories.filter((cat) => cat.gender === "k");
+  const menCategories = categories.filter((cat) => cat.gender === "e");
   const activeCategory = categories.find((c) => c.id === categoryId);
 
   return (
@@ -118,20 +121,21 @@ export default function ShopPage() {
         </div>
 
         <div className="mx-auto max-w-6xl px-6 pb-16">
-          {displayCategories.length === 0 ? (
+          {categories.length === 0 ? (
             <LoadingSpinner />
           ) : (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
-              {displayCategories.map((c) => (
-                <CategoryCard
-                  key={c.id}
-                  title={c.label}
-                  items={c.items}
-                  image={c.image}
-                  onClick={() => handleCategoryClick(c)}
-                />
-              ))}
-            </div>
+            <>
+              <CategorySection
+                title="Kadın"
+                categories={womenCategories}
+                onCategoryClick={handleCategoryClick}
+              />
+              <CategorySection
+                title="Erkek"
+                categories={menCategories}
+                onCategoryClick={handleCategoryClick}
+              />
+            </>
           )}
         </div>
       </section>
@@ -142,7 +146,7 @@ export default function ShopPage() {
             Showing <span className="text-black">{productList.length}</span> of{" "}
             <span className="text-black">{total}</span> results
             {activeCategory && (
-              <span className="ml-2 text-[#23A6F0]">· {categoryLabel(activeCategory)}</span>
+              <span className="ml-2 text-[#23A6F0]">· {activeCategory.title}</span>
             )}
           </p>
 
@@ -165,13 +169,13 @@ export default function ShopPage() {
               type="text"
               placeholder="Filter products..."
               value={filterText}
-              onChange={handleFilterChange}
+              onChange={(e) => setFilterText(e.target.value)}
               className="h-12 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 sm:w-[200px]"
             />
             <select
               className="h-12 w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-6 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-blue-500/10 sm:w-[180px]"
               value={sortValue}
-              onChange={handleSortChange}
+              onChange={(e) => setSortValue(e.target.value)}
             >
               <option value="">Sort by</option>
               <option value="price:asc">Price: Low-High</option>

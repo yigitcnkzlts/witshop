@@ -2,129 +2,99 @@
   "categories": [
     {
       "id": 1,
-      "code": "k:tisort",
-      "title": "Tişört",
-      "img": "/categories/kadin-tisort.jpg",
-      "rating": 4.2,
-      "gender": "k",
-      "items": 192
-    },
-    {
-      "id": 2,
-      "code": "k:ayakkabi",
-      "title": "Ayakkabı",
-      "img": "/categories/kadin-ayakkabi.jpg",
-      "rating": 4.9,
-      "gender": "k",
-      "items": 8
-    },
-    {
-      "id": 3,
-      "code": "k:ceket",
-      "title": "Ceket",
-      "img": "/categories/kadin-ceket.jpg",
-      "rating": 3.8,
-      "gender": "k",
-      "items": 0
-    },
-    {
-      "id": 4,
       "code": "k:elbise",
       "title": "Elbise",
       "img": "/categories/kadin-elbise.jpg",
-      "rating": 4.1,
-      "gender": "k",
-      "items": 0
+      "rating": 4.5,
+      "gender": "k"
     },
     {
-      "id": 5,
+      "id": 2,
+      "code": "k:bluz-gomlek",
+      "title": "Bluz & Gömlek",
+      "img": "/categories/kadin-bluz-gomlek.jpg",
+      "rating": 4.3,
+      "gender": "k"
+    },
+    {
+      "id": 3,
+      "code": "k:pantalon",
+      "title": "Pantolon",
+      "img": "/categories/kadin-pantalon.jpg",
+      "rating": 4.0,
+      "gender": "k"
+    },
+    {
+      "id": 4,
       "code": "k:etek",
       "title": "Etek",
       "img": "/categories/kadin-etek.jpg",
-      "rating": 3.9,
-      "gender": "k",
-      "items": 0
+      "rating": 4.1,
+      "gender": "k"
+    },
+    {
+      "id": 5,
+      "code": "k:canta",
+      "title": "Çanta",
+      "img": "/categories/kadin-canta.jpg",
+      "rating": 4.7,
+      "gender": "k"
     },
     {
       "id": 6,
-      "code": "k:gomlek",
-      "title": "Gömlek",
-      "img": "/categories/kadin-gomlek.jpg",
-      "rating": 3.1,
-      "gender": "k",
-      "items": 0
+      "code": "k:ayakkabi",
+      "title": "Ayakkabı",
+      "img": "/categories/kadin-ayakkabi.jpg",
+      "rating": 4.8,
+      "gender": "k"
     },
     {
       "id": 7,
-      "code": "k:kazak",
-      "title": "Kazak",
-      "img": "/categories/kadin-kazak.jpg",
-      "rating": 2.9,
-      "gender": "k",
-      "items": 0
+      "code": "e:tshirt",
+      "title": "T-Shirt",
+      "img": "/categories/erkek-tshirt.jpg",
+      "rating": 4.4,
+      "gender": "e"
     },
     {
       "id": 8,
-      "code": "k:pantalon",
-      "title": "Pantalon",
-      "img": "/categories/kadin-pantalon.jpg",
-      "rating": 3.8,
-      "gender": "k",
-      "items": 0
+      "code": "e:gomlek",
+      "title": "Gömlek",
+      "img": "/categories/erkek-gomlek.jpg",
+      "rating": 4.2,
+      "gender": "e"
     },
     {
       "id": 9,
-      "code": "e:ayakkabı",
-      "title": "Ayakkabı",
-      "img": "/categories/erkek-ayakkabi.jpg",
-      "rating": 4.6,
-      "gender": "e",
-      "items": 0
+      "code": "e:pantalon",
+      "title": "Pantolon",
+      "img": "/categories/erkek-pantalon.jpg",
+      "rating": 4.0,
+      "gender": "e"
     },
     {
       "id": 10,
       "code": "e:ceket",
       "title": "Ceket",
       "img": "/categories/erkek-ceket.jpg",
-      "rating": 4.1,
-      "gender": "e",
-      "items": 0
+      "rating": 4.3,
+      "gender": "e"
     },
     {
       "id": 11,
-      "code": "e:gomlek",
-      "title": "Gömlek",
-      "img": "/categories/erkek-gomlek.jpg",
-      "rating": 3.9,
-      "gender": "e",
-      "items": 0
+      "code": "e:saat",
+      "title": "Saat",
+      "img": "/categories/erkek-saat.jpg",
+      "rating": 4.6,
+      "gender": "e"
     },
     {
       "id": 12,
-      "code": "e:kazak",
-      "title": "Kazak",
-      "img": "/categories/erkek-kazak.jpg",
-      "rating": 3.2,
-      "gender": "e",
-      "items": 0
-    },
-    {
-      "id": 13,
-      "code": "e:pantalon",
-      "title": "Pantalon",
-      "img": "/categories/erkek-pantalon.jpg",
-      "rating": 3.5,
-      "gender": "e",
-      "items": 0
-    },
-    {
-      "id": 14,
-      "code": "e:tisort",
-      "title": "Tişört",
-      "img": "/categories/erkek-tisort.jpg",
-      "rating": 4.3,
-      "gender": "e",
-      "items": 0
+      "code": "e:ayakkabi",
+      "title": "Ayakkabı",
+      "img": "/categories/erkek-ayakkabi.jpg",
+      "rating": 4.7,
+      "gender": "e"
     }
   ],
   "products": [
@@ -135,7 +105,7 @@
       "price": 145.99,
       "stock": 84,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.35,
       "sell_count": 923,
       "images": [
@@ -152,7 +122,7 @@
       "price": 140.99,
       "stock": 80,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.39,
       "sell_count": 48,
       "images": [
@@ -169,7 +139,7 @@
       "price": 64.49,
       "stock": 180,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.07,
       "sell_count": 633,
       "images": [
@@ -186,7 +156,7 @@
       "price": 89.9,
       "stock": 54,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.16,
       "sell_count": 837,
       "images": [
@@ -203,7 +173,7 @@
       "price": 89,
       "stock": 69,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.44,
       "sell_count": 777,
       "images": [
@@ -220,7 +190,7 @@
       "price": 159,
       "stock": 188,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.6,
       "sell_count": 764,
       "images": [
@@ -237,7 +207,7 @@
       "price": 118,
       "stock": 138,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.43,
       "sell_count": 511,
       "images": [
@@ -254,7 +224,7 @@
       "price": 119.9,
       "stock": 160,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.05,
       "sell_count": 659,
       "images": [
@@ -271,7 +241,7 @@
       "price": 59,
       "stock": 126,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.71,
       "sell_count": 116,
       "images": [
@@ -288,7 +258,7 @@
       "price": 84,
       "stock": 161,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.62,
       "sell_count": 669,
       "images": [
@@ -305,7 +275,7 @@
       "price": 69,
       "stock": 38,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.76,
       "sell_count": 543,
       "images": [
@@ -322,7 +292,7 @@
       "price": 59.99,
       "stock": 156,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.89,
       "sell_count": 386,
       "images": [
@@ -339,7 +309,7 @@
       "price": 54.28,
       "stock": 51,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.22,
       "sell_count": 211,
       "images": [
@@ -356,7 +326,7 @@
       "price": 85,
       "stock": 56,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.42,
       "sell_count": 686,
       "images": [
@@ -373,7 +343,7 @@
       "price": 89,
       "stock": 21,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.59,
       "sell_count": 19,
       "images": [
@@ -390,7 +360,7 @@
       "price": 89,
       "stock": 173,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.5,
       "sell_count": 625,
       "images": [
@@ -407,7 +377,7 @@
       "price": 89,
       "stock": 104,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.71,
       "sell_count": 640,
       "images": [
@@ -424,7 +394,7 @@
       "price": 79.9,
       "stock": 85,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.64,
       "sell_count": 929,
       "images": [
@@ -441,7 +411,7 @@
       "price": 69,
       "stock": 191,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.84,
       "sell_count": 141,
       "images": [
@@ -458,7 +428,7 @@
       "price": 69,
       "stock": 6,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.81,
       "sell_count": 868,
       "images": [
@@ -475,7 +445,7 @@
       "price": 139,
       "stock": 166,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.94,
       "sell_count": 826,
       "images": [
@@ -492,7 +462,7 @@
       "price": 59,
       "stock": 197,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.94,
       "sell_count": 259,
       "images": [
@@ -509,7 +479,7 @@
       "price": 99,
       "stock": 39,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.24,
       "sell_count": 649,
       "images": [
@@ -526,7 +496,7 @@
       "price": 75,
       "stock": 168,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.55,
       "sell_count": 967,
       "images": [
@@ -543,7 +513,7 @@
       "price": 67.3,
       "stock": 76,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.29,
       "sell_count": 564,
       "images": [
@@ -560,7 +530,7 @@
       "price": 127.75,
       "stock": 114,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.05,
       "sell_count": 410,
       "images": [
@@ -577,7 +547,7 @@
       "price": 89.9,
       "stock": 112,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.05,
       "sell_count": 17,
       "images": [
@@ -594,7 +564,7 @@
       "price": 150,
       "stock": 157,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.02,
       "sell_count": 21,
       "images": [
@@ -611,7 +581,7 @@
       "price": 90,
       "stock": 10,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.43,
       "sell_count": 902,
       "images": [
@@ -628,7 +598,7 @@
       "price": 139,
       "stock": 125,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.32,
       "sell_count": 361,
       "images": [
@@ -645,7 +615,7 @@
       "price": 99,
       "stock": 91,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.52,
       "sell_count": 69,
       "images": [
@@ -662,7 +632,7 @@
       "price": 85.98,
       "stock": 97,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.35,
       "sell_count": 696,
       "images": [
@@ -679,7 +649,7 @@
       "price": 88,
       "stock": 200,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.16,
       "sell_count": 945,
       "images": [
@@ -696,7 +666,7 @@
       "price": 88,
       "stock": 37,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.35,
       "sell_count": 874,
       "images": [
@@ -713,7 +683,7 @@
       "price": 139,
       "stock": 118,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.81,
       "sell_count": 633,
       "images": [
@@ -730,7 +700,7 @@
       "price": 129.75,
       "stock": 52,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.28,
       "sell_count": 387,
       "images": [
@@ -747,7 +717,7 @@
       "price": 89,
       "stock": 147,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.31,
       "sell_count": 309,
       "images": [
@@ -764,7 +734,7 @@
       "price": 129,
       "stock": 136,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.44,
       "sell_count": 665,
       "images": [
@@ -781,7 +751,7 @@
       "price": 89.5,
       "stock": 70,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.01,
       "sell_count": 873,
       "images": [
@@ -798,7 +768,7 @@
       "price": 149,
       "stock": 172,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.53,
       "sell_count": 540,
       "images": [
@@ -815,7 +785,7 @@
       "price": 89.99,
       "stock": 83,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.75,
       "sell_count": 11,
       "images": [
@@ -832,7 +802,7 @@
       "price": 149,
       "stock": 24,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.79,
       "sell_count": 217,
       "images": [
@@ -849,7 +819,7 @@
       "price": 138,
       "stock": 50,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.16,
       "sell_count": 634,
       "images": [
@@ -866,7 +836,7 @@
       "price": 139,
       "stock": 183,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.3,
       "sell_count": 129,
       "images": [
@@ -883,7 +853,7 @@
       "price": 124,
       "stock": 15,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.22,
       "sell_count": 224,
       "images": [
@@ -900,7 +870,7 @@
       "price": 139,
       "stock": 8,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.38,
       "sell_count": 557,
       "images": [
@@ -917,7 +887,7 @@
       "price": 120,
       "stock": 177,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.22,
       "sell_count": 16,
       "images": [
@@ -934,7 +904,7 @@
       "price": 89.5,
       "stock": 195,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.47,
       "sell_count": 266,
       "images": [
@@ -951,7 +921,7 @@
       "price": 99,
       "stock": 188,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.92,
       "sell_count": 757,
       "images": [
@@ -968,7 +938,7 @@
       "price": 89.99,
       "stock": 9,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.4,
       "sell_count": 865,
       "images": [
@@ -985,7 +955,7 @@
       "price": 140,
       "stock": 132,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.75,
       "sell_count": 855,
       "images": [
@@ -1002,7 +972,7 @@
       "price": 59,
       "stock": 16,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.96,
       "sell_count": 684,
       "images": [
@@ -1019,7 +989,7 @@
       "price": 74.9,
       "stock": 114,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.12,
       "sell_count": 84,
       "images": [
@@ -1036,7 +1006,7 @@
       "price": 88,
       "stock": 4,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.34,
       "sell_count": 630,
       "images": [
@@ -1053,7 +1023,7 @@
       "price": 90,
       "stock": 99,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.79,
       "sell_count": 12,
       "images": [
@@ -1070,7 +1040,7 @@
       "price": 109.99,
       "stock": 74,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.04,
       "sell_count": 275,
       "images": [
@@ -1087,7 +1057,7 @@
       "price": 219,
       "stock": 28,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.44,
       "sell_count": 318,
       "images": [
@@ -1104,7 +1074,7 @@
       "price": 289,
       "stock": 27,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.66,
       "sell_count": 952,
       "images": [
@@ -1121,7 +1091,7 @@
       "price": 89,
       "stock": 161,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.27,
       "sell_count": 387,
       "images": [
@@ -1138,7 +1108,7 @@
       "price": 129,
       "stock": 140,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.55,
       "sell_count": 240,
       "images": [
@@ -1155,7 +1125,7 @@
       "price": 279,
       "stock": 91,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.75,
       "sell_count": 169,
       "images": [
@@ -1172,7 +1142,7 @@
       "price": 244,
       "stock": 62,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.89,
       "sell_count": 133,
       "images": [
@@ -1189,7 +1159,7 @@
       "price": 299.9,
       "stock": 50,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.21,
       "sell_count": 114,
       "images": [
@@ -1206,7 +1176,7 @@
       "price": 150,
       "stock": 182,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.28,
       "sell_count": 650,
       "images": [
@@ -1223,7 +1193,7 @@
       "price": 129,
       "stock": 152,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.85,
       "sell_count": 725,
       "images": [
@@ -1240,7 +1210,7 @@
       "price": 379,
       "stock": 116,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.54,
       "sell_count": 455,
       "images": [
@@ -1257,7 +1227,7 @@
       "price": 195,
       "stock": 69,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.94,
       "sell_count": 4,
       "images": [
@@ -1274,7 +1244,7 @@
       "price": 90,
       "stock": 14,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.07,
       "sell_count": 727,
       "images": [
@@ -1291,7 +1261,7 @@
       "price": 139.99,
       "stock": 149,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.56,
       "sell_count": 518,
       "images": [
@@ -1308,7 +1278,7 @@
       "price": 379,
       "stock": 57,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.76,
       "sell_count": 743,
       "images": [
@@ -1325,7 +1295,7 @@
       "price": 87,
       "stock": 50,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.55,
       "sell_count": 319,
       "images": [
@@ -1342,7 +1312,7 @@
       "price": 220,
       "stock": 120,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.33,
       "sell_count": 154,
       "images": [
@@ -1359,7 +1329,7 @@
       "price": 220,
       "stock": 174,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.06,
       "sell_count": 206,
       "images": [
@@ -1376,7 +1346,7 @@
       "price": 88.9,
       "stock": 162,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.69,
       "sell_count": 132,
       "images": [
@@ -1393,7 +1363,7 @@
       "price": 244,
       "stock": 90,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.6,
       "sell_count": 23,
       "images": [
@@ -1410,7 +1380,7 @@
       "price": 59,
       "stock": 177,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.83,
       "sell_count": 870,
       "images": [
@@ -1427,7 +1397,7 @@
       "price": 42.7,
       "stock": 118,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.7,
       "sell_count": 849,
       "images": [
@@ -1444,7 +1414,7 @@
       "price": 59.99,
       "stock": 107,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.22,
       "sell_count": 195,
       "images": [
@@ -1461,7 +1431,7 @@
       "price": 59,
       "stock": 30,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.89,
       "sell_count": 728,
       "images": [
@@ -1478,7 +1448,7 @@
       "price": 79,
       "stock": 39,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.92,
       "sell_count": 835,
       "images": [
@@ -1495,7 +1465,7 @@
       "price": 88,
       "stock": 101,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.83,
       "sell_count": 982,
       "images": [
@@ -1512,7 +1482,7 @@
       "price": 69,
       "stock": 60,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.4,
       "sell_count": 894,
       "images": [
@@ -1529,7 +1499,7 @@
       "price": 299,
       "stock": 46,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.79,
       "sell_count": 5,
       "images": [
@@ -1546,7 +1516,7 @@
       "price": 175,
       "stock": 61,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.64,
       "sell_count": 314,
       "images": [
@@ -1563,7 +1533,7 @@
       "price": 139,
       "stock": 116,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.89,
       "sell_count": 578,
       "images": [
@@ -1580,7 +1550,7 @@
       "price": 120,
       "stock": 177,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.19,
       "sell_count": 969,
       "images": [
@@ -1597,7 +1567,7 @@
       "price": 89,
       "stock": 71,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.93,
       "sell_count": 741,
       "images": [
@@ -1614,7 +1584,7 @@
       "price": 150,
       "stock": 23,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.86,
       "sell_count": 729,
       "images": [
@@ -1631,7 +1601,7 @@
       "price": 89,
       "stock": 55,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.98,
       "sell_count": 317,
       "images": [
@@ -1648,7 +1618,7 @@
       "price": 110,
       "stock": 167,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.65,
       "sell_count": 817,
       "images": [
@@ -1665,7 +1635,7 @@
       "price": 165,
       "stock": 183,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.24,
       "sell_count": 306,
       "images": [
@@ -1682,7 +1652,7 @@
       "price": 180,
       "stock": 119,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.32,
       "sell_count": 851,
       "images": [
@@ -1699,7 +1669,7 @@
       "price": 99.99,
       "stock": 148,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.17,
       "sell_count": 340,
       "images": [
@@ -1716,7 +1686,7 @@
       "price": 122,
       "stock": 194,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.67,
       "sell_count": 242,
       "images": [
@@ -1733,7 +1703,7 @@
       "price": 140,
       "stock": 171,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.81,
       "sell_count": 247,
       "images": [
@@ -1750,7 +1720,7 @@
       "price": 109,
       "stock": 178,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.21,
       "sell_count": 879,
       "images": [
@@ -1767,7 +1737,7 @@
       "price": 54.71,
       "stock": 34,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.99,
       "sell_count": 659,
       "images": [
@@ -1784,7 +1754,7 @@
       "price": 239,
       "stock": 161,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.68,
       "sell_count": 808,
       "images": [
@@ -1801,7 +1771,7 @@
       "price": 138,
       "stock": 190,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.28,
       "sell_count": 971,
       "images": [
@@ -1818,7 +1788,7 @@
       "price": 82,
       "stock": 110,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.99,
       "sell_count": 214,
       "images": [
@@ -1835,7 +1805,7 @@
       "price": 75,
       "stock": 162,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.52,
       "sell_count": 198,
       "images": [
@@ -1852,7 +1822,7 @@
       "price": 78,
       "stock": 55,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.23,
       "sell_count": 785,
       "images": [
@@ -1869,7 +1839,7 @@
       "price": 99.99,
       "stock": 16,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.41,
       "sell_count": 598,
       "images": [
@@ -1886,7 +1856,7 @@
       "price": 89.3,
       "stock": 184,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.35,
       "sell_count": 9,
       "images": [
@@ -1903,7 +1873,7 @@
       "price": 68,
       "stock": 110,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.59,
       "sell_count": 81,
       "images": [
@@ -1920,7 +1890,7 @@
       "price": 89,
       "stock": 116,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.63,
       "sell_count": 302,
       "images": [
@@ -1937,7 +1907,7 @@
       "price": 89,
       "stock": 117,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.38,
       "sell_count": 444,
       "images": [
@@ -1954,7 +1924,7 @@
       "price": 88,
       "stock": 48,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.47,
       "sell_count": 102,
       "images": [
@@ -1971,7 +1941,7 @@
       "price": 89.9,
       "stock": 148,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.46,
       "sell_count": 719,
       "images": [
@@ -1988,7 +1958,7 @@
       "price": 149,
       "stock": 106,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.43,
       "sell_count": 890,
       "images": [
@@ -2005,7 +1975,7 @@
       "price": 118,
       "stock": 134,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.61,
       "sell_count": 807,
       "images": [
@@ -2022,7 +1992,7 @@
       "price": 88.9,
       "stock": 72,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.51,
       "sell_count": 698,
       "images": [
@@ -2039,7 +2009,7 @@
       "price": 69,
       "stock": 13,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.67,
       "sell_count": 592,
       "images": [
@@ -2056,7 +2026,7 @@
       "price": 82,
       "stock": 164,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.65,
       "sell_count": 635,
       "images": [
@@ -2073,7 +2043,7 @@
       "price": 78,
       "stock": 160,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.01,
       "sell_count": 873,
       "images": [
@@ -2090,7 +2060,7 @@
       "price": 139,
       "stock": 49,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.1,
       "sell_count": 834,
       "images": [
@@ -2107,7 +2077,7 @@
       "price": 79,
       "stock": 1,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.99,
       "sell_count": 313,
       "images": [
@@ -2124,7 +2094,7 @@
       "price": 85,
       "stock": 140,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.5,
       "sell_count": 15,
       "images": [
@@ -2141,7 +2111,7 @@
       "price": 149,
       "stock": 147,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.59,
       "sell_count": 452,
       "images": [
@@ -2158,7 +2128,7 @@
       "price": 149,
       "stock": 71,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.16,
       "sell_count": 390,
       "images": [
@@ -2175,7 +2145,7 @@
       "price": 89,
       "stock": 92,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.2,
       "sell_count": 708,
       "images": [
@@ -2192,7 +2162,7 @@
       "price": 88,
       "stock": 108,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.35,
       "sell_count": 540,
       "images": [
@@ -2209,7 +2179,7 @@
       "price": 149,
       "stock": 154,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.84,
       "sell_count": 965,
       "images": [
@@ -2226,7 +2196,7 @@
       "price": 189.99,
       "stock": 142,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.52,
       "sell_count": 492,
       "images": [
@@ -2243,7 +2213,7 @@
       "price": 89.5,
       "stock": 167,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.39,
       "sell_count": 826,
       "images": [
@@ -2260,7 +2230,7 @@
       "price": 139,
       "stock": 51,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.03,
       "sell_count": 189,
       "images": [
@@ -2277,7 +2247,7 @@
       "price": 149,
       "stock": 102,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.88,
       "sell_count": 305,
       "images": [
@@ -2294,7 +2264,7 @@
       "price": 149,
       "stock": 193,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.37,
       "sell_count": 181,
       "images": [
@@ -2311,7 +2281,7 @@
       "price": 449,
       "stock": 195,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.91,
       "sell_count": 397,
       "images": [
@@ -2328,7 +2298,7 @@
       "price": 89,
       "stock": 68,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.36,
       "sell_count": 198,
       "images": [
@@ -2345,7 +2315,7 @@
       "price": 159,
       "stock": 15,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.73,
       "sell_count": 537,
       "images": [
@@ -2362,7 +2332,7 @@
       "price": 174.99,
       "stock": 39,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.39,
       "sell_count": 260,
       "images": [
@@ -2379,7 +2349,7 @@
       "price": 89,
       "stock": 3,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.97,
       "sell_count": 570,
       "images": [
@@ -2396,7 +2366,7 @@
       "price": 149,
       "stock": 58,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.69,
       "sell_count": 932,
       "images": [
@@ -2413,7 +2383,7 @@
       "price": 149,
       "stock": 154,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.17,
       "sell_count": 549,
       "images": [
@@ -2430,7 +2400,7 @@
       "price": 139,
       "stock": 170,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.15,
       "sell_count": 969,
       "images": [
@@ -2447,7 +2417,7 @@
       "price": 118,
       "stock": 155,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.07,
       "sell_count": 177,
       "images": [
@@ -2464,7 +2434,7 @@
       "price": 89.9,
       "stock": 55,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.76,
       "sell_count": 130,
       "images": [
@@ -2481,7 +2451,7 @@
       "price": 139,
       "stock": 90,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1,
       "sell_count": 171,
       "images": [
@@ -2498,7 +2468,7 @@
       "price": 89.5,
       "stock": 44,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.76,
       "sell_count": 570,
       "images": [
@@ -2515,7 +2485,7 @@
       "price": 139,
       "stock": 44,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.7,
       "sell_count": 444,
       "images": [
@@ -2532,7 +2502,7 @@
       "price": 79,
       "stock": 85,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.82,
       "sell_count": 776,
       "images": [
@@ -2549,7 +2519,7 @@
       "price": 145,
       "stock": 18,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.44,
       "sell_count": 651,
       "images": [
@@ -2566,7 +2536,7 @@
       "price": 139,
       "stock": 108,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.76,
       "sell_count": 143,
       "images": [
@@ -2583,7 +2553,7 @@
       "price": 119,
       "stock": 97,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.49,
       "sell_count": 884,
       "images": [
@@ -2600,7 +2570,7 @@
       "price": 139,
       "stock": 125,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.48,
       "sell_count": 307,
       "images": [
@@ -2617,7 +2587,7 @@
       "price": 349.9,
       "stock": 187,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.27,
       "sell_count": 979,
       "images": [
@@ -2634,7 +2604,7 @@
       "price": 349.9,
       "stock": 62,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.38,
       "sell_count": 715,
       "images": [
@@ -2651,7 +2621,7 @@
       "price": 89,
       "stock": 98,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.89,
       "sell_count": 992,
       "images": [
@@ -2668,7 +2638,7 @@
       "price": 89.9,
       "stock": 16,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.81,
       "sell_count": 856,
       "images": [
@@ -2685,7 +2655,7 @@
       "price": 139.9,
       "stock": 181,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.72,
       "sell_count": 602,
       "images": [
@@ -2702,7 +2672,7 @@
       "price": 89,
       "stock": 8,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.18,
       "sell_count": 251,
       "images": [
@@ -2719,7 +2689,7 @@
       "price": 89,
       "stock": 86,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.47,
       "sell_count": 914,
       "images": [
@@ -2736,7 +2706,7 @@
       "price": 139.9,
       "stock": 131,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.45,
       "sell_count": 986,
       "images": [
@@ -2753,7 +2723,7 @@
       "price": 89,
       "stock": 193,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.92,
       "sell_count": 257,
       "images": [
@@ -2770,7 +2740,7 @@
       "price": 89,
       "stock": 39,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.05,
       "sell_count": 840,
       "images": [
@@ -2787,7 +2757,7 @@
       "price": 139.9,
       "stock": 161,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.87,
       "sell_count": 591,
       "images": [
@@ -2804,7 +2774,7 @@
       "price": 113.18,
       "stock": 27,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.16,
       "sell_count": 551,
       "images": [
@@ -2821,7 +2791,7 @@
       "price": 139.9,
       "stock": 187,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.2,
       "sell_count": 382,
       "images": [
@@ -2838,7 +2808,7 @@
       "price": 120.68,
       "stock": 112,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.78,
       "sell_count": 642,
       "images": [
@@ -2855,7 +2825,7 @@
       "price": 139.9,
       "stock": 65,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.93,
       "sell_count": 310,
       "images": [
@@ -2872,7 +2842,7 @@
       "price": 112.25,
       "stock": 8,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.71,
       "sell_count": 36,
       "images": [
@@ -2889,7 +2859,7 @@
       "price": 59,
       "stock": 143,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.62,
       "sell_count": 395,
       "images": [
@@ -2906,7 +2876,7 @@
       "price": 79,
       "stock": 167,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.2,
       "sell_count": 566,
       "images": [
@@ -2923,7 +2893,7 @@
       "price": 79,
       "stock": 47,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.48,
       "sell_count": 923,
       "images": [
@@ -2940,7 +2910,7 @@
       "price": 79,
       "stock": 182,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.12,
       "sell_count": 168,
       "images": [
@@ -2957,7 +2927,7 @@
       "price": 220,
       "stock": 166,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.68,
       "sell_count": 381,
       "images": [
@@ -2974,7 +2944,7 @@
       "price": 79,
       "stock": 82,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.54,
       "sell_count": 435,
       "images": [
@@ -2991,7 +2961,7 @@
       "price": 189.99,
       "stock": 186,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.19,
       "sell_count": 39,
       "images": [
@@ -3008,7 +2978,7 @@
       "price": 98,
       "stock": 39,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.55,
       "sell_count": 160,
       "images": [
@@ -3025,7 +2995,7 @@
       "price": 199,
       "stock": 23,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.19,
       "sell_count": 150,
       "images": [
@@ -3042,7 +3012,7 @@
       "price": 79,
       "stock": 119,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.05,
       "sell_count": 44,
       "images": [
@@ -3059,7 +3029,7 @@
       "price": 125,
       "stock": 183,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.91,
       "sell_count": 390,
       "images": [
@@ -3076,7 +3046,7 @@
       "price": 149,
       "stock": 128,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.18,
       "sell_count": 926,
       "images": [
@@ -3093,7 +3063,7 @@
       "price": 199,
       "stock": 9,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.24,
       "sell_count": 357,
       "images": [
@@ -3110,7 +3080,7 @@
       "price": 89,
       "stock": 17,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.55,
       "sell_count": 787,
       "images": [
@@ -3127,7 +3097,7 @@
       "price": 199.95,
       "stock": 20,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.83,
       "sell_count": 698,
       "images": [
@@ -3144,7 +3114,7 @@
       "price": 199.95,
       "stock": 140,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.35,
       "sell_count": 301,
       "images": [
@@ -3161,7 +3131,7 @@
       "price": 199.95,
       "stock": 159,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.75,
       "sell_count": 655,
       "images": [
@@ -3178,7 +3148,7 @@
       "price": 89.5,
       "stock": 125,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.93,
       "sell_count": 680,
       "images": [
@@ -3195,7 +3165,7 @@
       "price": 81.4,
       "stock": 90,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.73,
       "sell_count": 87,
       "images": [
@@ -3212,7 +3182,7 @@
       "price": 89.5,
       "stock": 69,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 3.05,
       "sell_count": 110,
       "images": [
@@ -3229,7 +3199,7 @@
       "price": 68.85,
       "stock": 144,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.64,
       "sell_count": 859,
       "images": [
@@ -3246,7 +3216,7 @@
       "price": 70.6,
       "stock": 161,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 0.62,
       "sell_count": 35,
       "images": [
@@ -3263,7 +3233,7 @@
       "price": 89.5,
       "stock": 12,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.1,
       "sell_count": 127,
       "images": [
@@ -3280,7 +3250,7 @@
       "price": 155,
       "stock": 5,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.13,
       "sell_count": 207,
       "images": [
@@ -3297,7 +3267,7 @@
       "price": 169.99,
       "stock": 30,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.68,
       "sell_count": 624,
       "images": [
@@ -3314,7 +3284,7 @@
       "price": 178,
       "stock": 79,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 4.91,
       "sell_count": 884,
       "images": [
@@ -3331,7 +3301,7 @@
       "price": 130,
       "stock": 169,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.41,
       "sell_count": 551,
       "images": [
@@ -3348,7 +3318,7 @@
       "price": 199,
       "stock": 21,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.7,
       "sell_count": 581,
       "images": [
@@ -3365,7 +3335,7 @@
       "price": 199,
       "stock": 69,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 2.08,
       "sell_count": 755,
       "images": [
@@ -3382,7 +3352,7 @@
       "price": 199,
       "stock": 64,
       "store_id": 1,
-      "category_id": 1,
+      "category_id": 2,
       "rating": 1.15,
       "sell_count": 915,
       "images": [
@@ -3399,7 +3369,7 @@
       "price": 358.95,
       "stock": 39,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 2.67,
       "sell_count": 813,
       "images": [
@@ -3416,7 +3386,7 @@
       "price": 393.95,
       "stock": 86,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 2.8,
       "sell_count": 733,
       "images": [
@@ -3433,7 +3403,7 @@
       "price": 472.95,
       "stock": 141,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 2.83,
       "sell_count": 829,
       "images": [
@@ -3450,7 +3420,7 @@
       "price": 461.95,
       "stock": 188,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 2.49,
       "sell_count": 411,
       "images": [
@@ -3467,7 +3437,7 @@
       "price": 729,
       "stock": 185,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 1.15,
       "sell_count": 286,
       "images": [
@@ -3484,7 +3454,7 @@
       "price": 999,
       "stock": 11,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 0.43,
       "sell_count": 391,
       "images": [
@@ -3501,7 +3471,7 @@
       "price": 1099,
       "stock": 34,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 3.81,
       "sell_count": 213,
       "images": [
@@ -3518,12 +3488,80 @@
       "price": 1099,
       "stock": 109,
       "store_id": 1,
-      "category_id": 2,
+      "category_id": 6,
       "rating": 3.65,
       "sell_count": 962,
       "images": [
         {
           "url": "https://cdn.dsmcdn.com/ty1011/product/media/images/prod/SPM/PIM/20231007/14/d7a487b4-be67-3b38-88ca-b0fbcc17ed2d/1_org_zoom.jpg",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "name": "Deri Omuz Cantasi",
+      "description": "Zarif deri omuz cantasi.",
+      "price": 899.99,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 5,
+      "rating": 4.6,
+      "sell_count": 42,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "name": "Mini Sirt Cantasi",
+      "description": "Sik mini sirt cantasi.",
+      "price": 649.5,
+      "stock": 18,
+      "store_id": 1,
+      "category_id": 5,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "name": "Klasik Kol Saati",
+      "description": "Deri kayis erkek kol saati.",
+      "price": 1299.0,
+      "stock": 12,
+      "store_id": 1,
+      "category_id": 11,
+      "rating": 4.8,
+      "sell_count": 67,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 205,
+      "name": "Spor Kronograf Saat",
+      "description": "Modern spor kronograf saat.",
+      "price": 1599.99,
+      "stock": 9,
+      "store_id": 1,
+      "category_id": 11,
+      "rating": 4.7,
+      "sell_count": 28,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80",
           "index": 0
         }
       ]
