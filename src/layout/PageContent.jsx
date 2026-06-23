@@ -11,6 +11,7 @@ import LoginPage from "../pages/LoginPage";
 import CartPage from "../pages/CartPage";
 import CreateOrderPage from "../pages/CreateOrderPage";
 import OrdersPage from "../pages/OrdersPage";
+import FavoritesPage from "../pages/FavoritesPage";
 import NotFound from "../pages/NotFound";
 import ProtectedRoute from "../components/ProtectedRoute";
 
@@ -50,6 +51,9 @@ export default function PageContent() {
 
         {/* T18 – Cart Page */}
         <Route exact path="/cart" component={CartPage} />
+
+        {/* Favorites */}
+        <Route exact path="/favorites" component={FavoritesPage} />
 
         {/* T20-T22 – Create Order Page (Protected) */}
         <ProtectedRoute exact path="/create-order" component={CreateOrderPage} />

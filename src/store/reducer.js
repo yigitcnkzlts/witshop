@@ -202,6 +202,29 @@ function orderReducer(state = orderInitialState, action) {
   }
 }
 
+const favoritesInitialState = {
+  list: [],
+};
+
+function favoritesReducer(state = favoritesInitialState, action) {
+  switch (action.type) {
+    case "SET_FAVORITES":
+      return { ...state, list: action.payload };
+    case "ADD_FAVORITE":
+      if (state.list.some((p) => p.id === action.payload.id)) {
+        return state;
+      }
+      return { ...state, list: [...state.list, action.payload] };
+    case "REMOVE_FAVORITE":
+      return {
+        ...state,
+        list: state.list.filter((p) => p.id !== action.payload),
+      };
+    default:
+      return state;
+  }
+}
+
 // Combine all reducers
 const rootReducer = combineReducers({
   client: clientReducer,
@@ -209,6 +232,7 @@ const rootReducer = combineReducers({
   shoppingCart: shoppingCartReducer,
   address: addressReducer,
   card: cardReducer,
-  order: orderReducer
+  order: orderReducer,
+  favorites: favoritesReducer,
 });
 export default rootReducer;

@@ -5,3 +5,4 @@ export * from "./shoppingCartActions";
 export * from "./addressActions";
 export * from "./cardActions";
 export * from "./orderActions";
+export * from "./favoriteActions";

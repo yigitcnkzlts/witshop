@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { ShoppingCart } from "lucide-react";
 import { toast } from "react-toastify";
 import { addToCart } from "../store/actions";
+import FavoriteButton from "./FavoriteButton";
 
 const images = import.meta.glob("../assets/products-shop/*", {
   eager: true,
@@ -72,6 +73,10 @@ export default function ShopGridCard({ product }) {
             %{discount} OFF
           </div>
         )}
+
+        <div className="absolute right-3 top-3 z-10">
+          <FavoriteButton product={product} className="shadow-md backdrop-blur-sm" />
+        </div>
 
         {/* Hover effect overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

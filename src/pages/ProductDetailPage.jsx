@@ -1,11 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import { useMemo, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Heart, ShoppingCart, Eye } from "lucide-react";
+import { ShoppingCart, Eye } from "lucide-react";
 import { toast } from "react-toastify";
 
 import { shopProducts } from "../data/shopProducts";
 import ShopGridCard from "../components/ShopGridCard";
+import FavoriteButton from "../components/FavoriteButton";
 import { fetchProductDetail, addToCart } from "../store/actions";
 
 export default function ProductDetailPage() {
@@ -203,13 +204,11 @@ export default function ProductDetailPage() {
                   Add to Cart
                 </button>
 
-                <button
-                  type="button"
-                  className="flex h-11 w-11 items-center justify-center rounded border border-[#E6E6E6] bg-white"
-                  aria-label="favorite"
-                >
-                  <Heart size={18} className="text-[#252B42]" />
-                </button>
+                <FavoriteButton
+                  product={product}
+                  size={18}
+                  className="h-11 w-11 rounded border border-[#E6E6E6] bg-white p-0"
+                />
 
                 <button
                   type="button"

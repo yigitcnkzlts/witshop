@@ -5,7 +5,7 @@ import { Provider, useDispatch } from "react-redux";
 
 import App from "./App.jsx";
 import store from "./store/store";
-import { fetchRoles, verifyToken, fetchCategories } from "./store/actions";
+import { fetchRoles, verifyToken, fetchCategories, loadFavorites } from "./store/actions";
 import "./index.css";
 
 // Redux store'u initialize eden component
@@ -16,7 +16,7 @@ function AppWithRedux() {
     // Uygulama başladığında gerekli verileri fetch et
     dispatch(fetchRoles());
     dispatch(fetchCategories());
-    
+    dispatch(loadFavorites());
     // Auto login - token varsa verify et
     dispatch(verifyToken());
   }, [dispatch]);

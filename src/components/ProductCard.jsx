@@ -1,31 +1,32 @@
-import { Heart } from "lucide-react";
+import FavoriteButton from "./FavoriteButton";
 
-export default function ProductCard({ title, price, image }) {
+export default function ProductCard({ title, price, image, product }) {
+  const cardProduct = product || {
+    id: `home-${title}`,
+    name: title,
+    title,
+    price: Number(String(price).replace(/[^0-9.]/g, "")) || 0,
+    images: image ? [{ url: image }] : [],
+  };
+
   return (
     <div className="group flex w-full flex-col overflow-hidden rounded-xl border bg-white transition-shadow hover:shadow-md">
-      {/* Görsel Alanı */}
       <div className="relative aspect-square w-full overflow-hidden bg-gray-50 md:aspect-video">
         <img
           src={image}
           alt={title}
-          className="h-full w-full object-contain p-2 md:object-cover md:p-0 transition-transform duration-300 group-hover:scale-105"
+          className="h-full w-full object-contain p-2 transition-transform duration-300 group-hover:scale-105 md:object-cover md:p-0"
         />
+        <div className="absolute right-2 top-2">
+          <FavoriteButton product={cardProduct} className="shadow-sm" />
+        </div>
       </div>
 
-      {/* İçerik Alanı */}
       <div className="flex flex-1 flex-col justify-between p-3 md:p-4">
         <div className="space-y-2">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="line-clamp-2 text-sm font-medium leading-tight text-gray-800 md:text-base md:font-semibold">
-              {title}
-            </h3>
-            <button 
-              className="shrink-0 rounded-full border border-gray-100 p-2 text-gray-500 transition-colors hover:bg-red-50 hover:text-red-500 active:scale-90"
-              aria-label="Add to favorites"
-            >
-              <Heart size={18} />
-            </button>
-          </div>
+          <h3 className="line-clamp-2 text-sm font-medium leading-tight text-gray-800 md:text-base md:font-semibold">
+            {title}
+          </h3>
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-2">

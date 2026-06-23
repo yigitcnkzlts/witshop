@@ -24,6 +24,7 @@ export default function Header() {
   const { user } = useSelector(state => state.client);
   const { categories } = useSelector(state => state.product);
   const { cart } = useSelector(state => state.shoppingCart);
+  const { list: favorites } = useSelector(state => state.favorites);
   const dispatch = useDispatch();
   
   const handleLogout = () => {
@@ -32,8 +33,8 @@ export default function Header() {
 
   const isLoggedIn = user && user.email;
   
-  // Calculate total items in cart
   const cartItemCount = cart.reduce((total, item) => total + item.count, 0);
+  const favoriteCount = favorites.length;
 
   // Kategorileri cinsiyet bazında grupla
   const womenCategories = categories.filter((cat) => cat.gender === "k");
@@ -360,13 +361,61 @@ export default function Header() {
               )}
             </div>
 
-            <button className="group flex items-center gap-1 rounded-full p-2 transition-colors hover:bg-blue-50">
-              <Heart
-                size={18}
-                className="transition-transform group-hover:scale-125"
-              />
-              <span className="text-[10px] font-black">1</span>
-            </button>
+            <div className="group relative">
+              <Link
+                to="/favorites"
+                className="flex items-center gap-1 rounded-full p-2 transition-colors hover:bg-blue-50"
+              >
+                <Heart
+                  size={18}
+                  className="transition-transform group-hover:scale-125"
+                />
+                <span className="text-[10px] font-black">{favoriteCount}</span>
+              </Link>
+
+              {favorites.length > 0 && (
+                <div className="invisible absolute right-0 top-full z-50 mt-2 w-72 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="rounded-lg bg-white p-4 shadow-lg ring-1 ring-black/5">
+                    <h3 className="mb-3 font-semibold text-gray-900">
+                      Favoriler ({favoriteCount})
+                    </h3>
+                    <div className="max-h-60 space-y-3 overflow-y-auto">
+                      {favorites.slice(0, 4).map((product) => (
+                        <div key={product.id} className="flex items-center gap-3">
+                          <div className="h-12 w-12 shrink-0 overflow-hidden rounded bg-gray-100">
+                            {product.images?.[0]?.url ? (
+                              <img
+                                src={product.images[0].url}
+                                alt={product.name}
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center text-xs text-gray-400">
+                                IMG
+                              </div>
+                            )}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate text-sm font-medium text-gray-900">
+                              {product.name || product.title}
+                            </p>
+                            <p className="text-xs text-[#23856D]">
+                              ${(product.price || 0).toFixed(2)}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      to="/favorites"
+                      className="mt-3 block w-full rounded bg-[#23A6F0] py-2 text-center text-sm font-medium text-white hover:bg-blue-600"
+                    >
+                      Tüm Favoriler
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
