@@ -5,6 +5,11 @@ import api, {
   WITSHOP_TO_WORKINTECH_CATEGORY,
 } from "../../api/api";
 import { enrichCategories } from "../../utils/categoryImages";
+import {
+  filterDemoProducts,
+  getDemoProductById,
+  loadDemoProducts,
+} from "../../utils/demoProducts";
 
 // Action Creators
 export const setCategories = (categories) => ({
@@ -47,26 +52,54 @@ export const setProductDetail = (product) => ({
   payload: product,
 });
 
+function parseQuery(queryString) {
+  const params = new URLSearchParams(queryString);
+  return {
+    limit: params.get("limit"),
+    offset: params.get("offset"),
+    filter: params.get("filter"),
+    category: params.get("category") ? Number(params.get("category")) : undefined,
+    sort: params.get("sort"),
+  };
+}
+
 async function fetchProductsFromApi(queryString, categoryId) {
-  if (categoryId && !WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]) {
-    try {
-      return await api.get(`/products?${queryString}`);
-    } catch {
-      return { data: { total: 0, products: [] } };
+  const opts = { ...parseQuery(queryString), category: categoryId };
+
+  const useDemoIfEmpty = async (response) => {
+    if (response.data.products?.length > 0) return response;
+    const demo = await loadDemoProducts();
+    const filtered = filterDemoProducts(demo, opts);
+    if (filtered.products.length > 0) {
+      console.warn("Using demo products for category", categoryId);
+      return { data: filtered };
     }
-  }
+    return response;
+  };
 
   try {
-    return await api.get(`/products?${queryString}`);
+    const response = await api.get(`/products?${queryString}`);
+    return await useDemoIfEmpty(response);
   } catch (primaryError) {
     const params = new URLSearchParams(queryString);
-    if (categoryId) {
+    if (categoryId && WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]) {
       params.set("category", WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]);
+      activateFallback();
+      try {
+        const response = await api.get(`/products?${params.toString()}`);
+        return await useDemoIfEmpty(response);
+      } catch {
+        // fall through to demo
+      }
     }
 
-    console.warn("Primary API unavailable, loading products from Workintech");
-    activateFallback();
-    return await api.get(`/products?${params.toString()}`);
+    const demo = await loadDemoProducts();
+    const filtered = filterDemoProducts(demo, opts);
+    if (filtered.products.length > 0) {
+      console.warn("API unavailable, using demo products");
+      return { data: filtered };
+    }
+    throw primaryError;
   }
 }
 
@@ -145,10 +178,26 @@ export const fetchProductDetail = (productId) => {
   return async (dispatch) => {
     try {
       dispatch(setFetchState("FETCHING"));
+
+      if (productId >= 9000) {
+        const demo = await getDemoProductById(productId);
+        if (demo) {
+          dispatch(setProductDetail(demo));
+          dispatch(setFetchState("FETCHED"));
+          return;
+        }
+      }
+
       const response = await getWithFallback(`/products/${productId}`);
       dispatch(setProductDetail(response.data));
       dispatch(setFetchState("FETCHED"));
     } catch (error) {
+      const demo = await getDemoProductById(productId);
+      if (demo) {
+        dispatch(setProductDetail(demo));
+        dispatch(setFetchState("FETCHED"));
+        return;
+      }
       console.error("Error fetching product detail:", error);
       dispatch(setFetchState("FAILED"));
     }

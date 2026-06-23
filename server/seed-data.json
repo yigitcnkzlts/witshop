@@ -3565,6 +3565,822 @@
           "index": 0
         }
       ]
+    },
+    {
+      "id": 9001,
+      "name": "Zarif Midi Elbise",
+      "description": "Zarif Midi Elbise - Bandage koleksiyonu.",
+      "price": 899.99,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 1,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9002,
+      "name": "Gece Elbisesi Siyah",
+      "description": "Gece Elbisesi Siyah - Bandage koleksiyonu.",
+      "price": 1299.0,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 1,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9003,
+      "name": "Çiçek Desenli Elbise",
+      "description": "Çiçek Desenli Elbise - Bandage koleksiyonu.",
+      "price": 749.5,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 1,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9004,
+      "name": "Günlük Triko Elbise",
+      "description": "Günlük Triko Elbise - Bandage koleksiyonu.",
+      "price": 599.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 1,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1572804013309-59a686b1cf0a?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9005,
+      "name": "İpek Bluz Beyaz",
+      "description": "İpek Bluz Beyaz - Bandage koleksiyonu.",
+      "price": 449.99,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 2,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9006,
+      "name": "Oversize Gömlek Mavi",
+      "description": "Oversize Gömlek Mavi - Bandage koleksiyonu.",
+      "price": 389.0,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 2,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1596755094514-f87e34085b56?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9007,
+      "name": "Saten Bluz Pudra",
+      "description": "Saten Bluz Pudra - Bandage koleksiyonu.",
+      "price": 529.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 2,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9008,
+      "name": "Klasik Poplin Gömlek",
+      "description": "Klasik Poplin Gömlek - Bandage koleksiyonu.",
+      "price": 359.99,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 2,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9009,
+      "name": "Yüksek Bel Pantolon",
+      "description": "Yüksek Bel Pantolon - Bandage koleksiyonu.",
+      "price": 499.0,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 3,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9010,
+      "name": "Wide Leg Pantolon",
+      "description": "Wide Leg Pantolon - Bandage koleksiyonu.",
+      "price": 549.99,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 3,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9011,
+      "name": "Kumaş Palazzo",
+      "description": "Kumaş Palazzo - Bandage koleksiyonu.",
+      "price": 429.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 3,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9012,
+      "name": "Slim Fit Pantolon",
+      "description": "Slim Fit Pantolon - Bandage koleksiyonu.",
+      "price": 479.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 3,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9013,
+      "name": "Pileli Midi Etek",
+      "description": "Pileli Midi Etek - Bandage koleksiyonu.",
+      "price": 349.99,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 4,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1583498273704-9450b543e0a1?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9014,
+      "name": "Deri Mini Etek",
+      "description": "Deri Mini Etek - Bandage koleksiyonu.",
+      "price": 599.0,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 4,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9015,
+      "name": "Kalem Etek Siyah",
+      "description": "Kalem Etek Siyah - Bandage koleksiyonu.",
+      "price": 299.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 4,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1582555172862-f73ad44be088?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9016,
+      "name": "Desenli Maxi Etek",
+      "description": "Desenli Maxi Etek - Bandage koleksiyonu.",
+      "price": 419.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 4,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1551489186-cf8726f514f8?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9017,
+      "name": "Deri Omuz Çantası",
+      "description": "Deri Omuz Çantası - Bandage koleksiyonu.",
+      "price": 899.99,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 5,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9018,
+      "name": "Mini Sırt Çantası",
+      "description": "Mini Sırt Çantası - Bandage koleksiyonu.",
+      "price": 649.5,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 5,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9019,
+      "name": "Tote Çanta Bej",
+      "description": "Tote Çanta Bej - Bandage koleksiyonu.",
+      "price": 549.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 5,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9020,
+      "name": "Zincir Askılı Çanta",
+      "description": "Zincir Askılı Çanta - Bandage koleksiyonu.",
+      "price": 799.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 5,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1564422170194-896b89110ef8?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9021,
+      "name": "Beyaz Sneaker",
+      "description": "Beyaz Sneaker - Bandage koleksiyonu.",
+      "price": 899.0,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 6,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9022,
+      "name": "Topuklu Ayakkabı",
+      "description": "Topuklu Ayakkabı - Bandage koleksiyonu.",
+      "price": 749.99,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 6,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9023,
+      "name": "Bot Deri Siyah",
+      "description": "Bot Deri Siyah - Bandage koleksiyonu.",
+      "price": 1099.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 6,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9024,
+      "name": "Loafer Kahverengi",
+      "description": "Loafer Kahverengi - Bandage koleksiyonu.",
+      "price": 649.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 6,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9025,
+      "name": "Basic Beyaz T-Shirt",
+      "description": "Basic Beyaz T-Shirt - Bandage koleksiyonu.",
+      "price": 199.99,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 7,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9026,
+      "name": "Oversize Siyah Tişört",
+      "description": "Oversize Siyah Tişört - Bandage koleksiyonu.",
+      "price": 249.0,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 7,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1583743814966-c6a40d16308c?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9027,
+      "name": "Baskılı T-Shirt",
+      "description": "Baskılı T-Shirt - Bandage koleksiyonu.",
+      "price": 279.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 7,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9028,
+      "name": "V Yaka Pamuklu Tişört",
+      "description": "V Yaka Pamuklu Tişört - Bandage koleksiyonu.",
+      "price": 219.99,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 7,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9029,
+      "name": "Oxford Gömlek Mavi",
+      "description": "Oxford Gömlek Mavi - Bandage koleksiyonu.",
+      "price": 449.0,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 8,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1596755094514-f87e34085b56?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9030,
+      "name": "Keten Gömlek Beyaz",
+      "description": "Keten Gömlek Beyaz - Bandage koleksiyonu.",
+      "price": 499.99,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 8,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9031,
+      "name": "Ekose Gömlek",
+      "description": "Ekose Gömlek - Bandage koleksiyonu.",
+      "price": 429.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 8,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9032,
+      "name": "Slim Fit Gömlek Gri",
+      "description": "Slim Fit Gömlek Gri - Bandage koleksiyonu.",
+      "price": 389.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 8,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9033,
+      "name": "Chino Pantolon Bej",
+      "description": "Chino Pantolon Bej - Bandage koleksiyonu.",
+      "price": 549.0,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 9,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1473966968600-fa801b279a0a?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9034,
+      "name": "Slim Fit Jean",
+      "description": "Slim Fit Jean - Bandage koleksiyonu.",
+      "price": 599.99,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 9,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9035,
+      "name": "Kargo Pantolon",
+      "description": "Kargo Pantolon - Bandage koleksiyonu.",
+      "price": 649.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 9,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9036,
+      "name": "Klasik Kumaş Pantolon",
+      "description": "Klasik Kumaş Pantolon - Bandage koleksiyonu.",
+      "price": 499.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 9,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9037,
+      "name": "Blazer Ceket Lacivert",
+      "description": "Blazer Ceket Lacivert - Bandage koleksiyonu.",
+      "price": 1299.0,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 10,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9038,
+      "name": "Deri Ceket Siyah",
+      "description": "Deri Ceket Siyah - Bandage koleksiyonu.",
+      "price": 2499.99,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 10,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9039,
+      "name": "Bomber Ceket",
+      "description": "Bomber Ceket - Bandage koleksiyonu.",
+      "price": 899.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 10,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9040,
+      "name": "Keten Blazer",
+      "description": "Keten Blazer - Bandage koleksiyonu.",
+      "price": 1099.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 10,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9041,
+      "name": "Klasik Kol Saati",
+      "description": "Klasik Kol Saati - Bandage koleksiyonu.",
+      "price": 1299.0,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 11,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9042,
+      "name": "Spor Kronograf Saat",
+      "description": "Spor Kronograf Saat - Bandage koleksiyonu.",
+      "price": 1599.99,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 11,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9043,
+      "name": "Deri Kayış Saat",
+      "description": "Deri Kayış Saat - Bandage koleksiyonu.",
+      "price": 999.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 11,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1524805445258-039964592060?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9044,
+      "name": "Minimalist Saat",
+      "description": "Minimalist Saat - Bandage koleksiyonu.",
+      "price": 849.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 11,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1533139502658-019a74a261de?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9045,
+      "name": "Erkek Sneaker Beyaz",
+      "description": "Erkek Sneaker Beyaz - Bandage koleksiyonu.",
+      "price": 899.99,
+      "stock": 20,
+      "store_id": 1,
+      "category_id": 12,
+      "rating": 3.5,
+      "sell_count": 10,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9046,
+      "name": "Deri Oxford Ayakkabı",
+      "description": "Deri Oxford Ayakkabı - Bandage koleksiyonu.",
+      "price": 1199.0,
+      "stock": 25,
+      "store_id": 1,
+      "category_id": 12,
+      "rating": 3.8,
+      "sell_count": 17,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1614252238916-862a6a3c7a8a?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9047,
+      "name": "Bot Chelsea",
+      "description": "Bot Chelsea - Bandage koleksiyonu.",
+      "price": 1399.0,
+      "stock": 30,
+      "store_id": 1,
+      "category_id": 12,
+      "rating": 4.1,
+      "sell_count": 24,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1608256246200-53bd35fbcb9b?w=600&q=80",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "id": 9048,
+      "name": "Günlük Loafer",
+      "description": "Günlük Loafer - Bandage koleksiyonu.",
+      "price": 749.0,
+      "stock": 35,
+      "store_id": 1,
+      "category_id": 12,
+      "rating": 4.4,
+      "sell_count": 31,
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80",
+          "index": 0
+        }
+      ]
     }
   ]
 }
