@@ -63,7 +63,8 @@ export const loginUser = (loginData) => {
 
       return user;
     } catch (error) {
-      const errorMessage = error.response?.data?.message || "Login failed";
+      const errorMessage =
+        error.response?.data?.message || "Giris basarisiz. Email ve sifreyi kontrol edin.";
       throw new Error(errorMessage);
     }
   };

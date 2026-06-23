@@ -1,4 +1,9 @@
-import api from "../../api/api";
+import api, {
+  deleteWithFallback,
+  getWithFallback,
+  postWithFallback,
+  putWithFallback,
+} from "../../api/api";
 
 // Action Creators
 export const setCardList = (cards) => ({
@@ -30,7 +35,7 @@ export const setSelectedCard = (card) => ({
 export const fetchCards = () => {
   return async (dispatch) => {
     try {
-      const response = await api.get("/user/card");
+      const response = await getWithFallback("/user/card");
       const cards = Array.isArray(response.data) ? response.data : [];
       dispatch(setCardList(cards));
     } catch (error) {
@@ -45,7 +50,7 @@ export const fetchCards = () => {
 export const createCard = (cardData) => {
   return async (dispatch) => {
     try {
-      const response = await api.post("/user/card", cardData);
+      const response = await postWithFallback("/user/card", cardData);
       dispatch(addCard(response.data));
       return response.data;
     } catch (error) {
@@ -64,7 +69,7 @@ export const createCard = (cardData) => {
 export const editCard = (cardData) => {
   return async (dispatch) => {
     try {
-      const response = await api.put("/user/card", cardData);
+      const response = await putWithFallback("/user/card", cardData);
       dispatch(updateCard(response.data));
       return response.data;
     } catch (error) {
@@ -82,7 +87,7 @@ export const editCard = (cardData) => {
 export const deleteCard = (cardId) => {
   return async (dispatch) => {
     try {
-      await api.delete(`/user/card/${cardId}`);
+      await deleteWithFallback(`/user/card/${cardId}`);
       dispatch(removeCard(cardId));
     } catch (error) {
       console.error("Error deleting card:", error);

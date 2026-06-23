@@ -2,13 +2,14 @@ import axios from "axios";
 
 export const WORKINTECH_API = "https://workintech-fe-ecommerce.onrender.com";
 
-const OWN_API =
+/** Yerelde kendi backend; Vercel'de dogrudan Workintech (witshop-api deploy edilmedi) */
+export const OWN_API =
   import.meta.env.VITE_API_URL ||
-  (import.meta.env.DEV ? "http://localhost:3001" : "https://witshop-api.onrender.com");
+  (import.meta.env.DEV ? "http://localhost:3001" : WORKINTECH_API);
 
 const api = axios.create({
   baseURL: OWN_API,
-  timeout: 12000,
+  timeout: 20000,
 });
 
 export const fallbackApi = axios.create({
@@ -19,12 +20,11 @@ export const fallbackApi = axios.create({
 let fallbackActivated = false;
 
 export function isFallbackActive() {
-  return fallbackActivated;
+  return fallbackActivated || api.defaults.baseURL === WORKINTECH_API;
 }
 
-/** Production'da kendi API yoksa Workintech'e gec */
 export function activateFallback() {
-  if (fallbackActivated || api.defaults.baseURL === WORKINTECH_API) return;
+  if (isFallbackActive()) return;
   console.warn("Primary API unavailable, switching to Workintech");
   api.defaults.baseURL = WORKINTECH_API;
   const token = api.defaults.headers.common.Authorization;
@@ -34,19 +34,24 @@ export function activateFallback() {
   fallbackActivated = true;
 }
 
-async function withFallback(request) {
+function useLocalBackendOnly() {
+  return import.meta.env.DEV && String(OWN_API).includes("localhost");
+}
+
+async function withFallback(primary, fallback) {
   try {
-    return await request();
+    return await primary();
   } catch (primaryError) {
-    if (import.meta.env.DEV && String(api.defaults.baseURL).includes("localhost")) {
+    if (useLocalBackendOnly()) {
       throw primaryError;
     }
+    console.warn("API request failed, retrying with Workintech fallback");
     activateFallback();
-    return await request();
+    return await fallback();
   }
 }
 
-/** Witshop kategori id → Workintech kategori id (yedek API için) */
+/** Witshop kategori id → Workintech kategori id */
 export const WITSHOP_TO_WORKINTECH_CATEGORY = {
   1: 4,
   2: 1,
@@ -61,19 +66,31 @@ export const WITSHOP_TO_WORKINTECH_CATEGORY = {
 };
 
 export async function getWithFallback(path, config) {
-  return withFallback(() => api.get(path, config));
+  return withFallback(
+    () => api.get(path, config),
+    () => fallbackApi.get(path, config)
+  );
 }
 
 export async function postWithFallback(path, data, config) {
-  return withFallback(() => api.post(path, data, config));
+  return withFallback(
+    () => api.post(path, data, config),
+    () => fallbackApi.post(path, data, config)
+  );
 }
 
 export async function putWithFallback(path, data, config) {
-  return withFallback(() => api.put(path, data, config));
+  return withFallback(
+    () => api.put(path, data, config),
+    () => fallbackApi.put(path, data, config)
+  );
 }
 
 export async function deleteWithFallback(path, config) {
-  return withFallback(() => api.delete(path, config));
+  return withFallback(
+    () => api.delete(path, config),
+    () => fallbackApi.delete(path, config)
+  );
 }
 
 export function syncAuthToken(token) {
