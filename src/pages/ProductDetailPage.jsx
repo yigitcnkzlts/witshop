@@ -9,6 +9,11 @@ import ShopGridCard from "../components/ShopGridCard";
 import FavoriteButton from "../components/FavoriteButton";
 import { fetchProductDetail, addToCart } from "../store/actions";
 
+const shopImages = import.meta.glob("../assets/products-shop/*", {
+  eager: true,
+  import: "default",
+});
+
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const dispatch = useDispatch();
@@ -28,7 +33,10 @@ export default function ProductDetailPage() {
     [id]
   );
 
-  const product = productDetail || localProduct;
+  const product =
+    productDetail?.id === id ? productDetail : localProduct;
+
+  const colors = product?.colors ?? ["#23A6F0", "#23856D", "#E77C40", "#252B42"];
 
   // Basit "related" örneği (4 adet)
   const related = useMemo(() => {
@@ -36,7 +44,7 @@ export default function ProductDetailPage() {
     return others.slice(0, 4);
   }, [id]);
 
-  if (fetchState === "FETCHING") {
+  if (fetchState === "FETCHING" && !product) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-[#23A6F0]"></div>
@@ -57,10 +65,13 @@ export default function ProductDetailPage() {
 
   // Görsel yolu: API'den gelen ürün için images array, local için assets
   const getImageSrc = () => {
-    if (product.images && product.images[0]) {
+    if (product.images?.[0]?.url) {
       return product.images[0].url;
     }
-    return `/src/assets/products-shop/${product.image}`;
+    if (product.image) {
+      return shopImages[`../assets/products-shop/${product.image}`] || product.image;
+    }
+    return "";
   };
 
   const handleAddToCart = () => {
@@ -82,7 +93,7 @@ export default function ProductDetailPage() {
               Shop
             </Link>
             <span className="text-[#BDBDBD]">{">"}</span>
-            <span className="text-[#BDBDBD]">{product.title}</span>
+            <span className="text-[#BDBDBD]">{product.title || product.name}</span>
           </div>
         </div>
       </section>
@@ -184,7 +195,7 @@ export default function ProductDetailPage() {
 
               {/* Colors */}
               <div className="flex items-center gap-3">
-                {product.colors.map((c) => (
+                {colors.map((c) => (
                   <button
                     key={c}
                     type="button"

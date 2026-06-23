@@ -1,12 +1,22 @@
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import FavoriteButton from "./FavoriteButton";
+import { addToCart } from "../store/actions";
 
 export default function ProductCard({ title, price, image, product }) {
+  const dispatch = useDispatch();
+
   const cardProduct = product || {
     id: `home-${title}`,
     name: title,
     title,
     price: Number(String(price).replace(/[^0-9.]/g, "")) || 0,
     images: image ? [{ url: image }] : [],
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(cardProduct));
+    toast.success(`${title} added to cart!`);
   };
 
   return (
@@ -33,7 +43,11 @@ export default function ProductCard({ title, price, image, product }) {
           <span className="text-base font-bold text-gray-900 md:text-lg">
             ${price}
           </span>
-          <button className="rounded-lg bg-black px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-80 active:scale-95 md:px-4 md:py-2.5 md:text-sm">
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            className="rounded-lg bg-black px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-80 active:scale-95 md:px-4 md:py-2.5 md:text-sm"
+          >
             Add to cart
           </button>
         </div>

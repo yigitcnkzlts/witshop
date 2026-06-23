@@ -29,20 +29,24 @@ export default function CreateOrderPage() {
   const [editingCard, setEditingCard] = useState(null);
   const [orderLoading, setOrderLoading] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchAddresses());
-    dispatch(fetchCards());
-  }, [dispatch]);
-
-  // Calculate totals
   const checkedItems = cart.filter(item => item.checked);
   const subtotal = checkedItems.reduce((sum, item) => sum + (item.product.price * item.count), 0);
   const shipping = subtotal > 100 ? 0 : 15;
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
 
+  useEffect(() => {
+    dispatch(fetchAddresses());
+    dispatch(fetchCards());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (checkedItems.length === 0) {
+      history.push("/cart");
+    }
+  }, [checkedItems.length, history]);
+
   if (checkedItems.length === 0) {
-    history.push('/cart');
     return null;
   }
 

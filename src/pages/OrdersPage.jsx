@@ -33,9 +33,8 @@ export default function OrdersPage() {
   };
 
   const getOrderStatus = (order) => {
-    // This would come from the API in a real implementation
-    const statuses = ['Processing', 'Shipped', 'Delivered', 'Cancelled'];
-    return statuses[Math.floor(Math.random() * statuses.length)];
+    const statuses = ["Processing", "Shipped", "Delivered", "Cancelled"];
+    return statuses[Math.abs(Number(order.id) || 0) % statuses.length];
   };
 
   const getStatusColor = (status) => {

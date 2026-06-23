@@ -156,14 +156,7 @@ export const fetchProducts = (params = {}) => {
       const { total, products } = response.data;
 
       dispatch(setTotal(total));
-
-      if (params.offset > 0) {
-        const currentProducts = getState().product.productList;
-        dispatch(setProductList([...currentProducts, ...products]));
-      } else {
-        dispatch(setProductList(products));
-      }
-
+      dispatch(setProductList(products));
       dispatch(setFetchState("FETCHED"));
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -176,6 +169,7 @@ export const fetchProducts = (params = {}) => {
 export const fetchProductDetail = (productId) => {
   return async (dispatch) => {
     try {
+      dispatch(setProductDetail(null));
       dispatch(setFetchState("FETCHING"));
 
       if (productId >= 9000) {
@@ -198,6 +192,7 @@ export const fetchProductDetail = (productId) => {
         return;
       }
       console.error("Error fetching product detail:", error);
+      dispatch(setProductDetail(null));
       dispatch(setFetchState("FAILED"));
     }
   };

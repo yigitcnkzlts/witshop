@@ -81,7 +81,8 @@ export default function ShopPage() {
   const { categories, productList, total, fetchState } = useSelector((state) => state.product);
 
   const [sortValue, setSortValue] = useState("");
-  const [filterText, setFilterText] = useState("");
+  const [filterInput, setFilterInput] = useState("");
+  const [appliedFilter, setAppliedFilter] = useState("");
 
   const categoryId = params.categoryId ? parseInt(params.categoryId, 10) : null;
 
@@ -90,7 +91,7 @@ export default function ShopPage() {
   }, [dispatch]);
 
   useEffect(() => {
-    const queryParams = {};
+    const queryParams = { offset: 0 };
 
     if (categoryId) {
       queryParams.category = categoryId;
@@ -100,12 +101,25 @@ export default function ShopPage() {
       queryParams.sort = sortValue;
     }
 
-    if (filterText) {
-      queryParams.filter = filterText;
+    if (appliedFilter) {
+      queryParams.filter = appliedFilter;
     }
 
     dispatch(fetchProducts(queryParams));
-  }, [dispatch, categoryId, sortValue, filterText]);
+  }, [dispatch, categoryId, sortValue, appliedFilter]);
+
+  const handleApplyFilter = () => {
+    setAppliedFilter(filterInput.trim());
+  };
+
+  const handleRetryFetch = () => {
+    dispatch(fetchProducts({
+      offset: 0,
+      ...(categoryId ? { category: categoryId } : {}),
+      ...(sortValue ? { sort: sortValue } : {}),
+      ...(appliedFilter ? { filter: appliedFilter } : {}),
+    }));
+  };
 
   const handleCategoryClick = (category) => {
     history.push(categoryShopPath(category));
@@ -195,8 +209,9 @@ export default function ShopPage() {
             <input
               type="text"
               placeholder="Filter products..."
-              value={filterText}
-              onChange={(e) => setFilterText(e.target.value)}
+              value={filterInput}
+              onChange={(e) => setFilterInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleApplyFilter()}
               className="h-12 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 sm:w-[200px]"
             />
             <select
@@ -210,7 +225,11 @@ export default function ShopPage() {
               <option value="rating:asc">Rating: Low-High</option>
               <option value="rating:desc">Rating: High-Low</option>
             </select>
-            <button className="h-12 flex-1 rounded-xl bg-[#23A6F0] px-10 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 transition-all hover:brightness-110 active:scale-95 sm:flex-none">
+            <button
+              type="button"
+              onClick={handleApplyFilter}
+              className="h-12 flex-1 rounded-xl bg-[#23A6F0] px-10 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 transition-all hover:brightness-110 active:scale-95 sm:flex-none"
+            >
               Filter
             </button>
           </div>
@@ -229,7 +248,7 @@ export default function ShopPage() {
                 Yerelde <code className="rounded bg-gray-100 px-1">npm run dev:full</code> ile çalıştırın.
               </p>
               <button
-                onClick={() => dispatch(fetchProducts())}
+                onClick={handleRetryFetch}
                 className="mt-4 rounded-xl bg-[#23A6F0] px-6 py-2 text-white hover:bg-blue-600"
               >
                 Tekrar Dene
@@ -246,7 +265,7 @@ export default function ShopPage() {
       </section>
 
       <section className="pb-24">
-        <Pagination />
+        <Pagination categoryId={categoryId} filter={appliedFilter} sort={sortValue} />
       </section>
 
       <section className="border-t border-gray-100 bg-gray-50/30 py-20">

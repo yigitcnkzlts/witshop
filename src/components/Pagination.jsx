@@ -1,16 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../store/actions";
 
-export default function Pagination() {
+export default function Pagination({ categoryId, filter, sort }) {
   const dispatch = useDispatch();
   const { total, limit, offset } = useSelector(state => state.product);
   
   const currentPage = Math.floor(offset / limit) + 1;
   const totalPages = Math.ceil(total / limit);
+
+  const buildParams = (newOffset) => ({
+    offset: newOffset,
+    ...(categoryId ? { category: categoryId } : {}),
+    ...(filter ? { filter } : {}),
+    ...(sort ? { sort } : {}),
+  });
   
   const handlePageChange = (newPage) => {
     const newOffset = (newPage - 1) * limit;
-    dispatch(fetchProducts({ offset: newOffset }));
+    dispatch(fetchProducts(buildParams(newOffset)));
   };
 
   const handlePrevious = () => {

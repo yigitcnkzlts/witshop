@@ -57,8 +57,13 @@ export const loginUser = (loginData) => {
       dispatch(setUser(user));
       syncAuthToken(token);
 
+      sessionStorage.removeItem("token");
+      localStorage.removeItem("token");
+
       if (loginData.rememberMe) {
         localStorage.setItem("token", token);
+      } else {
+        sessionStorage.setItem("token", token);
       }
 
       return user;
@@ -73,7 +78,8 @@ export const loginUser = (loginData) => {
 // Thunk Action Creator for auto login (T11)
 export const verifyToken = () => {
   return async (dispatch) => {
-    const token = localStorage.getItem("token");
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
 
     if (!token) {
       return false;
@@ -83,15 +89,19 @@ export const verifyToken = () => {
       syncAuthToken(token);
 
       const response = await getWithFallback("/verify");
-      const user = response.data;
+      const { token: _token, ...userData } = response.data;
 
-      dispatch(setUser(user));
-      localStorage.setItem("token", token);
+      dispatch(setUser({
+        name: userData.name,
+        email: userData.email,
+        role_id: userData.role_id,
+      }));
 
       return true;
     } catch (error) {
       console.error("Token verification failed:", error);
       localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
       syncAuthToken(null);
       return false;
     }
@@ -103,6 +113,7 @@ export const logoutUser = () => {
   return (dispatch) => {
     dispatch(setUser({}));
     localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     syncAuthToken(null);
   };
 };
