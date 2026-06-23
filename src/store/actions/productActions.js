@@ -1,10 +1,9 @@
 import api, {
   activateFallback,
   getWithFallback,
-  loadStaticCategories,
   WITSHOP_TO_WORKINTECH_CATEGORY,
 } from "../../api/api";
-import { enrichCategories } from "../../utils/categoryImages";
+import { loadCatalogCategories, isCatalogCategoryId } from "../../utils/catalog";
 import {
   filterDemoProducts,
   getDemoProductById,
@@ -66,6 +65,13 @@ function parseQuery(queryString) {
 async function fetchProductsFromApi(queryString, categoryId) {
   const opts = { ...parseQuery(queryString), category: categoryId };
 
+  // Bandage kategorileri (1-12): her zaman demo urunler + gorseller
+  if (categoryId && isCatalogCategoryId(categoryId)) {
+    const demo = await loadDemoProducts();
+    const filtered = filterDemoProducts(demo, opts);
+    return { data: filtered };
+  }
+
   const useDemoIfEmpty = async (response) => {
     if (response.data.products?.length > 0) return response;
     const demo = await loadDemoProducts();
@@ -108,19 +114,12 @@ export const fetchCategories = () => {
   return async (dispatch) => {
     try {
       dispatch(setFetchState("FETCHING"));
-      const response = await api.get("/categories");
-      dispatch(setCategories(enrichCategories(response.data)));
+      const categories = await loadCatalogCategories();
+      dispatch(setCategories(categories));
       dispatch(setFetchState("FETCHED"));
     } catch (error) {
-      console.warn("Categories API failed, using static fallback:", error);
-      try {
-        const categories = await loadStaticCategories();
-        dispatch(setCategories(enrichCategories(categories)));
-        dispatch(setFetchState("FETCHED"));
-      } catch (staticError) {
-        console.error("Error fetching categories:", staticError);
-        dispatch(setFetchState("FAILED"));
-      }
+      console.error("Error fetching categories:", error);
+      dispatch(setFetchState("FAILED"));
     }
   };
 };

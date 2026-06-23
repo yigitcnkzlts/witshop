@@ -5,7 +5,8 @@
     "title": "Elbise",
     "img": "/categories/kadin-elbise.jpg",
     "rating": 4.5,
-    "gender": "k"
+    "gender": "k",
+    "items": 4
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "title": "Bluz & Gömlek",
     "img": "/categories/kadin-bluz-gomlek.jpg",
     "rating": 4.3,
-    "gender": "k"
+    "gender": "k",
+    "items": 4
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "title": "Pantolon",
     "img": "/categories/kadin-pantalon.jpg",
     "rating": 4.0,
-    "gender": "k"
+    "gender": "k",
+    "items": 4
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "title": "Etek",
     "img": "/categories/kadin-etek.jpg",
     "rating": 4.1,
-    "gender": "k"
+    "gender": "k",
+    "items": 4
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "title": "Çanta",
     "img": "/categories/kadin-canta.jpg",
     "rating": 4.7,
-    "gender": "k"
+    "gender": "k",
+    "items": 4
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "title": "Ayakkabı",
     "img": "/categories/kadin-ayakkabi.jpg",
     "rating": 4.8,
-    "gender": "k"
+    "gender": "k",
+    "items": 4
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "title": "T-Shirt",
     "img": "/categories/erkek-tshirt.jpg",
     "rating": 4.4,
-    "gender": "e"
+    "gender": "e",
+    "items": 4
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "title": "Gömlek",
     "img": "/categories/erkek-gomlek.jpg",
     "rating": 4.2,
-    "gender": "e"
+    "gender": "e",
+    "items": 4
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "title": "Pantolon",
     "img": "/categories/erkek-pantalon.jpg",
     "rating": 4.0,
-    "gender": "e"
+    "gender": "e",
+    "items": 4
   },
   {
     "id": 10,
@@ -77,7 +86,8 @@
     "title": "Ceket",
     "img": "/categories/erkek-ceket.jpg",
     "rating": 4.3,
-    "gender": "e"
+    "gender": "e",
+    "items": 4
   },
   {
     "id": 11,
@@ -85,7 +95,8 @@
     "title": "Saat",
     "img": "/categories/erkek-saat.jpg",
     "rating": 4.6,
-    "gender": "e"
+    "gender": "e",
+    "items": 4
   },
   {
     "id": 12,
@@ -93,6 +104,7 @@
     "title": "Ayakkabı",
     "img": "/categories/erkek-ayakkabi.jpg",
     "rating": 4.7,
-    "gender": "e"
+    "gender": "e",
+    "items": 4
   }
 ]

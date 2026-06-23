@@ -6,9 +6,15 @@ import ShopGridCard from "../components/ShopGridCard";
 import Pagination from "../components/Pagination";
 import { fetchCategories, fetchProducts } from "../store/actions";
 import { categoryShopPath } from "../utils/categorySlug";
-import { getCategoryImage } from "../utils/categoryImages";
+import { CATEGORY_IMAGES, getCategoryImage } from "../utils/categoryImages";
 
-function CategoryCard({ title, items, image, onClick }) {
+function CategoryCard({ title, items, image, categoryId, onClick }) {
+  const handleImgError = (e) => {
+    if (categoryId && CATEGORY_IMAGES[categoryId]) {
+      e.currentTarget.src = CATEGORY_IMAGES[categoryId];
+    }
+  };
+
   return (
     <div
       onClick={onClick}
@@ -17,6 +23,7 @@ function CategoryCard({ title, items, image, onClick }) {
       <img
         src={image}
         alt={title}
+        onError={handleImgError}
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         loading="lazy"
       />
@@ -48,8 +55,9 @@ function CategorySection({ title, categories, onCategoryClick }) {
           <CategoryCard
             key={c.id}
             title={c.title}
-            items={c.items ?? 0}
+            items={c.items ?? 4}
             image={getCategoryImage(c)}
+            categoryId={c.id}
             onClick={() => onCategoryClick(c)}
           />
         ))}
