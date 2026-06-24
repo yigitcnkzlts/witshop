@@ -1,23 +1,10 @@
-import { loadStaticCategories } from "../api/api";
+import api from "../api/api";
 import { enrichCategories } from "./categoryImages";
-import { loadDemoProducts } from "./demoProducts";
 
-/** Bandage katalogu: 12 kategori + gorsel + urun sayisi (Vercel icin tek kaynak) */
+/** Kategorileri kendi backend API'den yukler */
 export async function loadCatalogCategories() {
-  const [categories, demoProducts] = await Promise.all([
-    loadStaticCategories(),
-    loadDemoProducts().catch(() => []),
-  ]);
-
-  const counts = {};
-  for (const product of demoProducts) {
-    counts[product.category_id] = (counts[product.category_id] || 0) + 1;
-  }
-
-  return enrichCategories(categories).map((cat) => ({
-    ...cat,
-    items: counts[cat.id] || 4,
-  }));
+  const response = await api.get("/categories");
+  return enrichCategories(response.data);
 }
 
 export function isCatalogCategoryId(id) {

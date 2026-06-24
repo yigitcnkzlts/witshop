@@ -1,8 +1,8 @@
 import api, {
-  deleteWithFallback,
-  getWithFallback,
-  postWithFallback,
-  putWithFallback,
+  apiDelete,
+  apiGet,
+  apiPost,
+  apiPut,
 } from "../../api/api";
 
 // Action Creators
@@ -35,7 +35,7 @@ export const setSelectedAddress = (address) => ({
 export const fetchAddresses = () => {
   return async (dispatch) => {
     try {
-      const response = await getWithFallback("/user/address");
+      const response = await apiGet("/user/address");
       const addresses = Array.isArray(response.data) ? response.data : [];
       dispatch(setAddressList(addresses));
     } catch (error) {
@@ -50,7 +50,7 @@ export const fetchAddresses = () => {
 export const createAddress = (addressData) => {
   return async (dispatch) => {
     try {
-      const response = await postWithFallback("/user/address", addressData);
+      const response = await apiPost("/user/address", addressData);
       dispatch(addAddress(response.data));
       return response.data;
     } catch (error) {
@@ -69,7 +69,7 @@ export const createAddress = (addressData) => {
 export const editAddress = (addressData) => {
   return async (dispatch) => {
     try {
-      const response = await putWithFallback("/user/address", addressData);
+      const response = await apiPut("/user/address", addressData);
       dispatch(updateAddress(response.data));
       return response.data;
     } catch (error) {
@@ -87,7 +87,7 @@ export const editAddress = (addressData) => {
 export const deleteAddress = (addressId) => {
   return async (dispatch) => {
     try {
-      await deleteWithFallback(`/user/address/${addressId}`);
+      await apiDelete(`/user/address/${addressId}`);
       dispatch(removeAddress(addressId));
     } catch (error) {
       console.error("Error deleting address:", error);

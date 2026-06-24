@@ -1,4 +1,4 @@
-import { getWithFallback, postWithFallback } from "../../api/api";
+import { apiGet, apiPost } from "../../api/api";
 
 // Action Creators
 export const setOrderList = (orders) => ({
@@ -19,7 +19,7 @@ export const clearCart = () => ({
 export const createOrder = (orderData) => {
   return async (dispatch) => {
     try {
-      const response = await postWithFallback("/order", orderData);
+      const response = await apiPost("/order", orderData);
       dispatch(addOrder(response.data));
       dispatch(clearCart()); // Clear cart after successful order
       return response.data;
@@ -33,7 +33,7 @@ export const createOrder = (orderData) => {
 export const fetchOrders = () => {
   return async (dispatch) => {
     try {
-      const response = await getWithFallback("/order");
+      const response = await apiGet("/order");
       const orders = Array.isArray(response.data) ? response.data : [];
       dispatch(setOrderList(orders));
     } catch (error) {

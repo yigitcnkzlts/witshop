@@ -1,8 +1,4 @@
-import api, {
-  activateFallback,
-  getWithFallback,
-  WITSHOP_TO_WORKINTECH_CATEGORY,
-} from "../../api/api";
+import api, { apiGet } from "../../api/api";
 import { loadCatalogCategories, isCatalogCategoryId } from "../../utils/catalog";
 import {
   filterDemoProducts,
@@ -87,18 +83,6 @@ async function fetchProductsFromApi(queryString, categoryId) {
     const response = await api.get(`/products?${queryString}`);
     return await useDemoIfEmpty(response);
   } catch (primaryError) {
-    const params = new URLSearchParams(queryString);
-    if (categoryId && WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]) {
-      params.set("category", WITSHOP_TO_WORKINTECH_CATEGORY[categoryId]);
-      activateFallback();
-      try {
-        const response = await api.get(`/products?${params.toString()}`);
-        return await useDemoIfEmpty(response);
-      } catch {
-        // fall through to demo
-      }
-    }
-
     const demo = await loadDemoProducts();
     const filtered = filterDemoProducts(demo, opts);
     if (filtered.products.length > 0) {
@@ -181,7 +165,7 @@ export const fetchProductDetail = (productId) => {
         }
       }
 
-      const response = await getWithFallback(`/products/${productId}`);
+      const response = await apiGet(`/products/${productId}`);
       dispatch(setProductDetail(response.data));
       dispatch(setFetchState("FETCHED"));
     } catch (error) {

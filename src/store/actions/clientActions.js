@@ -1,6 +1,6 @@
 import api, {
-  getWithFallback,
-  postWithFallback,
+  apiGet,
+  apiPost,
   syncAuthToken,
 } from "../../api/api";
 
@@ -29,7 +29,7 @@ export const setLanguage = (language) => ({
 export const fetchRoles = () => {
   return async (dispatch) => {
     try {
-      const response = await getWithFallback("/roles");
+      const response = await apiGet("/roles");
       dispatch(setRoles(response.data));
     } catch (error) {
       console.error("Error fetching roles:", error);
@@ -41,7 +41,7 @@ export const fetchRoles = () => {
 export const loginUser = (loginData) => {
   return async (dispatch) => {
     try {
-      const response = await postWithFallback("/login", {
+      const response = await apiPost("/login", {
         email: loginData.email,
         password: loginData.password,
       });
@@ -88,7 +88,7 @@ export const verifyToken = () => {
     try {
       syncAuthToken(token);
 
-      const response = await getWithFallback("/verify");
+      const response = await apiGet("/verify");
       const { token: _token, ...userData } = response.data;
 
       dispatch(setUser({
