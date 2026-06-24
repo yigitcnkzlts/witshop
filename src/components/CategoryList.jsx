@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { apiGet } from "../api/api";
+import { enrichCategories } from "../utils/categoryImages";
 import CategoryCard from "./CategoryCard";
-
-const CATEGORIES_URL = "https://workintech-fe-ecommerce.onrender.com/categories";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -17,9 +16,10 @@ export default function CategoryList() {
         setLoading(true);
         setError(null);
 
-        const response = await axios.get(CATEGORIES_URL);
-        // img alanı tam URL string olarak gelir; CategoryCard bunu <img src> ile gösterir.
-        const data = Array.isArray(response.data) ? response.data : [];
+        const response = await apiGet("/categories");
+        const data = enrichCategories(
+          Array.isArray(response.data) ? response.data : []
+        );
 
         if (!cancelled) {
           setCategories(data);

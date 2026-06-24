@@ -34,7 +34,7 @@ export default function HomePage() {
         <EditorsPick />
       </section>
 
-      {/* Kategoriler: Workintech API */}
+      {/* Kategoriler: kendi Witshop API */}
       <section className="mx-auto w-full max-w-[1250px] px-6 py-20 md:py-28">
         <header className="mb-12 text-center">
           <span className="mb-3 block text-[11px] font-black uppercase tracking-[0.5em] text-blue-500/80">

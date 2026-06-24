@@ -16,16 +16,21 @@ export default function LoginPage() {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors }
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: "customer@commerce.com",
+      password: "123456",
+      rememberMe: true,
+    },
+  });
 
   const onSubmit = async (data) => {
     setLoading(true);
     
     try {
       await dispatch(loginUser(data));
-      toast.success("Successfully logged in!");
+      toast.success("Giriş başarılı!");
       
       // Redirect to previous page or home
       const previousPath = history.location.state?.from?.pathname || "/";
@@ -33,7 +38,7 @@ export default function LoginPage() {
       
     } catch (error) {
       console.error("Login error:", error);
-      toast.error(error.message || "Login failed");
+      toast.error(error.message || "Giriş başarısız");
     } finally {
       setLoading(false);
     }
@@ -50,14 +55,14 @@ export default function LoginPage() {
         rememberMe: true
       }));
       
-      toast.success("Quick login successful!");
+      toast.success("Hızlı giriş başarılı!");
       
       // Redirect to home
       history.push("/");
       
     } catch (error) {
       console.error("Quick login error:", error);
-      toast.error("Quick login failed. Please try manual login.");
+      toast.error("Hızlı giriş başarısız. Lütfen manuel giriş deneyin.");
     } finally {
       setAutoLoginLoading(false);
     }
@@ -68,45 +73,45 @@ export default function LoginPage() {
       <div className="mx-auto max-w-md px-4">
         <div className="rounded-lg bg-white p-8 shadow-md">
           <h2 className="mb-6 text-center text-2xl font-bold text-[#252B42]">
-            Login
+            Giriş Yap
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Email */}
+            {/* E-posta */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Email *
+                E-posta *
               </label>
               <input
                 type="email"
                 {...register("email", {
-                  required: "Email is required",
+                  required: "E-posta gerekli",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address"
+                    message: "Geçerli bir e-posta adresi girin"
                   }
                 })}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#23A6F0] focus:outline-none focus:ring-1 focus:ring-[#23A6F0]"
-                placeholder="Enter your email"
+                placeholder="E-posta adresinizi girin"
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
               )}
             </div>
 
-            {/* Password */}
+            {/* Şifre */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Password *
+                Şifre *
               </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   {...register("password", {
-                    required: "Password is required"
+                    required: "Şifre gerekli"
                   })}
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 pr-10 focus:border-[#23A6F0] focus:outline-none focus:ring-1 focus:ring-[#23A6F0]"
-                  placeholder="Enter your password"
+                  placeholder="Şifrenizi girin"
                 />
                 <button
                   type="button"
@@ -129,7 +134,7 @@ export default function LoginPage() {
                 className="h-4 w-4 rounded border-gray-300 text-[#23A6F0] focus:ring-[#23A6F0]"
               />
               <label className="ml-2 text-sm text-gray-700">
-                Remember me
+                Beni hatırla
               </label>
             </div>
 
@@ -142,10 +147,10 @@ export default function LoginPage() {
               {loading ? (
                 <div className="flex items-center justify-center">
                   <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                  Logging in...
+                  Giriş yapılıyor...
                 </div>
               ) : (
-                "Login"
+                "Giriş Yap"
               )}
             </button>
           </form>
@@ -157,7 +162,7 @@ export default function LoginPage() {
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="bg-white px-2 text-gray-500">Or</span>
+                <span className="bg-white px-2 text-gray-500">veya</span>
               </div>
             </div>
 
@@ -170,23 +175,23 @@ export default function LoginPage() {
               {autoLoginLoading ? (
                 <div className="flex items-center justify-center">
                   <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-[#23A6F0] border-t-transparent"></div>
-                  Logging in...
+                  Giriş yapılıyor...
                 </div>
               ) : (
-                "🚀 Quick Login (Demo Account)"
+                "Hızlı Giriş (Demo Hesap)"
               )}
             </button>
             
             <p className="mt-2 text-center text-xs text-gray-500">
-              Click to login with demo account instantly
+              Demo hesapla anında giriş yapmak için tıklayın
             </p>
           </div>
 
           {/* Sign Up Link */}
           <div className="mt-4 text-center text-sm text-gray-600">
-            Don't have an account?{" "}
+            Hesabınız yok mu?{" "}
             <Link to="/signup" className="font-semibold text-[#23A6F0] hover:underline">
-              Sign Up
+              Kayıt Ol
             </Link>
           </div>
 
@@ -194,20 +199,20 @@ export default function LoginPage() {
           <div className="mt-6 rounded-lg border-2 border-blue-200 bg-blue-50 p-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-2xl">🔑</span>
-              <h3 className="text-sm font-bold text-blue-900">Demo Account</h3>
+              <h3 className="text-sm font-bold text-blue-900">Demo Hesap</h3>
             </div>
             <div className="space-y-1 text-sm">
               <div className="flex items-center gap-2">
-                <span className="font-medium text-blue-800">Email:</span>
+                <span className="font-medium text-blue-800">E-posta:</span>
                 <code className="rounded bg-white px-2 py-1 text-blue-900">customer@commerce.com</code>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-medium text-blue-800">Password:</span>
+                <span className="font-medium text-blue-800">Şifre:</span>
                 <code className="rounded bg-white px-2 py-1 text-blue-900">123456</code>
               </div>
             </div>
             <p className="mt-3 text-xs text-blue-700">
-              💡 Use Quick Login button above or copy these credentials
+              Yukarıdaki Hızlı Giriş butonunu kullanın veya bu bilgileri kopyalayın
             </p>
           </div>
         </div>
