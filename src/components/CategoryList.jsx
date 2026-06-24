@@ -18,6 +18,7 @@ export default function CategoryList() {
         setError(null);
 
         const response = await axios.get(CATEGORIES_URL);
+        // img alanı tam URL string olarak gelir; CategoryCard bunu <img src> ile gösterir.
         const data = Array.isArray(response.data) ? response.data : [];
 
         if (!cancelled) {

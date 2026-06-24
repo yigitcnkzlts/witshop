@@ -6,12 +6,12 @@ import ShopGridCard from "../components/ShopGridCard";
 import Pagination from "../components/Pagination";
 import { fetchCategories, fetchProducts } from "../store/actions";
 import { categoryShopPath } from "../utils/categorySlug";
-import { CATEGORY_IMAGES, getCategoryImage } from "../utils/categoryImages";
+import { CATEGORY_IMAGES } from "../utils/categoryImages";
 
-function CategoryCard({ title, items, image, categoryId, onClick }) {
+function CategoryCard({ category, onClick }) {
   const handleImgError = (e) => {
-    if (categoryId && CATEGORY_IMAGES[categoryId]) {
-      e.currentTarget.src = CATEGORY_IMAGES[categoryId];
+    if (category.id && CATEGORY_IMAGES[category.id]) {
+      e.currentTarget.src = CATEGORY_IMAGES[category.id];
     }
   };
 
@@ -21,8 +21,8 @@ function CategoryCard({ title, items, image, categoryId, onClick }) {
       className="group relative block h-[280px] w-full cursor-pointer overflow-hidden rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl md:h-[223px]"
     >
       <img
-        src={image}
-        alt={title}
+        src={category.img}
+        alt={category.title}
         onError={handleImgError}
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         loading="lazy"
@@ -31,10 +31,10 @@ function CategoryCard({ title, items, image, categoryId, onClick }) {
 
       <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center text-white">
         <span className="mb-1 text-[10px] font-black uppercase tracking-[3px] text-blue-400">
-          {items} Items
+          {category.items ?? 4} Items
         </span>
         <h3 className="text-lg font-black tracking-wide transition-transform duration-500 group-hover:scale-105 md:text-xl">
-          {title}
+          {category.title}
         </h3>
         <div className="mt-2 h-[2px] w-0 bg-white transition-all duration-500 group-hover:w-12" />
       </div>
@@ -51,14 +51,11 @@ function CategorySection({ title, categories, onCategoryClick }) {
         {title}
       </h2>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-        {categories.map((c) => (
+        {categories.map((category) => (
           <CategoryCard
-            key={c.id}
-            title={c.title}
-            items={c.items ?? 4}
-            image={getCategoryImage(c)}
-            categoryId={c.id}
-            onClick={() => onCategoryClick(c)}
+            key={category.id}
+            category={category}
+            onClick={() => onCategoryClick(category)}
           />
         ))}
       </div>
@@ -147,7 +144,7 @@ export default function ShopPage() {
           {activeCategory && (
             <div className="relative mb-10 h-52 overflow-hidden rounded-2xl shadow-lg md:h-72">
               <img
-                src={getCategoryImage(activeCategory)}
+                src={activeCategory.img}
                 alt={activeCategory.title}
                 className="h-full w-full object-cover"
               />
