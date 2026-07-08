@@ -1,13 +1,13 @@
 services:
   - type: web
     name: witshop-api
-    runtime: node
+    runtime: java
     rootDir: server
-    buildCommand: npm install
-    startCommand: npm start
+    buildCommand: mvn -DskipTests package
+    startCommand: java -jar target/witshop-api-1.0.0.jar
     healthCheckPath: /health
     envVars:
-      - key: NODE_VERSION
-        value: 24.14.0
+      - key: JAVA_VERSION
+        value: 21
       - key: JWT_SECRET
         generateValue: true

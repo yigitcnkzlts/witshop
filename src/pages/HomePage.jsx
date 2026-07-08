@@ -1,6 +1,5 @@
 import Slider from "../components/Slider";
 import EditorsPick from "../components/EditorsPick";
-import CategoryList from "../components/CategoryList";
 import HeroProductSlider from "../components/HeroProductSlider";
 import BestsellerCard from "../components/BestsellerCard";
 import NeuralBanner from "../components/NeuralBanner";
@@ -32,19 +31,6 @@ export default function HomePage() {
       {/* 2. EDITOR'S PICK: Kategorilere odaklanma */}
       <section className="bg-[#FAFAFA] py-20 md:py-32">
         <EditorsPick />
-      </section>
-
-      {/* Kategoriler: kendi Witshop API */}
-      <section className="mx-auto w-full max-w-[1250px] px-6 py-20 md:py-28">
-        <header className="mb-12 text-center">
-          <span className="mb-3 block text-[11px] font-black uppercase tracking-[0.5em] text-blue-500/80">
-            Shop by Category
-          </span>
-          <h2 className="text-3xl font-black tracking-tighter text-[#252B42] md:text-4xl">
-            CATEGORIES
-          </h2>
-        </header>
-        <CategoryList />
       </section>
 
       {/* 3. BESTSELLER PRODUCTS: Ürünlerin şovu */}

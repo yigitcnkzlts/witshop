@@ -61,11 +61,22 @@ function parseQuery(queryString) {
 async function fetchProductsFromApi(queryString, categoryId) {
   const opts = { ...parseQuery(queryString), category: categoryId };
 
-  // Bandage kategorileri (1-12): her zaman demo urunler + gorseller
-  if (categoryId && isCatalogCategoryId(categoryId)) {
+  // Bandage kategorileri (1-12) veya production (Vercel): demo urunler
+  if (
+    (categoryId && isCatalogCategoryId(categoryId)) ||
+    import.meta.env.PROD
+  ) {
+    try {
+      const response = await api.get(`/products?${queryString}`, { timeout: 5000 });
+      if (response.data.products?.length > 0) return response;
+    } catch {
+      // API yoksa asagida demo urunlere dus
+    }
     const demo = await loadDemoProducts();
     const filtered = filterDemoProducts(demo, opts);
-    return { data: filtered };
+    if (filtered.products.length > 0) {
+      return { data: filtered };
+    }
   }
 
   const useDemoIfEmpty = async (response) => {

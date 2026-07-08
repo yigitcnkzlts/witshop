@@ -9,7 +9,7 @@ export const API_BASE_URL =
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 20000,
+  timeout: import.meta.env.DEV ? 20000 : 5000,
 });
 
 export function syncAuthToken(token) {
