@@ -46,60 +46,70 @@ public class DataSeeder implements CommandLineRunner {
   @Override
   @Transactional
   public void run(String... args) throws Exception {
-    if (roleRepository.count() == 0) {
-      seedRoles();
-      seedDemoUser();
-    }
+    seedRolesIfMissing();
+    seedDemoUserIfMissing();
     syncCatalogFromSeed();
   }
 
-  private void seedRoles() {
-    roleRepository.save(role(1, "admin", "admin"));
-    roleRepository.save(role(2, "store", "store"));
-    roleRepository.save(role(3, "customer", "customer"));
+  private void seedRolesIfMissing() {
+    if (roleRepository.findById(1).isEmpty()) roleRepository.save(role(1, "admin", "admin"));
+    if (roleRepository.findById(2).isEmpty()) roleRepository.save(role(2, "store", "store"));
+    if (roleRepository.findById(3).isEmpty()) roleRepository.save(role(3, "customer", "customer"));
   }
 
-  private void seedDemoUser() {
-    User user = new User();
-    user.setName("Cust Omer");
-    user.setEmail("customer@commerce.com");
-    user.setPasswordHash(passwordEncoder.encode("123456"));
-    user.setRoleId(3);
-    user.setActive(true);
-    userRepository.save(user);
+  private void seedDemoUserIfMissing() {
+    if (userRepository.findByEmail("customer@commerce.com").isEmpty()) {
+      User user = new User();
+      user.setName("Cust Omer");
+      user.setEmail("customer@commerce.com");
+      user.setPasswordHash(passwordEncoder.encode("123456"));
+      user.setRoleId(3);
+      user.setActive(true);
+      userRepository.save(user);
+    }
   }
 
   private void syncCatalogFromSeed() throws Exception {
+    // Zaten veriler varsa tekrar seed etme
+    if (categoryRepository.count() > 0 && productRepository.count() > 0) {
+      return;
+    }
+
     JsonNode root =
         objectMapper.readTree(new InputStreamReader(
             new ClassPathResource("seed-data.json").getInputStream(), StandardCharsets.UTF_8));
 
-    categoryRepository.deleteAll();
     for (JsonNode node : root.path("categories")) {
-      Category category = new Category();
-      category.setId(node.path("id").asInt());
-      category.setCode(textOrNull(node, "code"));
-      category.setTitle(node.path("title").asText());
-      category.setImg(textOrNull(node, "img"));
-      category.setRating(node.path("rating").asDouble(0));
-      category.setGender(textOrNull(node, "gender"));
-      categoryRepository.save(category);
+      Integer id = node.path("id").asInt();
+      if (categoryRepository.findById(id).isEmpty()) {
+        Category category = new Category();
+        category.setId(id);
+        category.setCode(textOrNull(node, "code"));
+        category.setTitle(node.path("title").asText());
+        category.setImg(textOrNull(node, "img"));
+        category.setRating(node.path("rating").asDouble(0));
+        category.setGender(textOrNull(node, "gender"));
+        categoryRepository.save(category);
+      }
     }
 
     for (JsonNode node : root.path("products")) {
-      Product product = new Product();
-      product.setId(node.path("id").asInt());
-      product.setName(node.path("name").asText());
-      product.setDescription(textOrNull(node, "description"));
-      product.setPrice(node.path("price").asDouble());
-      product.setStock(node.path("stock").asInt(0));
-      product.setStoreId(node.path("store_id").isNull() ? null : node.path("store_id").asInt());
-      product.setCategoryId(
-          node.path("category_id").isNull() ? null : node.path("category_id").asInt());
-      product.setRating(node.path("rating").asDouble(0));
-      product.setSellCount(node.path("sell_count").asInt(0));
-      product.setImagesJson(node.path("images").toString());
-      productRepository.save(product);
+      Integer id = node.path("id").asInt();
+      if (productRepository.findById(id).isEmpty()) {
+        Product product = new Product();
+        product.setId(id);
+        product.setName(node.path("name").asText());
+        product.setDescription(textOrNull(node, "description"));
+        product.setPrice(node.path("price").asDouble());
+        product.setStock(node.path("stock").asInt(0));
+        product.setStoreId(node.path("store_id").isNull() ? null : node.path("store_id").asInt());
+        product.setCategoryId(
+            node.path("category_id").isNull() ? null : node.path("category_id").asInt());
+        product.setRating(node.path("rating").asDouble(0));
+        product.setSellCount(node.path("sell_count").asInt(0));
+        product.setImagesJson(node.path("images").toString());
+        productRepository.save(product);
+      }
     }
   }
 
