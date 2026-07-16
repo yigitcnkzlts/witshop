@@ -3,11 +3,13 @@ services:
     name: witshop-api
     runtime: java
     rootDir: server
-    buildCommand: mvn -DskipTests package
-    startCommand: java -jar target/witshop-api-1.0.0.jar
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/witshop-api-*.jar
     healthCheckPath: /health
     envVars:
       - key: JAVA_VERSION
-        value: 21
+        value: "21"
       - key: JWT_SECRET
         generateValue: true
+      - key: PORT
+        value: "10000"
