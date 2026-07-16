@@ -35,9 +35,10 @@ public class UserController {
     return userService.createAddress(userId(authentication), body);
   }
 
-  @PutMapping("/user/address")
+  @PutMapping("/user/address/{id}")
   public Map<String, Object> updateAddress(
-      Authentication authentication, @RequestBody Map<String, Object> body) {
+      Authentication authentication, @PathVariable Long id, @RequestBody Map<String, Object> body) {
+    body.put("id", id);
     return userService.updateAddress(userId(authentication), body);
   }
 
@@ -59,9 +60,10 @@ public class UserController {
     return userService.createCard(userId(authentication), body);
   }
 
-  @PutMapping("/user/card")
+  @PutMapping("/user/card/{id}")
   public Map<String, Object> updateCard(
-      Authentication authentication, @RequestBody Map<String, Object> body) {
+      Authentication authentication, @PathVariable Long id, @RequestBody Map<String, Object> body) {
+    body.put("id", id);
     return userService.updateCard(userId(authentication), body);
   }
 

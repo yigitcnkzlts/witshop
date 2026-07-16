@@ -10,6 +10,8 @@ import com.witshop.repository.CategoryRepository;
 import com.witshop.repository.ProductRepository;
 import com.witshop.repository.RoleRepository;
 import com.witshop.repository.UserRepository;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -69,7 +71,8 @@ public class DataSeeder implements CommandLineRunner {
 
   private void syncCatalogFromSeed() throws Exception {
     JsonNode root =
-        objectMapper.readTree(new ClassPathResource("seed-data.json").getInputStream());
+        objectMapper.readTree(new InputStreamReader(
+            new ClassPathResource("seed-data.json").getInputStream(), StandardCharsets.UTF_8));
 
     categoryRepository.deleteAll();
     for (JsonNode node : root.path("categories")) {
